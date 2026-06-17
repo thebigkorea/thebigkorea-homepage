@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>더큰코리아 | 경쟁력</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Noto Sans KR", "Malgun Gothic", sans-serif;
+      background: #f6f2ec;
+      color: #2b2118;
+      line-height: 1.7;
+    }
+    a { color: inherit; text-decoration: none; }
+    .container {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,.96);
+      border-bottom: 1px solid #e8ddcf;
+      backdrop-filter: blur(10px);
+    }
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      padding: 16px 0;
+    }
+    .logo {
+      font-size: 30px;
+      font-weight: 900;
+      color: #6a4826;
+      line-height: 1.05;
+    }
+    .logo small {
+      display: block;
+      font-size: 11px;
+      letter-spacing: 1.8px;
+      color: #8a7864;
+      margin-top: 6px;
+    }
+    .menu {
+      display: flex;
+      gap: 22px;
+      flex-wrap: wrap;
+      font-weight: 700;
+      color: #5a4f43;
+    }
+
+    .hero {
+      padding: 88px 0 44px;
+      background:
+        linear-gradient(100deg, rgba(48,30,15,.9), rgba(95,63,34,.72)),
+        url('https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1800&q=80') center/cover;
+      color: #fff;
+    }
+    h1 {
+      margin: 0 0 12px;
+      font-size: 56px;
+      line-height: 1.1;
+    }
+    .hero p {
+      max-width: 860px;
+      margin: 0;
+      color: #f3ebe2;
+      font-size: 18px;
+    }
+
+    section {
+      padding: 72px 0;
+    }
+    .section-head h2 {
+      margin: 0 0 10px;
+      font-size: 38px;
+      color: #3f2916;
+    }
+    .section-head p {
+      margin: 0;
+      color: #706458;
+    }
+
+    .strength-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+      margin-top: 30px;
+    }
+    .strength-card {
+      background: #fff;
+      border: 1px solid #eadfce;
+      border-radius: 26px;
+      padding: 28px;
+      box-shadow: 0 12px 30px rgba(53,35,17,.05);
+    }
+    .strength-card h3 {
+      margin: 0 0 12px;
+      font-size: 24px;
+      color: #4a311c;
+    }
+    .strength-card p {
+      margin: 0 0 12px;
+      color: #6f6458;
+    }
+    .strength-card ul {
+      margin: 0;
+      padding-left: 18px;
+      color: #5f5449;
+    }
+
+    .summary-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-top: 30px;
+    }
+    .summary-box {
+      background: #fff;
+      border: 1px solid #eadfce;
+      border-radius: 22px;
+      padding: 22px;
+      box-shadow: 0 12px 28px rgba(0,0,0,.05);
+    }
+    .summary-box strong {
+      display: block;
+      color: #6b4d2e;
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+    .summary-box span {
+      color: #6f6458;
+      font-size: 14px;
+    }
+
+    .highlight-box {
+      margin-top: 34px;
+      background: #fff;
+      border: 1px solid #eadfce;
+      border-radius: 28px;
+      padding: 30px;
+      box-shadow: 0 12px 30px rgba(53,35,17,.05);
+    }
+    .highlight-box h3 {
+      margin: 0 0 14px;
+      color: #3f2916;
+      font-size: 26px;
+    }
+    .highlight-box p {
+      margin: 0;
+      color: #6f6458;
+    }
+
+    .back {
+      display: inline-block;
+      margin-top: 26px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      background: #6b4d2e;
+      color: #fff;
+      font-weight: 700;
+    }
+
+    footer {
+      text-align: center;
+      color: #807366;
+      padding: 20px 0 40px;
+      font-size: 14px;
+    }
+
+    @media (max-width: 980px) {
+      .strength-grid,
+      .summary-row {
+        grid-template-columns: 1fr 1fr;
+      }
+      h1 { font-size: 42px; }
+    }
+
+    @media (max-width: 720px) {
+      .strength-grid,
+      .summary-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="logo">
+        더큰코리아
+        <small>THE BIG KOREA · OFFICIAL PARTNER OF KOREA HERITAGE AGENCY</small>
+      </div>
+      <nav class="menu">
+        <a href="index.html">홈</a>
+        <a href="company.html">회사소개</a>
+        <a href="history.html">연혁</a>
+        <a href="brands.html">브랜드</a>
+        <a href="contact.html">고객의소리</a>
+        <a href="recruit.html">직원모집</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <h1>Operational & Brand Strength</h1>
+      <p>
+        더큰코리아는 전통의 본질을 지키면서도 백화점과 프리미엄 상권에 맞는 브랜드 운영 역량을 갖춘 F&B 기업입니다.
+        브랜드 기획, 공간 경험, 상권 적응력, 포맷 다양성에서 경쟁력을 확보하고 있습니다.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-head">
+        <h2>더큰코리아의 경쟁력</h2>
+        <p>운영 구조, 상권 적합성, 브랜드 포트폴리오, 스토리텔링 역량을 중심으로 정리했습니다.</p>
+      </div>
+
+      <div class="summary-row">
+        <div class="summary-box">
+          <strong>전국 백화점 상권형</strong>
+          <span>롯데·신세계·갤러리아 중심 입점 경험</span>
+        </div>
+        <div class="summary-box">
+          <strong>8개 브랜드</strong>
+          <span>전통 한식부터 카페까지 다층적 운영</span>
+        </div>
+        <div class="summary-box">
+          <strong>스토리 기반</strong>
+          <span>효종갱·궁중다과·궁중도시락 등 차별화</span>
+        </div>
+        <div class="summary-box">
+          <strong>확장 가능성</strong>
+          <span>상권별 맞춤 포맷 운영 역량</span>
+        </div>
+      </div>
+
+      <div class="strength-grid">
+        <div class="strength-card">
+          <h3>공신력 있는 브랜드 운영 경험</h3>
+          <p>한국의집 운영 경험을 통해 전통성과 공신력을 갖춘 브랜드 운영 기반을 확보하고 있습니다.</p>
+          <ul>
+            <li>한국의집 경영상표 사용 지정 경험</li>
+            <li>국가유산진흥원 연계 브랜드 운영 이력</li>
+            <li>전통 식문화 기반 스토리 전달 역량</li>
+          </ul>
+        </div>
+
+        <div class="strength-card">
+          <h3>전국 백화점 상권 적응력</h3>
+          <p>롯데, 신세계, 갤러리아 등 프리미엄 상권에서 운영하며 상권 특성에 맞는 브랜드 전개 역량을 축적했습니다.</p>
+          <ul>
+            <li>롯데월드몰, 롯데백화점, 프리미엄아울렛 입점</li>
+            <li>신세계 아울렛, 갤러리아 점포 운영</li>
+            <li>상권별 고객층에 맞는 포맷 조정 가능</li>
+          </ul>
+        </div>
+
+        <div class="strength-card">
+          <h3>브랜드 포트폴리오 다양성</h3>
+          <p>단일 브랜드가 아니라 한식, 궁중다과, 도시락, 브런치, 퓨전, 카페까지 확장된 구조를 갖추고 있습니다.</p>
+          <ul>
+            <li>한국의집, 효종갱, 고호재, 도슭</li>
+            <li>고궁, 길채정, 소바공방, 카페그랑떼</li>
+            <li>전통·카페·퓨전이 공존하는 브랜드 구조</li>
+          </ul>
+        </div>
+
+        <div class="strength-card">
+          <h3>스토리텔링 기반 상품 기획력</h3>
+          <p>단순한 메뉴 판매가 아니라 역사성, 전통성, 콘셉트를 결합한 브랜드 설계가 가능합니다.</p>
+          <ul>
+            <li>효종갱: 전통 배달음식 스토리</li>
+            <li>고호재: 궁중다과·꽃차 콘셉트</li>
+            <li>도슭: 궁중 도시락의 프리미엄화</li>
+          </ul>
+        </div>
+
+        <div class="strength-card">
+          <h3>공간형 브랜드 구축 역량</h3>
+          <p>매장 운영은 단순 판매 공간이 아니라 브랜드 경험을 전달하는 공간으로 기획됩니다.</p>
+          <ul>
+            <li>전통과 현대가 어우러진 공간 연출</li>
+            <li>고객 체류 경험을 고려한 브랜드 설계</li>
+            <li>백화점 고객층에 맞는 프리미엄 감도 유지</li>
+          </ul>
+        </div>
+
+        <div class="strength-card">
+          <h3>확장성과 사업 구조 유연성</h3>
+          <p>백화점 상권, 아울렛, 카페형, 도시락형 등 다양한 형태로 브랜드를 변형·확장할 수 있습니다.</p>
+          <ul>
+            <li>브랜드별 상권 맞춤 입점 가능</li>
+            <li>도시락·카페·레스토랑 포맷 전개 가능</li>
+            <li>향후 프랜차이즈 및 제휴 확장 기반 확보</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="highlight-box">
+        <h3>핵심 정리</h3>
+        <p>
+          더큰코리아의 경쟁력은 단순히 “대전에 있는 회사”가 아니라,
+          <strong>전국 백화점 상권에서 검증된 브랜드 운영 역량</strong>,
+          <strong>전통성과 현대성을 결합한 포트폴리오 구성</strong>,
+          그리고 <strong>스토리와 공간 경험을 함께 설계하는 기획력</strong>에 있습니다.
+        </p>
+      </div>
+
+      <a class="back" href="index.html">메인으로 돌아가기</a>
+    </div>
+  </section>
+
+  <footer>© THE BIG KOREA. All Rights Reserved.</footer>
+</body>
+</html>

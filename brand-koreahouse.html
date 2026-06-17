@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>한국의집 | 전통 한식</title>
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: 'Malgun Gothic', sans-serif;
+      background: #f8f5f0;
+      color: #222;
+    }
+
+    header {
+      background: #3a2e2a;
+      color: #fff;
+      padding: 28px 16px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 40px;
+      letter-spacing: -1px;
+    }
+
+    header p {
+      margin: 10px 0 0;
+      opacity: .92;
+      line-height: 1.6;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: #5a463f;
+      padding: 12px;
+      text-align: center;
+    }
+
+    nav a {
+      color: #fff;
+      margin: 0 14px;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .wrap {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 30px 16px 50px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0,0,0,.08);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 20px;
+      align-items: stretch;
+      margin-top: 12px;
+    }
+
+    .slider {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .slides {
+      position: relative;
+      height: 380px;
+      overflow: hidden;
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity .6s ease;
+    }
+
+    .slide.active {
+      opacity: 1;
+    }
+
+    .slide img {
+      width: 100%;
+      height: 380px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .navBtn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      border: none;
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+      background: rgba(0,0,0,.45);
+      color: #fff;
+      font-size: 22px;
+      cursor: pointer;
+      z-index: 3;
+    }
+
+    .navBtn:hover {
+      background: rgba(0,0,0,.6);
+    }
+
+    .prev { left: 12px; }
+    .next { right: 12px; }
+
+    .dots {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 12px;
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      z-index: 3;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: 1px solid rgba(0,0,0,.15);
+      background: rgba(255,255,255,.55);
+      cursor: pointer;
+    }
+
+    .dot.active {
+      background: #fff;
+    }
+
+    .heroText {
+      padding: 26px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #f1e7da;
+      color: #5a463f;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 13px;
+      width: fit-content;
+    }
+
+    .heroText h2 {
+      margin: 12px 0 10px;
+      font-size: 28px;
+      line-height: 1.35;
+      color: #2f241f;
+    }
+
+    .heroText p {
+      margin: 0;
+      line-height: 1.7;
+      color: #444;
+    }
+
+    .btnRow {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #8b5e3c;
+      color: #fff;
+      padding: 12px 18px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .btn:hover {
+      opacity: .92;
+    }
+
+    .btnSecondary {
+      background: #ede2d4;
+      color: #4d3a30;
+    }
+
+    section {
+      scroll-margin-top: 80px;
+    }
+
+    .sectionTitle {
+      text-align: center;
+      margin: 34px 0 10px;
+      font-size: 30px;
+      color: #2f241f;
+      letter-spacing: -0.5px;
+    }
+
+    .muted {
+      text-align: center;
+      color: #666;
+      margin: 0 0 22px;
+      line-height: 1.6;
+    }
+
+    .menuPortfolio {
+      display: flex;
+      flex-direction: column;
+      gap: 34px;
+      margin-top: 20px;
+    }
+
+    .menuSection {
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 8px 24px rgba(0,0,0,.06);
+      padding: 24px;
+    }
+
+    .menuSectionHead {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+      padding-bottom: 14px;
+      border-bottom: 2px solid #efe3d5;
+    }
+
+    .menuSectionTitleWrap {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .menuSectionTitle {
+      font-size: 28px;
+      font-weight: 800;
+      color: #2f241f;
+      line-height: 1.2;
+    }
+
+    .menuSectionSub {
+      font-size: 14px;
+      color: #8b6b57;
+      font-weight: 700;
+    }
+
+    .menuCount {
+      background: #f7efe7;
+      color: #7a5a48;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .menuGrid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 18px;
+    }
+
+    .menuItem {
+      background: #fff;
+      border: 1px solid #eee5da;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,.04);
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+
+    .menuItem:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 20px rgba(0,0,0,.08);
+    }
+
+    .menuThumb {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      background: #efe5d8;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .menuThumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .menuThumb::after {
+      content: "IMAGE";
+      position: absolute;
+      inset: auto 12px 12px auto;
+      background: rgba(58, 46, 42, 0.72);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 5px 8px;
+      border-radius: 999px;
+      letter-spacing: .5px;
+      pointer-events: none;
+    }
+
+    .menuInfo {
+      padding: 12px 12px 14px;
+      text-align: center;
+    }
+
+    .menuName {
+      font-size: 15px;
+      font-weight: 800;
+      color: #2f241f;
+      line-height: 1.45;
+      min-height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .menuPrice {
+      margin-top: 8px;
+      font-size: 16px;
+      font-weight: 800;
+      color: #8b5e3c;
+    }
+
+    .infoGrid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .infoBox {
+      padding: 18px;
+    }
+
+    .infoBox h3 {
+      margin: 0 0 10px;
+      color: #2f241f;
+    }
+
+    .line {
+      margin: 8px 0;
+      color: #444;
+      line-height: 1.6;
+    }
+
+    .singleContactWrap {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    footer {
+      background: #3a2e2a;
+      color: #fff;
+      text-align: center;
+      padding: 18px;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 1200px) {
+      .menuGrid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    @media (max-width: 980px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .slides, .slide img {
+        height: 280px;
+      }
+
+      .menuGrid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .infoGrid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 700px) {
+      header h1 {
+        font-size: 30px;
+      }
+
+      nav a {
+        margin: 0 8px;
+        font-size: 14px;
+      }
+
+      .menuGrid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .menuSectionTitle {
+        font-size: 24px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .menuGrid {
+        grid-template-columns: 1fr;
+      }
+
+      .heroText h2 {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+<header>
+  <h1>한국의집 롯데월드몰점</h1>
+  <p>전통 한식의 정갈함을 사진 중심 메뉴 포트폴리오로 한눈에 보실 수 있도록 구성했습니다.</p>
+</header>
+
+<nav>
+  <a href="index.html">메인</a>
+  <a href="brands.html">브랜드</a>
+  <a href="#menu">메뉴</a>
+  <a href="#store">매장안내</a>
+  <a href="#contact">문의</a>
+</nav>
+
+<div class="wrap">
+
+  <div class="hero">
+    <div class="card slider" id="mainSlider">
+      <div class="slides">
+        <div class="slide active"><img src="./view.jpg" alt="한국의집 사진 1"></div>
+        <div class="slide"><img src="./store1.jpg" alt="한국의집 사진 2"></div>
+        <div class="slide"><img src="./store2.jpg" alt="한국의집 사진 3"></div>
+        <div class="slide"><img src="./store3.jpg" alt="한국의집 사진 4"></div>
+        <div class="slide"><img src="./store4.jpg" alt="한국의집 사진 5"></div>
+
+        <button class="navBtn prev" type="button" aria-label="이전">‹</button>
+        <button class="navBtn next" type="button" aria-label="다음">›</button>
+
+        <div class="dots" aria-label="슬라이드 선택">
+          <button class="dot active" type="button" aria-label="1번"></button>
+          <button class="dot" type="button" aria-label="2번"></button>
+          <button class="dot" type="button" aria-label="3번"></button>
+          <button class="dot" type="button" aria-label="4번"></button>
+          <button class="dot" type="button" aria-label="5번"></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card heroText">
+      <span class="badge">매장 소개</span>
+      <h2>사진 중심 메뉴 카드형 구성으로<br>더 직관적이고 브랜드답게</h2>
+      <p>
+        각 메뉴를 이미지 카드로 통일해 정리했습니다.
+        지금은 파일명만 맞추면 바로 이미지가 적용되도록 기본 구조를 세팅한 버전입니다.
+      </p>
+      <div class="btnRow">
+        <a class="btn" href="#menu">메뉴 보기</a>
+        <a class="btn btnSecondary" href="brands.html">브랜드 목록</a>
+        <a class="btn btnSecondary" href="index.html">메인으로</a>
+      </div>
+    </div>
+  </div>
+
+  <section id="menu">
+    <h2 class="sectionTitle">메뉴 소개</h2>
+    <p class="muted">아래 카드의 이미지 파일명만 교체하면 바로 완성됩니다.</p>
+
+    <div class="menuPortfolio">
+
+      <div class="menuSection">
+        <div class="menuSectionHead">
+          <div class="menuSectionTitleWrap">
+            <div class="menuSectionTitle">정식메뉴</div>
+            <div class="menuSectionSub">Jeongsik Menu</div>
+          </div>
+          <div class="menuCount">3 MENU</div>
+        </div>
+
+        <div class="menuGrid">
+          <div class="menuItem">
+            <div class="menuThumb"><img src="./menu-01.jpg" alt="청우정식 이미지"></div>
+            <div class="menuInfo"><div class="menuName">청우정식</div><div class="menuPrice">100,000원</div></div>
+          </div>
+          <div class="menuItem">
+            <div class="menuThumb"><img src="./menu-02.jpg" alt="녹음정식 이미지"></div>
+            <div class="menuInfo"><div class="menuName">녹음정식</div><div class="menuPrice">70,000원</div></div>
+          </div>
+          <div class="menuItem">
+            <div class="menuThumb"><img src="./menu-03.jpg" alt="우금정식 이미지"></div>
+            <div class="menuInfo"><div class="menuName">우금정식</div><div class="menuPrice">50,000원</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="menuSection">
+        <div class="menuSectionHead">
+          <div class="menuSectionTitleWrap">
+            <div class="menuSectionTitle">한상메뉴</div>
+            <div class="menuSectionSub">Set Menu</div>
+          </div>
+          <div class="menuCount">8 MENU</div>
+        </div>
+
+        <div class="menuGrid">
+          <div class="menuItem"><div class="menuThumb"><img src="./menu-04.jpg" alt="설리적한상 이미지"></div><div class="menuInfo"><div class="menuName">설리적한상(소갈비찜)</div><div class="menuPrice">35,000원</div></div></div>
+          <div class="menuItem"><div class="menuThumb"><img src="./menu-05.jpg" alt="보리굴비한상 이미지"></div><div class="menuInfo"><div class="menuName">보리굴비한상</div><div class="menuPrice">35,000원</div></div></div>
+          <div class="menuItem"><div class="menuThumb"><img src="./menu-06.jpg" alt="장어구이한상 이미지"></div><div class="menuInfo"><div class="menuName">장어구이한상</div><div class="menuPrice">35,000원</div></div></div>
+          <div class="menuItem"><div class="menuThumb"><img src="./menu-07.jpg" alt="황태구이한상 이미지"></div><div class="menuInfo"><div class="menuName">황태구이한상</div><div class="menuPrice">35,000원</div></div></div>
+          <div class="menuItem"><div class="menuThumb"><img src="./menu-08.jpg" alt="전복삼계탕한상 이미지"></div><div class="menuInfo"><div class="menuName">전복삼계탕한상</div><div class="menuPrice">28,000원</div></div></div>
+          <div class="menuItem"><div class="menuThumb"><img src="./menu-09.jpg" alt="한우떡갈비한상 이미지"></div><div class="menuInfo"><div class="menuName">한우떡갈비한상</div><div class="menuPrice">35,000원</div></div></div>
+          <div class="menuItem"><div class="menuThumb"><img src="./menu-10.jpg" alt="쭈꾸미볶음한상 이미지"></div><div class="menuInfo"><div class="menuName">쭈꾸미볶음한상</div><div class="menuPrice">35,000원</div></div></div>
+          <div class="menuItem"><div class="menuThumb"><img src="./menu-11.jpg" alt="쭈꾸미삼겹살한상 이미지"></div><div class="menuInfo"><div class="menuName">쭈꾸미삼겹살한상</div><div class="menuPrice">35,000원</div></div></div>
+        </div>
+      </div>
+
+      <div class="menuSection">
+        <div class="menuSectionHead">
+          <div class="menuSectionTitleWrap">
+            <div class="menuSectionTitle">반상메뉴</div>
+            <div class="menuSectionSub">Semi Menu</div>
+          </div>
+          <div class="menuCount">22 MENU</div>
+        </div>
+
+        <div class="menuGrid">
+          <div class="menuItem"><div class="menuThumb"><img src="./menu-12.jpg" alt="고등어자반반상 이미지"></div><div class="menuInfo"><div class="menuName">고등어자반반상</div><div class="menuPrice">18,000원</div></div></div>
+          <div class="menuItem"><div class="menuThumb"><img src="./menu-13.jpg" alt="연자반반상 이미지"></div><div class="menuInfo"><div class="menuName">연자반반상</div><div class="menuPrice">18,000원</div></div></div>
+          <div class="menuItem"><div class="menuThumb"><img src="./menu-14.jpg" alt="황태해장국반상 이미지"></div><div class="menuInfo"><div class="menuName">황태해장국반상</div><div class="menuPrice">22,000원</div></div></div>
+          <div class="menuItem"><div class="menuThumb"><img src="./menu-15.jpg" alt="파육계장반상 이미지"></div><div class="menuInfo"><div class="menuName">파육계장반상</div><div class="menuPrice">20,000원</div></div></div>
+          <div class="menuItem"><div class="menuThumb"><img src="./menu-16.jpg" alt="전복효종갱반상 이미지"></div><div class="menuInfo"><div class="menuName">전복효종갱반상</div><div class="menuPrice">28,000원</div></div></div>
+
+          <div class="menuItem"><div class="menuThumb"><img src="./menu-17.jpg" alt="전복설리갱반상 이미지"></div><div class="menuInfo"><div class="menuName">전복설리갱반상</div><div class="menuPrice">28,000원</div></div></div>
+          <div class="menuItem"><div class="menuThumb"><img src="./menu-18.jpg" alt="닭불고기반상 이미지"></div><div class="menuInfo"><div class="menuName">닭불고기반상</div><div class="menuPrice">22,000원</div></div></div>
+          <div class="menuItem"><div class="menuThumb"><img src="./menu-19.jpg" alt="소불고기반상 이미지"></div><div class="menuInfo"><div class="menuName">소불고기반상</div><div class="menuPrice">22,000원</div></div></div>
+          <div class="menuItem"><div class="menuThumb"><img src="./menu-20.jpg" alt="더덕삼겹살반상 이미지"></div><div class="menuInfo"><div class="menuName">더덕삼겹살반상</div><div class="menuPrice">28,000원</div></div></div>
+          <div class="menuItem"><div class="menuThumb"><img src="./menu-21.jpg" alt="설리적반상 이미지"></div><div class="menuInfo"><div class="menuName">설리적반상(제육)</div><div class="menuPrice">22,000원</div></div></div>
+
+          <div class="menuItem"><div class="menuThumb"><img src="./menu-22.jpg" alt="골동반반상 이미지"></div><div class="menuInfo"><div class="menuName">골동반반상</div><div class="menuPrice">18,000원</div></div></div>
+          <div class="menuItem"><div class="menuThumb"><img src="./menu-23.jpg" alt="강된장골동반반상 이미지"></div><div class="menuInfo"><div class="menuName">강된장골동반반상</div><div class="menuPrice">18,000원</div></div></div>
+          <div class="menuItem"><div class="menuThumb"><img src="./menu-24.jpg" alt="삼겹살골동반반상 이미지"></div><div class="menuInfo"><div class="menuName">삼겹살골동반반상</div><div class="menuPrice">22,000원</div></div></div>
+          <div class="menuItem"><div class="menuThumb"><img src="./menu-25.jpg" alt="설리적골동반반상 이미지"></div><div class="menuInfo"><div class="menuName">설리적(제육)골동반반상</div><div class="menuPrice">22,000원</div></div></div>
+          <div class="menuItem"><div class="menuThumb"><img src="./menu-26.jpg" alt="소불고기골동반반상 이미지"></div><div class="menuInfo"><div class="menuName">소불고기골동반반상</div><div class="menuPrice">22,000원</div></div></div>
+
+          <div class="menuItem"><div class="menuThumb"><img src="./menu-27.jpg" alt="육회골동반반상 이미지"></div><div class="menuInfo"><div class="menuName">육회골동반반상</div><div class="menuPrice">22,000원</div></div></div>
+          <div class="menuItem"><div class="menuThumb"><img src="./menu-28.jpg" alt="쭈꾸미골동반반상 이미지"></div><div class="menuInfo"><div class="menuName">쭈꾸미골동반반상</div><div class="menuPrice">22,000원</div></div></div>
+          <div class="menuItem"><div class="menuThumb"><img src="./menu-29.jpg" alt="골동면 물 반상 이미지"></div><div class="menuInfo"><div class="menuName">골동면(물)반상</div><div class="menuPrice">18,000원</div></div></div>
+          <div class="menuItem"><div class="menuThumb"><img src="./menu-30.jpg" alt="골동면 비빔 반상 이미지"></div><div class="menuInfo"><div class="menuName">골동면(비빔)반상</div><div class="menuPrice">18,000원</div></div></div>
+          <div class="menuItem"><div class="menuThumb"><img src="./menu-31.jpg" alt="꼬마아씨 반상 이미지"></div><div class="menuInfo"><div class="menuName">꼬마아씨(소불고기)반상</div><div class="menuPrice">18,000원</div></div></div>
+
+          <div class="menuItem"><div class="menuThumb"><img src="./menu-32.jpg" alt="꼬마선비 반상 이미지"></div><div class="menuInfo"><div class="menuName">꼬마선비(고등어)반상</div><div class="menuPrice">18,000원</div></div></div>
+          <div class="menuItem"><div class="menuThumb"><img src="./menu-33.jpg" alt="어린이떡갈비반상 이미지"></div><div class="menuInfo"><div class="menuName">어린이떡갈비반상</div><div class="menuPrice">14,000원</div></div></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="store">
+    <h2 class="sectionTitle">매장 안내</h2>
+    <div class="infoGrid">
+      <div class="card infoBox">
+        <h3>📍 위치</h3>
+        <div class="line">서울 송파구 올림픽로 300</div>
+        <div class="line">롯데월드몰 5층</div>
+        <div class="line">주차: 백화점/몰 주차 이용</div>
+      </div>
+      <div class="card infoBox">
+        <h3>⏰ 영업시간</h3>
+        <div class="line">매일 10:30 ~ 22:00</div>
+        <div class="line">브레이크타임: 없음</div>
+        <div class="line">라스트오더: 21:00</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2 class="sectionTitle">문의</h2>
+    <p class="muted">전화로 문의하실 수 있습니다.</p>
+
+    <div class="singleContactWrap">
+      <div class="card infoBox">
+        <h3>☎ 전화 문의</h3>
+        <div class="line">02-3213-4560</div>
+        <div class="line">운영시간 내 문의 가능합니다.</div>
+      </div>
+    </div>
+
+    <div class="btnRow" style="justify-content:center; margin-top:20px;">
+      <a class="btn btnSecondary" href="brands.html">브랜드 목록으로 돌아가기</a>
+      <a class="btn btnSecondary" href="index.html">메인 화면으로 돌아가기</a>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  © 2026 한국의집 | 더큰코리아
+</footer>
+
+<script>
+(function () {
+  const slider = document.getElementById('mainSlider');
+  const slides = Array.from(slider.querySelectorAll('.slide'));
+  const dots = Array.from(slider.querySelectorAll('.dot'));
+  const prevBtn = slider.querySelector('.prev');
+  const nextBtn = slider.querySelector('.next');
+
+  let idx = 0;
+  let timer = null;
+
+  function show(i) {
+    idx = (i + slides.length) % slides.length;
+    slides.forEach((s, k) => s.classList.toggle('active', k === idx));
+    dots.forEach((d, k) => d.classList.toggle('active', k === idx));
+  }
+
+  function start() {
+    stop();
+    timer = setInterval(() => show(idx + 1), 3000);
+  }
+
+  function stop() {
+    if (timer) clearInterval(timer);
+    timer = null;
+  }
+
+  prevBtn.addEventListener('click', () => { show(idx - 1); start(); });
+  nextBtn.addEventListener('click', () => { show(idx + 1); start(); });
+  dots.forEach((d, i) => d.addEventListener('click', () => { show(i); start(); }));
+
+  slider.addEventListener('mouseenter', stop);
+  slider.addEventListener('mouseleave', start);
+
+  show(0);
+  start();
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>고객의 소리 | 더큰코리아</title>
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+      color: #2f2a25;
+      background: #f7f4ef;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    button, input, select, textarea {
+      font: inherit;
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(90,67,42,.08);
+    }
+
+    .nav {
+      height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 800;
+      color: #4c3118;
+      line-height: 1.1;
+    }
+
+    .logo small {
+      display: block;
+      margin-top: 6px;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: .12em;
+      color: #8a7866;
+    }
+
+    .menu {
+      display: flex;
+      gap: 26px;
+      flex-wrap: wrap;
+    }
+
+    .menu a {
+      font-size: 15px;
+      font-weight: 600;
+      color: #5d4a36;
+      position: relative;
+      padding: 4px 0;
+    }
+
+    .menu a.active {
+      color: #9a6530;
+    }
+
+    .menu a.active::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -8px;
+      height: 2px;
+      background: #9a6530;
+      border-radius: 999px;
+    }
+
+    .voice-hero {
+      position: relative;
+      height: 320px;
+      overflow: hidden;
+      background:
+        linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+        url("customer-voice-banner.jpg") center center / cover no-repeat;
+    }
+
+    .voice-hero-inner {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #fff;
+    }
+
+    .voice-badge {
+      display: inline-block;
+      margin-bottom: 18px;
+      padding: 7px 22px;
+      background: #cf1f1f;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.28em;
+      line-height: 1;
+    }
+
+    .voice-hero h1 {
+      margin: 0;
+      font-size: 64px;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 1.1;
+    }
+
+    .voice-line {
+      width: 54px;
+      height: 2px;
+      background: rgba(255,255,255,0.9);
+      margin: 24px 0 22px;
+    }
+
+    .voice-hero p {
+      margin: 0;
+      font-size: 17px;
+      line-height: 1.9;
+      color: rgba(255,255,255,0.96);
+      font-weight: 400;
+    }
+
+    .section-intro {
+      background: #fff;
+      border-bottom: 1px solid #ede3d7;
+    }
+
+    .section-intro .container {
+      padding: 58px 0 54px;
+    }
+
+    .section-title-wrap {
+      text-align: center;
+    }
+
+    .section-mini {
+      display: inline-block;
+      margin-bottom: 12px;
+      color: #b56f31;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: .18em;
+    }
+
+    .section-title {
+      margin: 0;
+      font-size: 42px;
+      color: #352215;
+      letter-spacing: -.03em;
+    }
+
+    .section-desc {
+      margin: 20px auto 0;
+      max-width: 820px;
+      color: #72675d;
+      line-height: 1.9;
+      font-size: 16px;
+    }
+
+    .voice-wrap {
+      padding: 52px 0 90px;
+    }
+
+    .voice-layout {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .voice-side {
+      position: sticky;
+      top: 104px;
+      display: grid;
+      gap: 18px;
+    }
+
+    .side-card {
+      background: linear-gradient(180deg, #fff, #fbf8f3);
+      border: 1px solid #eadfce;
+      border-radius: 28px;
+      padding: 26px 24px;
+      box-shadow: 0 16px 38px rgba(62,41,18,.06);
+    }
+
+    .side-card h3 {
+      margin: 0 0 12px;
+      font-size: 21px;
+      color: #3d2817;
+      letter-spacing: -.02em;
+    }
+
+    .side-card p {
+      margin: 0;
+      color: #73675a;
+      line-height: 1.8;
+      font-size: 14px;
+    }
+
+    .guide-list {
+      margin: 16px 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 12px;
+    }
+
+    .guide-list li {
+      position: relative;
+      padding-left: 16px;
+      color: #5e544a;
+      line-height: 1.7;
+      font-size: 14px;
+    }
+
+    .guide-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 10px;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #b6783b;
+    }
+
+    .quick-info {
+      display: grid;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .quick-box {
+      padding: 14px 16px;
+      border-radius: 18px;
+      background: #f7f0e6;
+      border: 1px solid #ebdcc7;
+    }
+
+    .quick-box strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 14px;
+      color: #5f4124;
+    }
+
+    .quick-box span {
+      color: #72675d;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .voice-main {
+      background: linear-gradient(180deg, #fff, #fcfaf7);
+      border: 1px solid #eadfce;
+      border-radius: 32px;
+      padding: 34px;
+      box-shadow: 0 18px 44px rgba(53,35,17,.07);
+    }
+
+    .form-head {
+      margin-bottom: 28px;
+      padding-bottom: 22px;
+      border-bottom: 1px solid #efe5d8;
+    }
+
+    .form-head h2 {
+      margin: 0 0 10px;
+      font-size: 34px;
+      color: #362213;
+      letter-spacing: -.02em;
+    }
+
+    .form-head p {
+      margin: 0;
+      color: #76695e;
+      line-height: 1.8;
+    }
+
+    .voice-form {
+      display: grid;
+      gap: 18px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 170px 1fr;
+      gap: 18px;
+      align-items: start;
+      padding: 18px 0;
+      border-bottom: 1px solid #f1e8dc;
+    }
+
+    .form-label {
+      padding-top: 14px;
+      font-weight: 800;
+      color: #3f2c1d;
+      font-size: 15px;
+    }
+
+    .required::after {
+      content: " *";
+      color: #d14d3d;
+      font-weight: 800;
+    }
+
+    .form-field {
+      display: grid;
+      gap: 12px;
+    }
+
+    .field-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .field-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .radio-item,
+    .check-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #4f4338;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    input[type="text"],
+    input[type="date"],
+    input[type="tel"],
+    select,
+    textarea {
+      width: 100%;
+      min-height: 52px;
+      padding: 0 16px;
+      border: 1px solid #dfd2c0;
+      border-radius: 16px;
+      background: #fff;
+      color: #2f2a25;
+      outline: none;
+      transition: .2s ease;
+    }
+
+    textarea {
+      min-height: 260px;
+      padding: 16px;
+      resize: vertical;
+      line-height: 1.75;
+    }
+
+    input[readonly] {
+      background: #f8f5f0;
+      color: #6a5c4d;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: #b67d40;
+      box-shadow: 0 0 0 4px rgba(182,125,64,.12);
+    }
+
+    .btn-outline {
+      min-width: 128px;
+      height: 52px;
+      padding: 0 22px;
+      border: 1px solid #d8c6ae;
+      border-radius: 16px;
+      background: #fff;
+      color: #6c5134;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .btn-submit {
+      min-width: 180px;
+      height: 56px;
+      padding: 0 28px;
+      border: 0;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #9a6530, #7b4d24);
+      color: #fff;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 14px 28px rgba(123,77,36,.24);
+      transition: .2s ease;
+    }
+
+    .btn-submit:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.02);
+    }
+
+    .btn-submit:disabled {
+      opacity: .7;
+      cursor: not-allowed;
+    }
+
+    .bottom-actions {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      padding-top: 18px;
+    }
+
+    .counter {
+      text-align: right;
+      color: #8a7e73;
+      font-size: 13px;
+      margin-top: -2px;
+    }
+
+    .agree-box {
+      padding: 18px;
+      border-radius: 20px;
+      background: #f8f3ec;
+      border: 1px solid #ebdcc8;
+    }
+
+    .agree-box strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #4b321d;
+      font-size: 15px;
+    }
+
+    .agree-box p {
+      margin: 0 0 12px;
+      color: #74695f;
+      line-height: 1.8;
+      font-size: 14px;
+    }
+
+    .visit-fields {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .visit-note {
+      grid-column: 1 / -1;
+    }
+
+    .datetime-field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .datetime-field label {
+      font-size: 13px;
+      font-weight: 700;
+      color: #7a5a3a;
+    }
+
+    .email-group {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .email-at {
+      font-weight: 700;
+      color: #6c5134;
+      text-align: center;
+    }
+
+    footer {
+      text-align: center;
+      color: #807366;
+      padding: 30px 0 48px;
+      font-size: 14px;
+    }
+
+    @media (max-width: 1100px) {
+      .voice-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .voice-side {
+        position: static;
+      }
+    }
+
+    @media (max-width: 1024px) {
+      .voice-hero {
+        height: 300px;
+      }
+
+      .voice-hero h1 {
+        font-size: 52px;
+      }
+    }
+
+    @media (max-width: 820px) {
+      .voice-hero {
+        height: 280px;
+      }
+
+      .voice-badge {
+        font-size: 12px;
+        padding: 6px 16px;
+        letter-spacing: 0.2em;
+      }
+
+      .voice-hero h1 {
+        font-size: 42px;
+      }
+
+      .voice-hero p {
+        font-size: 15px;
+        line-height: 1.7;
+        padding: 0 10px;
+      }
+
+      .voice-line {
+        margin: 18px 0 18px;
+      }
+
+      .section-title {
+        font-size: 34px;
+      }
+
+      .voice-main {
+        padding: 24px;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .form-label {
+        padding-top: 0;
+      }
+
+      .field-grid-3,
+      .visit-fields,
+      .email-group {
+        grid-template-columns: 1fr;
+      }
+
+      .email-at {
+        display: none;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .container {
+        width: min(100% - 28px, 1180px);
+      }
+
+      .nav {
+        height: auto;
+        padding: 16px 0;
+        align-items: flex-start;
+      }
+
+      .menu {
+        gap: 14px;
+      }
+
+      .voice-hero {
+        height: 250px;
+      }
+
+      .voice-hero h1 {
+        font-size: 34px;
+      }
+
+      .voice-hero p {
+        font-size: 14px;
+      }
+
+      .voice-wrap {
+        padding: 34px 0 74px;
+      }
+
+      .voice-main {
+        padding: 18px;
+        border-radius: 24px;
+      }
+
+      .bottom-actions {
+        flex-direction: column;
+      }
+
+      .btn-submit,
+      .btn-outline {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="logo">
+        THE BIG KOREA
+        <small>PREMIUM K-FOOD & CUSTOMER VOICE</small>
+      </div>
+      <nav class="menu">
+        <a href="./index.html">홈</a>
+        <a href="./company.html">회사소개</a>
+        <a href="./brands.html">브랜드</a>
+        <a href="./history.html">연혁</a>
+        <a href="./strength.html">경쟁력</a>
+        <a href="recruit.html">직원모집</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="voice-hero">
+    <div class="container voice-hero-inner">
+      <span class="voice-badge">THE BIG KOREA</span>
+      <h1>고객의 소리</h1>
+      <div class="voice-line"></div>
+      <p>
+        더큰코리아에 전하고 싶은 불만, 칭찬을 보내주세요.<br>
+        항상 고객의 소리에 귀 기울이며 고객만족 향상을 위해 노력하겠습니다.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-intro">
+    <div class="container">
+      <div class="section-title-wrap">
+        <span class="section-mini">CUSTOMER VOICE</span>
+        <h2 class="section-title">고객의 의견을 기다립니다</h2>
+        <p class="section-desc">
+          매장 이용 중 느끼신 점이나 개선이 필요한 사항, 칭찬하고 싶은 서비스가 있다면 편하게 남겨주세요.
+          접수된 내용은 확인 후 순차적으로 검토합니다.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="voice-wrap">
+    <div class="container">
+      <div class="voice-layout">
+        <aside class="voice-side">
+          <div class="side-card">
+            <h3>안내사항</h3>
+            <p>
+              보다 정확한 확인을 위해 방문 매장, 방문일자, 방문시간 등 상세 정보를 함께 남겨주시면
+              빠른 확인에 도움이 됩니다.
+            </p>
+            <ul class="guide-list">
+              <li>허위 및 비방 목적의 글은 처리 대상에서 제외될 수 있습니다.</li>
+              <li>욕설, 개인정보 과다 기재는 삼가 주세요.</li>
+              <li>답변이 필요한 경우 연락처를 정확히 입력해 주세요.</li>
+            </ul>
+          </div>
+
+          <div class="side-card">
+            <h3>빠른 확인 정보</h3>
+            <div class="quick-info">
+              <div class="quick-box">
+                <strong>처리 항목</strong>
+                <span>칭찬 · 불편 · 제안 · 기타 문의</span>
+              </div>
+              <div class="quick-box">
+                <strong>권장 입력</strong>
+                <span>브랜드, 매장, 방문일, 방문시간</span>
+              </div>
+              <div class="quick-box">
+                <strong>접수 방식</strong>
+                <span>등록 시 회사 이메일로 자동 발송</span>
+              </div>
+            </div>
+          </div>
+        </aside>
+
+        <div class="voice-main">
+          <div class="form-head">
+            <h2>고객의 소리 접수</h2>
+            <p>
+              브랜드를 선택하시면 해당 매장이 자동으로 바뀌고, 매장을 선택하시면 주소가 자동 표시됩니다.
+            </p>
+          </div>
+
+          <form class="voice-form" id="voiceForm" onsubmit="return submitVoiceForm(event);">
+            <div class="form-row">
+              <div class="form-label required">브랜드명</div>
+              <div class="form-field">
+                <select id="brandSelect" name="brand" onchange="updateStoreOptions()">
+                  <option value="">브랜드를 선택해 주세요</option>
+                  <option value="한국의집">한국의집</option>
+                  <option value="효종갱">효종갱</option>
+                  <option value="고호재">고호재</option>
+                  <option value="카페그랑떼">카페그랑떼</option>
+                  <option value="더큰식탁과 소바공방">더큰식탁과 소바공방</option>
+                  <option value="소바공방">소바공방</option>
+                  <option value="상궁전">상궁전</option>
+                  <option value="고궁">고궁</option>
+                  <option value="길채정">길채정</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-label required">매장명</div>
+              <div class="form-field">
+                <select id="storeSelect" name="store" onchange="updateStoreAddress()">
+                  <option value="">먼저 브랜드를 선택해 주세요</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-label">매장주소</div>
+              <div class="form-field">
+                <input type="text" id="storeAddress" name="storeAddress" placeholder="매장을 선택하면 주소가 자동 표시됩니다" readonly />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-label required">문의유형</div>
+              <div class="form-field">
+                <div class="field-grid-3">
+                  <select id="categorySelect" name="category">
+                    <option value="">- 대분류 -</option>
+                    <option value="칭찬">칭찬</option>
+                    <option value="불편">불편</option>
+                    <option value="제안">제안</option>
+                    <option value="기타">기타</option>
+                  </select>
+                  <select id="subcategory1" name="subcategory1">
+                    <option value="">- 중분류 -</option>
+                    <option value="서비스">서비스</option>
+                    <option value="음식">음식</option>
+                    <option value="위생">위생</option>
+                    <option value="직원응대">직원응대</option>
+                  </select>
+                  <select id="subcategory2" name="subcategory2">
+                    <option value="">- 소분류 -</option>
+                    <option value="맛">맛</option>
+                    <option value="대기시간">대기시간</option>
+                    <option value="친절도">친절도</option>
+                    <option value="시설">시설</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-label required">이용경로</div>
+              <div class="form-field">
+                <div class="field-group">
+                  <label class="radio-item"><input type="radio" name="visitType" value="매장방문" checked onclick="toggleVisitFields()" /> 매장방문</label>
+                  <label class="radio-item"><input type="radio" name="visitType" value="매장방문 외" onclick="toggleVisitFields()" /> 매장방문 외</label>
+                </div>
+
+                <div id="visitFields" class="visit-fields">
+                  <div class="datetime-field">
+                    <label for="visitDate">방문일</label>
+                    <input type="date" id="visitDate" name="visitDate" />
+                  </div>
+
+                  <div class="datetime-field">
+                    <label for="visitTime">방문시간</label>
+                    <select id="visitTime" name="visitTime">
+                      <option value="">방문시간을 선택해 주세요</option>
+                    </select>
+                  </div>
+
+                  <div class="visit-note">
+                    <input type="text" id="extraNote" name="extraNote" placeholder="추가 참고사항" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-label required">성함</div>
+              <div class="form-field">
+                <input type="text" id="customerName" name="customerName" placeholder="성함을 입력해 주세요" />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-label required">휴대폰</div>
+              <div class="form-field">
+                <input type="tel" id="customerPhone" name="customerPhone" placeholder="010-1234-5678" />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-label required">이메일</div>
+              <div class="form-field">
+                <div class="email-group">
+                  <input type="text" id="emailId" placeholder="이메일 아이디" />
+                  <span class="email-at">@</span>
+                  <select id="emailDomainSelect" onchange="handleEmailDomainChange()">
+                    <option value="">이메일 선택</option>
+                    <option value="naver.com">naver.com</option>
+                    <option value="gmail.com">gmail.com</option>
+                    <option value="daum.net">daum.net</option>
+                    <option value="hanmail.net">hanmail.net</option>
+                    <option value="nate.com">nate.com</option>
+                    <option value="hotmail.com">hotmail.com</option>
+                    <option value="outlook.com">outlook.com</option>
+                    <option value="msn.com">msn.com</option>
+                    <option value="direct">직접입력</option>
+                  </select>
+                </div>
+                <input type="text" id="emailDomainCustom" placeholder="도메인 직접입력" style="display:none;" />
+                <input type="hidden" id="customerEmail" name="customerEmail" />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-label required">제목</div>
+              <div class="form-field">
+                <input type="text" id="subjectInput" name="subject" placeholder="제목을 입력해 주세요" />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-label required">내용</div>
+              <div class="form-field">
+                <textarea id="voiceContent" name="content" placeholder="고객님의 의견을 자세히 작성해 주세요."></textarea>
+                <div class="counter"><span id="charCount">0</span> / 최대 2000자</div>
+              </div>
+            </div>
+
+            <div class="form-row" style="border-bottom:0; padding-bottom:0;">
+              <div class="form-label">개인정보 동의</div>
+              <div class="form-field">
+                <div class="agree-box">
+                  <strong>개인정보 수집 및 이용 안내</strong>
+                  <p>
+                    접수 확인 및 고객 응대를 위해 성함, 연락처, 이메일 등 최소한의 개인정보를 수집할 수 있습니다.
+                    입력하신 정보는 문의 응대 목적 외에는 사용되지 않습니다.
+                  </p>
+                  <label class="check-item">
+                    <input type="checkbox" id="agreeCheck" />
+                    개인정보 수집 및 이용에 동의합니다.
+                  </label>
+                </div>
+
+                <div class="bottom-actions">
+                  <button type="button" class="btn-outline" onclick="resetVoiceForm()">취소</button>
+                  <button type="submit" class="btn-submit">고객의 소리 등록</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © THE BIG KOREA. All Rights Reserved.
+  </footer>
+
+  <script>
+    const scriptURL = "https://script.google.com/macros/s/AKfycbzhUZV6lhdae1YLStAIMSMFlMhQfwN_JiFOlssW2UWgqiVvZPwatUF3xPXlyjwZ8VPX/exec";
+
+    const storeData = {
+      "한국의집": [
+        {
+          name: "한국의집 롯데월드몰점",
+          address: "서울특별시 송파구 올림픽로 300, 5층(신천동, 롯데월드타워앤드롯데월드몰) 5층 한국의집"
+        }
+      ],
+      "효종갱": [
+        {
+          name: "한국의집 효종갱 롯데백화점 동탄점",
+          address: "경기도 화성시 동탄역로 160, 지하1층(오산동) B1 효종갱"
+        },
+        {
+          name: "한국의집 효종갱 롯데의왕타임빌라스점",
+          address: "경기도 의왕시 바라산로 1, 2층(학의동, 롯데프리미엄아울렛의왕점) 효종갱"
+        }
+      ],
+      "고호재": [
+        {
+          name: "고호재 롯데월드몰점",
+          address: "서울특별시 송파구 올림픽로 300, 5층(신천동, 롯데월드타워앤드롯데월드몰) 5층 고호재"
+        }
+      ],
+      "카페그랑떼": [
+        {
+          name: "카페그랑떼 롯데아울렛 부여점",
+          address: "충청남도 부여군 규암면 백제문로 387(롯데프리미엄아울렛) 1층 카페그랑떼"
+        }
+      ],
+      "더큰식탁과 소바공방": [
+        {
+          name: "더큰식탁과 소바공방 롯데아울렛 부여점",
+          address: "충청남도 부여군 규암면 백제문로 387, 2층(롯데프리미엄아울렛) 2층 더큰식탁소바공방"
+        }
+      ],
+      "소바공방": [
+        {
+          name: "소바공방 롯데백화점 평촌점",
+          address: "경기도 안양시 동안구 시민대로 180, 7층(호계동, G.SQURE, 롯데백화점 평촌점)"
+        },
+        {
+          name: "소바공방 시흥신세계프리미엄아울렛점",
+          address: "경기도 시흥시 서해안로 699, 1층 1115호 테이스트빌리지 소바공방"
+        }
+      ],
+      "상궁전": [
+        {
+          name: "상궁전 롯데백화점 센텀시티점",
+          address: "부산광역시 해운대구 센텀남대로 59, 지하1층(우동, 롯데백화점 센텀시티점) B1 상궁전"
+        }
+      ],
+      "고궁": [
+        {
+          name: "고궁 롯데아울렛 부여점",
+          address: "충청남도 부여군 규암면 백제문로 387, 1층(롯데프리미엄아울렛) 1층 고궁"
+        }
+      ],
+      "길채정": [
+        {
+          name: "길채정 압구정 갤러리아백화점",
+          address: "서울특별시 강남구 압구정로 343, 지하1층(압구정동, 갤러리아백화점 명품관 WEST) B1 길채정"
+        },
+        {
+          name: "길채정 갤러리아타임월드점",
+          address: "대전광역시 서구 대덕대로 211, 갤러리아타임월드백화점 11층 길채정"
+        }
+      ]
+    };
+
+    const brandSelect = document.getElementById("brandSelect");
+    const storeSelect = document.getElementById("storeSelect");
+    const storeAddress = document.getElementById("storeAddress");
+    const textarea = document.getElementById("voiceContent");
+    const charCount = document.getElementById("charCount");
+    const visitFields = document.getElementById("visitFields");
+    const visitTypeRadios = document.querySelectorAll('input[name="visitType"]');
+
+    const emailId = document.getElementById("emailId");
+    const emailDomainSelect = document.getElementById("emailDomainSelect");
+    const emailDomainCustom = document.getElementById("emailDomainCustom");
+    const customerEmail = document.getElementById("customerEmail");
+
+    function updateStoreOptions() {
+      const selectedBrand = brandSelect.value;
+      storeSelect.innerHTML = "";
+      storeAddress.value = "";
+
+      if (!selectedBrand || !storeData[selectedBrand]) {
+        storeSelect.innerHTML = '<option value="">먼저 브랜드를 선택해 주세요</option>';
+        return;
+      }
+
+      const defaultOption = document.createElement("option");
+      defaultOption.value = "";
+      defaultOption.textContent = "매장을 선택해 주세요";
+      storeSelect.appendChild(defaultOption);
+
+      storeData[selectedBrand].forEach((store) => {
+        const option = document.createElement("option");
+        option.value = store.name;
+        option.textContent = store.name;
+        option.setAttribute("data-address", store.address);
+        storeSelect.appendChild(option);
+      });
+    }
+
+    function updateStoreAddress() {
+      const selectedOption = storeSelect.options[storeSelect.selectedIndex];
+      const address = selectedOption ? selectedOption.getAttribute("data-address") : "";
+      storeAddress.value = address || "";
+    }
+
+    function updateCount() {
+      const max = 2000;
+      if (textarea.value.length > max) {
+        textarea.value = textarea.value.slice(0, max);
+      }
+      charCount.textContent = textarea.value.length;
+    }
+
+    function toggleVisitFields() {
+      const isVisit = visitTypeRadios[0].checked;
+      visitFields.style.display = isVisit ? "grid" : "none";
+    }
+
+    function generateVisitTimeOptions() {
+      const visitTimeSelect = document.getElementById("visitTime");
+      if (!visitTimeSelect) return;
+
+      visitTimeSelect.innerHTML = '<option value="">방문시간을 선택해 주세요</option>';
+
+      for (let hour = 10; hour <= 21; hour++) {
+        for (let minute = 0; minute < 60; minute += 10) {
+          if (hour === 10 && minute < 30) continue;
+          if (hour === 21 && minute > 0) continue;
+
+          const hh = String(hour).padStart(2, "0");
+          const mm = String(minute).padStart(2, "0");
+
+          const period = hour < 12 ? "오전" : "오후";
+          let displayHour = hour % 12;
+          if (displayHour === 0) displayHour = 12;
+
+          const displayHH = String(displayHour).padStart(2, "0");
+          const label = `${period} ${displayHH}:${mm}`;
+          const value = `${hh}:${mm}`;
+
+          const option = document.createElement("option");
+          option.value = value;
+          option.textContent = label;
+          visitTimeSelect.appendChild(option);
+        }
+      }
+    }
+
+    function handleEmailDomainChange() {
+      if (emailDomainSelect.value === "direct") {
+        emailDomainCustom.style.display = "block";
+        emailDomainCustom.value = "";
+        emailDomainCustom.focus();
+      } else {
+        emailDomainCustom.style.display = "none";
+        emailDomainCustom.value = "";
+      }
+      composeEmail();
+    }
+
+    function composeEmail() {
+      const id = emailId.value.trim();
+      const domain =
+        emailDomainSelect.value === "direct"
+          ? emailDomainCustom.value.trim()
+          : emailDomainSelect.value.trim();
+
+      if (id && domain) {
+        customerEmail.value = `${id}@${domain}`;
+      } else {
+        customerEmail.value = "";
+      }
+    }
+
+    function isValidEmail(email) {
+      const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return regex.test(email);
+    }
+
+    function resetVoiceForm() {
+      document.getElementById("voiceForm").reset();
+      storeSelect.innerHTML = '<option value="">먼저 브랜드를 선택해 주세요</option>';
+      storeAddress.value = "";
+      emailDomainCustom.style.display = "none";
+      customerEmail.value = "";
+      generateVisitTimeOptions();
+      updateCount();
+      toggleVisitFields();
+    }
+
+    function validateVoiceForm() {
+      composeEmail();
+
+      const brand = document.getElementById("brandSelect").value;
+      const store = document.getElementById("storeSelect").value;
+      const category = document.getElementById("categorySelect").value;
+      const name = document.getElementById("customerName").value.trim();
+      const phone = document.getElementById("customerPhone").value.trim();
+      const email = document.getElementById("customerEmail").value.trim();
+      const subject = document.getElementById("subjectInput").value.trim();
+      const content = document.getElementById("voiceContent").value.trim();
+      const agree = document.getElementById("agreeCheck").checked;
+
+      if (!brand) {
+        alert("브랜드를 선택해 주세요.");
+        return false;
+      }
+
+      if (!store) {
+        alert("매장을 선택해 주세요.");
+        return false;
+      }
+
+      if (!category) {
+        alert("문의유형을 선택해 주세요.");
+        return false;
+      }
+
+      if (!name) {
+        alert("성함을 입력해 주세요.");
+        return false;
+      }
+
+      if (!phone) {
+        alert("휴대폰 번호를 입력해 주세요.");
+        return false;
+      }
+
+      if (!email) {
+        alert("이메일을 입력해 주세요.");
+        return false;
+      }
+
+      if (!isValidEmail(email)) {
+        alert("올바른 이메일 형식을 입력해 주세요.");
+        return false;
+      }
+
+      if (!subject) {
+        alert("제목을 입력해 주세요.");
+        return false;
+      }
+
+      if (!content) {
+        alert("내용을 입력해 주세요.");
+        return false;
+      }
+
+      if (!agree) {
+        alert("개인정보 수집 및 이용에 동의해 주세요.");
+        return false;
+      }
+
+      return true;
+    }
+
+    async function submitVoiceForm(event) {
+      event.preventDefault();
+
+      if (!validateVoiceForm()) {
+        return false;
+      }
+
+      const form = document.getElementById("voiceForm");
+      const submitButton = document.querySelector(".btn-submit");
+      const originalText = submitButton.textContent;
+
+      submitButton.disabled = true;
+      submitButton.textContent = "접수 중...";
+
+      try {
+        const formData = new FormData(form);
+        const response = await fetch(scriptURL, {
+          method: "POST",
+          body: new URLSearchParams(formData)
+        });
+
+        const result = await response.json();
+
+        if (result.result === "success") {
+          alert("고객의 소리가 정상적으로 접수되었습니다.");
+          resetVoiceForm();
+        } else {
+          alert("접수 실패: " + result.message);
+        }
+      } catch (error) {
+        console.error(error);
+        alert("전송 중 오류가 발생했습니다. Apps Script URL과 배포 설정을 확인해 주세요.");
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = originalText;
+      }
+
+      return false;
+    }
+
+    textarea.addEventListener("input", updateCount);
+    emailId.addEventListener("input", composeEmail);
+    emailDomainCustom.addEventListener("input", composeEmail);
+    emailDomainSelect.addEventListener("change", composeEmail);
+
+    generateVisitTimeOptions();
+    updateCount();
+    toggleVisitFields();
+  </script>
+</body>
+</html>

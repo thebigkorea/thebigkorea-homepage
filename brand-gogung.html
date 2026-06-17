@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>고궁 | 더큰코리아</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Noto Sans KR", "Malgun Gothic", sans-serif;
+      background: #f6f2ec;
+      color: #2b2118;
+      line-height: 1.7;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { display: block; max-width: 100%; }
+    .container {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,.96);
+      border-bottom: 1px solid #e8ddcf;
+      backdrop-filter: blur(10px);
+    }
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      padding: 16px 0;
+    }
+    .logo {
+      font-size: 30px;
+      font-weight: 900;
+      color: #6a4826;
+    }
+    .logo small {
+      display: block;
+      font-size: 11px;
+      color: #8a7864;
+      margin-top: 6px;
+    }
+    .menu {
+      display: flex;
+      gap: 22px;
+      font-weight: 700;
+      color: #5a4f43;
+      flex-wrap: wrap;
+    }
+
+    .hero {
+      padding: 90px 0 52px;
+      background:
+        linear-gradient(100deg, rgba(48,30,15,.88), rgba(95,63,34,.68)),
+        url('img5.jpg') center/cover;
+      color: #fff;
+    }
+    .hero-wrap {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 28px;
+      align-items: center;
+    }
+    h1 {
+      margin: 0 0 14px;
+      font-size: 60px;
+      line-height: 1.08;
+    }
+    .hero p {
+      margin: 0 0 18px;
+      color: #f4ece4;
+      font-size: 18px;
+    }
+    .badge {
+      display: inline-block;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.18);
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+    .hero-card {
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: 26px;
+      padding: 26px;
+    }
+    .hero-card h3 {
+      margin: 0 0 12px;
+      font-size: 22px;
+    }
+    .hero-card ul {
+      margin: 0;
+      padding-left: 18px;
+      color: #f6eee6;
+    }
+
+    section {
+      padding: 74px 0;
+    }
+    .section-head h2 {
+      margin: 0 0 10px;
+      font-size: 38px;
+      color: #3f2916;
+    }
+    .section-head p {
+      margin: 0;
+      color: #706458;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 28px;
+    }
+    .card {
+      background: #fff;
+      border: 1px solid #eadfce;
+      border-radius: 28px;
+      padding: 30px;
+    }
+    .card h3 {
+      margin-top: 0;
+      color: #3f2916;
+    }
+    .feature-list {
+      margin: 0;
+      padding-left: 18px;
+      color: #5f5449;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-top: 28px;
+    }
+    .stat {
+      background: #fff;
+      border: 1px solid #eadfce;
+      border-radius: 22px;
+      padding: 22px;
+    }
+    .stat strong {
+      display: block;
+      color: #6b4d2e;
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+    .stat span {
+      color: #6f6458;
+      font-size: 14px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 28px;
+    }
+    .gallery img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 20px;
+    }
+
+    .back {
+      display: inline-block;
+      margin-top: 24px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      background: #6b4d2e;
+      color: #fff;
+      font-weight: 700;
+    }
+
+    footer {
+      text-align: center;
+      color: #807366;
+      padding: 20px 0 40px;
+    }
+
+    @media (max-width: 900px) {
+      .hero-wrap,
+      .grid-2,
+      .stats,
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+      h1 { font-size: 44px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <div class="logo">더큰코리아<small>THE BIG KOREA</small></div>
+    <nav class="menu">
+      <a href="index.html">메인</a>
+      <a href="company.html">회사소개</a>
+      <a href="history.html">연혁</a>
+      <a href="brands.html">브랜드</a>
+      <a href="contact.html">문의</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container hero-wrap">
+    <div>
+      <div class="badge">Traditional Brunch Cafe Brand</div>
+      <h1>고궁</h1>
+      <p>고궁은 전통과 현대의 멋과 맛을 경험할 수 있는 한국 대표 전통 브런치 고급 카페 브랜드로, 전통디저트와 브런치를 현대적으로 결합한 브랜드입니다.</p>
+      <p>단순한 카페가 아니라 한국적 미감과 식문화를 감각적으로 풀어내는 공간형 브랜드로, 다양한 고객층에게 새로운 경험을 제공합니다.</p>
+    </div>
+    <div class="hero-card">
+      <h3>브랜드 핵심 포인트</h3>
+      <ul>
+        <li>전통 브런치와 디저트의 결합</li>
+        <li>카페형 매장 운영에 최적화</li>
+        <li>한국적 감성을 현대적으로 전달</li>
+        <li>프리미엄 브런치·디저트 브랜드 포지셔닝</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-head">
+      <h2>브랜드 소개</h2>
+      <p>고궁은 전통 디저트와 브런치를 결합하여, 한국적인 미감과 현대적인 소비 경험을 함께 전달하는 브랜드입니다.</p>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <h3>브랜드 특징</h3>
+        <ul class="feature-list">
+          <li>전통 브런치와 카페의 복합형 포맷</li>
+          <li>전통 다과, 커피, 음료, 브런치 구성</li>
+          <li>전통의 멋을 감각적으로 풀어낸 공간 연출</li>
+          <li>젊은 고객층과 가족 고객 모두를 아우르는 브랜드 구조</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>운영 방향</h3>
+        <p>고궁은 한국적인 디저트와 브런치를 일상 속에서 자연스럽게 즐길 수 있도록 기획된 브랜드입니다. 더큰코리아는 고궁을 통해 전통 식문화를 보다 친숙하고 감각적인 카페 경험으로 확장하고 있습니다.</p>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><strong>브런치 카페</strong><span>전통 디저트와 브런치 결합</span></div>
+      <div class="stat"><strong>전통 감성</strong><span>한국적 미감의 공간 경험</span></div>
+      <div class="stat"><strong>다양한 고객층</strong><span>가족·여성·젊은층 타겟</span></div>
+      <div class="stat"><strong>카페형 포맷</strong><span>상권 적응력 높은 운영 구조</span></div>
+    </div>
+
+    <div class="section-head" style="margin-top:52px;">
+      <h2>브랜드 이미지</h2>
+      <p>대표 사진 중심으로 고궁의 브랜드 분위기와 공간 감성을 보여줍니다.</p>
+    </div>
+
+    <div class="gallery">
+      <img src="gogung-img1.jpg" alt="고궁 이미지 1">
+      <img src="gogung-img2.jpg" alt="고궁 이미지 2">
+      <img src="gogung-img3.jpg" alt="고궁 이미지 3">
+    </div>
+
+    <a class="back" href="brands.html">브랜드 목록으로 돌아가기</a>
+  </div>
+</section>
+
+<footer>© THE BIG KOREA</footer>
+
+</body>
+</html>

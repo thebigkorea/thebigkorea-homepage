@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>더큰코리아 | 회사소개</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Noto Sans KR", "Malgun Gothic", sans-serif;
+      background: #f6f2ec;
+      color: #2b2118;
+      line-height: 1.7;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    .container {
+      width: min(1240px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.96);
+      border-bottom: 1px solid #e8ddcf;
+      backdrop-filter: blur(10px);
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      padding: 16px 0;
+    }
+
+    .logo img {
+      max-height: 64px;
+      width: auto;
+    }
+
+    .logo small {
+      display: block;
+      font-size: 11px;
+      letter-spacing: 1.8px;
+      color: #8a7864;
+      margin-top: 6px;
+    }
+
+    .menu {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      font-weight: 700;
+      color: #5a4f43;
+      font-size: 15px;
+    }
+
+    .menu a {
+      transition: color 0.18s ease;
+    }
+
+    .menu a:hover {
+      color: #8c5e2e;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(
+          90deg,
+          rgba(255,255,255,0.86) 0%,
+          rgba(255,255,255,0.72) 28%,
+          rgba(255,255,255,0.28) 58%,
+          rgba(255,255,255,0.06) 100%
+        ),
+        url("company-hero.jpg") center center / cover no-repeat;
+      border-bottom: 1px solid #eadfce;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 80% 18%, rgba(255,255,255,0.25), transparent 25%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      min-height: 520px;
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      align-items: center;
+      gap: 30px;
+      padding: 56px 0;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 16px;
+      color: #b17b36;
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0 0 18px;
+      font-size: clamp(38px, 5.2vw, 72px);
+      line-height: 1.06;
+      color: #2b2118;
+    }
+
+    .hero-copy p {
+      margin: 0 0 26px;
+      max-width: 700px;
+      font-size: 18px;
+      color: #4b4036;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .hero-tags span {
+      display: inline-block;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.86);
+      border: 1px solid rgba(0,0,0,0.06);
+      color: #5b4732;
+      font-weight: 700;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.04);
+    }
+
+    .hero-panel {
+      background: rgba(255,255,255,0.88);
+      border: 1px solid rgba(0,0,0,0.06);
+      border-radius: 30px;
+      padding: 28px;
+      box-shadow: 0 18px 48px rgba(0,0,0,0.08);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+
+    .hero-panel h2 {
+      margin: 0 0 18px;
+      font-size: 24px;
+      color: #2f2418;
+    }
+
+    .hero-kpis {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .hero-kpi {
+      padding: 18px 18px 16px;
+      border-radius: 20px;
+      background: linear-gradient(180deg, #fff 0%, #fbf7f1 100%);
+      border: 1px solid #e9dccb;
+      box-shadow: 0 10px 24px rgba(53,35,17,0.05);
+    }
+
+    .hero-kpi strong {
+      display: block;
+      margin-bottom: 6px;
+      color: #6b4d2e;
+      font-size: 28px;
+      line-height: 1.1;
+    }
+
+    .hero-kpi span {
+      display: block;
+      color: #6f6458;
+      font-size: 14px;
+    }
+
+    section {
+      padding: 78px 0;
+    }
+
+    .section-title {
+      margin-bottom: 28px;
+    }
+
+    .section-title .label {
+      display: inline-block;
+      margin-bottom: 10px;
+      color: #b17b36;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+    }
+
+    .section-title h2 {
+      margin: 0 0 10px;
+      font-size: 40px;
+      color: #3f2916;
+      line-height: 1.2;
+    }
+
+    .section-title p {
+      margin: 0;
+      color: #706458;
+      font-size: 16px;
+    }
+
+    .overview-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 24px;
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid #eadfce;
+      border-radius: 30px;
+      padding: 30px;
+      box-shadow: 0 12px 30px rgba(53,35,17,.05);
+    }
+
+    .profile-image {
+      overflow: hidden;
+      border-radius: 22px;
+      margin-bottom: 22px;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+    }
+
+    .profile-image img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+    }
+
+    .profile h3,
+    .ceo-message h3,
+    .strategy h3,
+    .ir-summary h3 {
+      margin: 0 0 18px;
+      font-size: 26px;
+      color: #3f2916;
+    }
+
+    .profile dl {
+      margin: 0;
+      display: grid;
+      grid-template-columns: 130px 1fr;
+      gap: 14px 18px;
+    }
+
+    .profile dt {
+      font-weight: 800;
+      color: #5d4430;
+    }
+
+    .profile dd {
+      margin: 0;
+      color: #6f6458;
+    }
+
+    .ceo-wrap {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .quote-box {
+      padding: 22px 24px;
+      margin-bottom: 18px;
+      border-radius: 22px;
+      background: linear-gradient(135deg, #6b4d2e, #8c5e2e);
+      color: #fff;
+      box-shadow: 0 14px 32px rgba(75,48,21,0.18);
+    }
+
+    .quote-box blockquote {
+      margin: 0 0 10px;
+      font-size: 30px;
+      line-height: 1.35;
+      font-weight: 900;
+    }
+
+    .quote-box p {
+      margin: 0;
+      color: #f4e7d6;
+      font-size: 14px;
+    }
+
+    .ceo-text p {
+      margin: 0 0 14px;
+      color: #5f5449;
+      font-size: 15px;
+    }
+
+    .ceo-sign {
+      margin-top: 18px;
+      font-weight: 800;
+      color: #4d3723;
+      line-height: 1.8;
+    }
+
+    .ceo-image {
+      overflow: hidden;
+      border-radius: 24px;
+      background: #f7f1e9;
+      border: 1px solid #eadfce;
+      min-height: 100%;
+    }
+
+    .ceo-image img {
+      width: 100%;
+      height: 100%;
+      min-height: 520px;
+      object-fit: cover;
+    }
+
+    .ir-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .ir-item {
+      position: relative;
+      background: linear-gradient(180deg, #ffffff 0%, #fbf7f1 100%);
+      border: 1px solid #e6d6c1;
+      border-radius: 26px;
+      padding: 28px 24px 22px;
+      box-shadow:
+        0 16px 34px rgba(53,35,17,0.08),
+        inset 0 1px 0 rgba(255,255,255,0.8);
+      overflow: hidden;
+    }
+
+    .ir-item::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 6px;
+      background: linear-gradient(90deg, #d8aa68 0%, #a86b2c 50%, #e2bf86 100%);
+    }
+
+    .ir-item strong {
+      display: block;
+      margin-bottom: 10px;
+      color: #6b4d2e;
+      font-size: 24px;
+      line-height: 1.2;
+    }
+
+    .ir-item span {
+      color: #6f6458;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .strategy-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 24px;
+    }
+
+    .strategy-box {
+      background: #fff;
+      border: 1px solid #eadfce;
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: 0 10px 24px rgba(53,35,17,0.04);
+    }
+
+    .strategy-box h4 {
+      margin: 0 0 10px;
+      font-size: 22px;
+      color: #4a311c;
+    }
+
+    .strategy-box p {
+      margin: 0;
+      color: #6f6559;
+      font-size: 14px;
+    }
+
+    .back {
+      display: inline-block;
+      margin-top: 22px;
+      padding: 13px 20px;
+      border-radius: 999px;
+      background: #6b4d2e;
+      color: #fff;
+      font-weight: 700;
+      box-shadow: 0 10px 22px rgba(75,48,21,0.16);
+    }
+
+    footer {
+      text-align: center;
+      color: #807366;
+      padding: 22px 0 42px;
+      font-size: 14px;
+    }
+
+    @media (max-width: 1100px) {
+      .hero-inner,
+      .overview-grid,
+      .ceo-wrap {
+        grid-template-columns: 1fr;
+      }
+
+      .ir-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .strategy-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .ceo-image img {
+        min-height: 360px;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .menu {
+        gap: 14px;
+        font-size: 14px;
+      }
+
+      h1 {
+        font-size: 42px;
+      }
+
+      .hero {
+        background-position: center right;
+      }
+
+      .hero-inner {
+        min-height: auto;
+        padding: 54px 0;
+      }
+
+      .ir-grid,
+      .profile dl {
+        grid-template-columns: 1fr;
+      }
+
+      .card,
+      .hero-panel {
+        padding: 22px;
+      }
+
+      section {
+        padding: 60px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="logo">
+        <a href="index.html">
+          <img src="logo-thebig.jpg" alt="더큰코리아 로고">
+        </a>
+        <small>THE BIG KOREA · OFFICIAL PARTNER OF KOREA HERITAGE AGENCY</small>
+      </div>
+      <nav class="menu">
+        <a href="index.html">홈</a>
+        <a href="history.html">연혁</a>
+        <a href="brands.html">브랜드</a>
+        <a href="strength.html">경쟁력</a>
+        <a href="contact.html">고객의소리</a>
+        <a href="recruit.html">직원모집</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container hero-inner">
+      <div class="hero-copy">
+        <div class="eyebrow">Corporate Overview · IR Profile · Brand Value</div>
+        <h1>전통의 가치를<br>현대의 비즈니스로<br>확장하는<br>F&amp;B 기업</h1>
+        <p>
+          더큰코리아는 한국 식문화의 본질을 지키면서도, 현대 유통 채널과 브랜드 운영 시스템에 맞춘
+          차별화된 외식 포트폴리오를 구축해 온 기업입니다. 전통 한식, 궁중다과, 도시락, 브런치, 퓨전 레스토랑,
+          카페 브랜드를 통해 고객 경험의 폭을 넓히고 있습니다.
+        </p>
+        <div class="hero-tags">
+          <span>전통 한식 브랜드 운영</span>
+          <span>백화점 상권 중심 확장</span>
+          <span>브랜드 포트폴리오 구축</span>
+          <span>경험 중심 F&amp;B 플랫폼</span>
+        </div>
+      </div>
+
+      <div class="hero-panel">
+        <h2>IR Summary</h2>
+        <div class="hero-kpis">
+          <div class="hero-kpi">
+            <strong>8+</strong>
+            <span>운영 브랜드 포트폴리오</span>
+          </div>
+          <div class="hero-kpi">
+            <strong>2021</strong>
+            <span>한국의집 경영상표 사용 지정</span>
+          </div>
+          <div class="hero-kpi">
+            <strong>백화점</strong>
+            <span>롯데·신세계·갤러리아 입점 경험</span>
+          </div>
+          <div class="hero-kpi">
+            <strong>다포맷</strong>
+            <span>한식·다과·도시락·카페 운영</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-title">
+        <div class="label">Company Information</div>
+        <h2>회사 개요</h2>
+        <p>회사개요, 사업영역, 경영 방향을 IR 소개서 형식으로 정리했습니다.</p>
+      </div>
+
+      <div class="overview-grid">
+        <div class="card profile">
+          <div class="profile-image">
+            <img src="company-profile.jpg" alt="더큰코리아 기업 이미지">
+          </div>
+          <h3>기본 정보</h3>
+          <dl>
+            <dt>법인명</dt><dd>주식회사 더큰코리아</dd>
+            <dt>대표자</dt><dd>박병호</dd>
+            <dt>소재지</dt><dd>대전광역시 유성구 테크노4로 29, 2층</dd>
+            <dt>전화 / 팩스</dt><dd>042-712-5035 / 042-712-5036</dd>
+            <dt>E-mail</dt><dd>thebig@koreafnb.com</dd>
+            <dt>사업영역</dt><dd>전통 한식, 궁중다과, 도시락, 브런치 카페, 퓨전 레스토랑, 캠퍼스 카페 운영</dd>
+            <dt>핵심 역량</dt><dd>브랜드 운영, 상권 입점, 경험 중심 외식 플랫폼 구축</dd>
+          </dl>
+        </div>
+
+        <div class="card ceo-message">
+          <div class="ceo-wrap">
+            <div class="ceo-text">
+              <div class="quote-box">
+                <blockquote>“음식은 문화이며, 문화는 곧 신뢰입니다.”</blockquote>
+                <p>더큰코리아는 품격 있는 식문화 경험을 통해 지속 가능한 브랜드 가치를 만들어갑니다.</p>
+              </div>
+
+              <h3>CEO Message</h3>
+              <p>안녕하십니까. 주식회사 더큰코리아 대표이사 박병호입니다.</p>
+
+              <p>
+                더큰코리아는 전통의 가치를 현대적으로 재해석하여, 새로운 외식 문화와 공간 경험을 창조하는 F&amp;B 전문 기업입니다.
+                국가유산진흥원과의 브랜드 이용 계약을 통해 국내 유일의 전통 한식 브랜드 ‘한국의집’을 운영하며,
+                우리 고유의 음식 문화와 품격을 지켜나가는 동시에 시대의 흐름에 맞는 혁신을 지속해오고 있습니다.
+              </p>
+
+              <p>
+                우리는 단순히 음식을 제공하는 기업을 넘어, 공간·서비스·스토리·브랜드가 하나로 어우러진
+                경험 중심의 외식 플랫폼을 구축하는 것을 목표로 합니다. 철저한 품질 관리와 체계적인 운영 시스템,
+                지속적인 연구 개발을 통해 고객에게 신뢰받는 브랜드 그룹으로 성장하고자 합니다.
+              </p>
+
+              <p>
+                앞으로 더큰코리아는 전통의 본질을 지키면서도 글로벌 시장에서 경쟁할 수 있는
+                차별화된 K-푸드 브랜드 그룹으로 도약하겠습니다.
+              </p>
+
+              <p class="ceo-sign">
+                주식회사 더큰코리아<br>
+                대표이사 박 병 호
+              </p>
+            </div>
+
+            <div class="ceo-image">
+              <img src="ceo-photo.jpg" alt="대표이사 박병호">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0;">
+    <div class="container">
+      <div class="section-title">
+        <div class="label">IR Highlights</div>
+        <h2>핵심 지표</h2>
+        <p>브랜드 확장성과 운영 구조를 보여주는 핵심 항목입니다.</p>
+      </div>
+
+      <div class="ir-grid">
+        <div class="ir-item">
+          <strong>운영 브랜드<br>포트폴리오</strong>
+          <span>한국의집, 효종갱, 길채정, 소바공방, 고호재, 고궁 등</span>
+        </div>
+        <div class="ir-item">
+          <strong>2021 한국의집<br>경영상표 사용 지정</strong>
+          <span>한국의집, 고호재, 효종갱, 도슭 상표 사용권 획득</span>
+        </div>
+        <div class="ir-item">
+          <strong>다양한 포맷의<br>외식 브랜드 운영</strong>
+          <span>한식, 양식, 퓨전 및 전통카페</span>
+        </div>
+        <div class="ir-item">
+          <strong>전국 백화점<br>상권형 확장</strong>
+          <span>롯데, 신세계, 갤러리아 중심 입점 및 확장</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0;">
+    <div class="container">
+      <div class="section-title">
+        <div class="label">Business Direction</div>
+        <h2>운영 방향 및 전략</h2>
+        <p>더큰코리아가 추구하는 중장기 운영 방향입니다.</p>
+      </div>
+
+      <div class="strategy-grid">
+        <div class="strategy-box">
+          <h4>브랜드 가치 강화</h4>
+          <p>전통의 본질을 유지하면서도 현대 소비자 경험에 맞는 메뉴, 서비스, 공간 브랜딩을 강화합니다.</p>
+        </div>
+        <div class="strategy-box">
+          <h4>상권 중심 확장</h4>
+          <p>백화점과 복합상업시설 중심의 입점 전략으로 프리미엄 고객 접점을 확대합니다.</p>
+        </div>
+        <div class="strategy-box">
+          <h4>경험형 F&amp;B 플랫폼</h4>
+          <p>음식, 공간, 스토리텔링을 결합한 경험 중심 외식 플랫폼으로 경쟁력을 높입니다.</p>
+        </div>
+      </div>
+
+      <a class="back" href="index.html">메인으로 돌아가기</a>
+    </div>
+  </section>
+
+  <footer>© THE BIG KOREA. All Rights Reserved.</footer>
+</body>
+</html>

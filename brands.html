@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>더큰코리아 | 브랜드</title>
+
+  <style>
+    *{box-sizing:border-box}
+
+    body{
+      margin:0;
+      font-family:"Noto Sans KR","Malgun Gothic",sans-serif;
+      background:#f7f3ed;
+      color:#2b2118;
+      line-height:1.7;
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    .container{
+      width:min(1180px,calc(100% - 40px));
+      margin:0 auto;
+    }
+
+    header{
+      position:sticky;
+      top:0;
+      z-index:10;
+      background:rgba(255,255,255,.94);
+      border-bottom:1px solid #eadfce;
+      backdrop-filter:blur(12px);
+    }
+
+    .nav{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:16px 0;
+    }
+
+    .logo{
+      font-size:30px;
+      font-weight:900;
+      color:#6a4826;
+      line-height:1.2;
+    }
+
+    .logo small{
+      display:block;
+      font-size:11px;
+      color:#8a7864;
+      margin-top:6px;
+      letter-spacing:.5px;
+    }
+
+    .menu{
+      display:flex;
+      gap:22px;
+      font-weight:700;
+      color:#5a4f43;
+      font-size:15px;
+    }
+
+    .hero{
+      position:relative;
+      padding:105px 0 72px;
+      color:#fff;
+      overflow:hidden;
+      background:
+        linear-gradient(120deg,
+        rgba(28,18,11,.88),
+        rgba(110,69,35,.58),
+        rgba(166,108,56,.32)),
+        url("img1.jpg") center/cover no-repeat;
+    }
+
+    .hero::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(circle at 75% 20%,rgba(255,214,151,.28),transparent 32%),
+        radial-gradient(circle at 15% 85%,rgba(255,255,255,.14),transparent 26%);
+    }
+
+    .hero .container{
+      position:relative;
+      z-index:1;
+    }
+
+    .hero-badge{
+      display:inline-block;
+      padding:7px 15px;
+      border:1px solid rgba(255,255,255,.35);
+      border-radius:999px;
+      font-size:13px;
+      font-weight:800;
+      margin-bottom:18px;
+      background:rgba(255,255,255,.12);
+    }
+
+    h1{
+      margin:0 0 14px;
+      font-size:58px;
+      letter-spacing:-1px;
+      line-height:1.1;
+    }
+
+    .hero p{
+      margin:0;
+      color:#f8eee4;
+      font-size:17px;
+      font-weight:500;
+    }
+
+    section{
+      padding:74px 0;
+    }
+
+    .section-title{
+      margin-bottom:32px;
+    }
+
+    .section-title h2{
+      margin:0;
+      font-size:34px;
+      color:#3a2717;
+      letter-spacing:-.5px;
+    }
+
+    .section-title p{
+      margin:8px 0 0;
+      color:#7b6d5e;
+      font-size:15px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:24px;
+    }
+
+    .card{
+      --point:#6b4d2e;
+      background:#fff;
+      border:1px solid #eadfce;
+      border-radius:24px;
+      overflow:hidden;
+      box-shadow:0 18px 35px rgba(67,45,24,.08);
+      display:flex;
+      flex-direction:column;
+      transition:.25s;
+    }
+
+    .card:hover{
+      transform:translateY(-6px);
+      box-shadow:0 24px 45px rgba(67,45,24,.14);
+    }
+
+    .thumb{
+      position:relative;
+      height:4.4cm;
+      overflow:hidden;
+    }
+
+    .thumb img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      transition:.35s;
+    }
+
+    .card:hover .thumb img{
+      transform:scale(1.06);
+    }
+
+    .thumb::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(to bottom,transparent 35%,rgba(0,0,0,.42));
+    }
+
+    .brand-tag{
+      position:absolute;
+      left:16px;
+      bottom:14px;
+      z-index:1;
+      padding:6px 12px;
+      border-radius:999px;
+      color:#fff;
+      background:var(--point);
+      font-size:12px;
+      font-weight:800;
+      letter-spacing:.3px;
+    }
+
+    .content{
+      padding:20px;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+
+    .content h3{
+      margin:0;
+      font-size:22px;
+      color:#2e2117;
+    }
+
+    .content p{
+      margin:0;
+      font-size:14px;
+      color:#6e6357;
+    }
+
+    .content ul{
+      margin:8px 0 0;
+      padding-left:18px;
+      font-size:13px;
+      color:#5f5449;
+    }
+
+    .btn{
+      margin-top:14px;
+      padding:11px 15px;
+      border-radius:999px;
+      background:var(--point);
+      color:#fff;
+      font-size:13px;
+      font-weight:800;
+      text-align:center;
+      display:inline-block;
+    }
+
+    .koreahouse{--point:#7a4b25}
+    .hyojong{--point:#8a5a2f}
+    .gohojae{--point:#b07654}
+    .dosleug{--point:#42513c}
+    .gogung{--point:#9b6b2f}
+    .gilchae{--point:#6f1f25}
+    .soba{--point:#2f5b55}
+    .cafe{--point:#8a6a48}
+
+    footer{
+      text-align:center;
+      color:#807366;
+      padding:20px 0 40px;
+    }
+
+    @media(max-width:900px){
+      .grid{
+        grid-template-columns:1fr 1fr;
+      }
+
+      h1{
+        font-size:42px;
+      }
+    }
+
+    @media(max-width:720px){
+      .nav{
+        align-items:flex-start;
+        gap:12px;
+      }
+
+      .menu{
+        gap:12px;
+        font-size:13px;
+        flex-wrap:wrap;
+        justify-content:flex-end;
+      }
+
+      .grid{
+        grid-template-columns:1fr;
+      }
+
+      .hero{
+        padding:80px 0 55px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="container nav">
+    <div class="logo">
+      더큰코리아
+      <small>THE BIG KOREA</small>
+    </div>
+
+    <nav class="menu">
+      <a href="index.html">홈</a>
+      <a href="company.html">회사소개</a>
+      <a href="history.html">연혁</a>
+      <a href="strength.html">경쟁력</a>
+      <a href="contact.html">고객의소리</a>
+      <a href="recruit.html">직원모집</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-badge">THE BIG KOREA BRAND</div>
+    <h1>Brand Portfolio</h1>
+    <p>더큰코리아가 운영하는 8개의 브랜드를 소개합니다.</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+
+    <div class="section-title">
+      <h2>Our Brands</h2>
+      <p>전통 한식부터 카페, 소바, 프리미엄 다이닝까지 다양한 외식 브랜드를 운영합니다.</p>
+    </div>
+
+    <div class="grid">
+
+      <div class="card koreahouse">
+        <div class="thumb">
+          <img src="img1.jpg" alt="한국의집">
+          <div class="brand-tag">KOREA HOUSE</div>
+        </div>
+        <div class="content">
+          <h3>한국의집</h3>
+          <p>전통 한식의 정수를 현대적으로 재해석한 대표 브랜드</p>
+          <ul>
+            <li>롯데월드몰</li>
+            <li>프리미엄 한식</li>
+          </ul>
+          <a class="btn" href="brand-koreahouse.html">상세보기</a>
+        </div>
+      </div>
+
+      <div class="card hyojong">
+        <div class="thumb">
+          <img src="img2.jpg" alt="효종갱">
+          <div class="brand-tag">HYOJONGGAENG</div>
+        </div>
+        <div class="content">
+          <h3>효종갱</h3>
+          <p>전통 배달음식 스토리를 기반으로 한 한식 브랜드</p>
+          <ul>
+            <li>아울렛 입점</li>
+            <li>스토리형 메뉴</li>
+          </ul>
+          <a class="btn" href="brand-hyojonggaeng.html">상세보기</a>
+        </div>
+      </div>
+
+      <div class="card gohojae">
+        <div class="thumb">
+          <img src="img3.jpg" alt="고호재">
+          <div class="brand-tag">GOHOJAE</div>
+        </div>
+        <div class="content">
+          <h3>고호재</h3>
+          <p>궁중다과와 전통 차를 현대적으로 재해석한 프리미엄 브랜드</p>
+          <ul>
+            <li>티·디저트</li>
+            <li>프리미엄 콘셉트</li>
+          </ul>
+          <a class="btn" href="brand-gohorjae.html">상세보기</a>
+        </div>
+      </div>
+
+      <div class="card dosleug">
+        <div class="thumb">
+          <img src="img4.jpg" alt="도슭">
+          <div class="brand-tag">DOSLEUG</div>
+        </div>
+        <div class="content">
+          <h3>도슭</h3>
+          <p>전통 한식을 담아낸 프리미엄 도시락 브랜드</p>
+          <ul>
+            <li>선물용 도시락</li>
+            <li>고급 구성</li>
+          </ul>
+          <a class="btn" href="brand-dosleug.html">상세보기</a>
+        </div>
+      </div>
+
+      <div class="card gogung">
+        <div class="thumb">
+          <img src="img5.jpg" alt="고궁">
+          <div class="brand-tag">GOGUNG CAFE</div>
+        </div>
+        <div class="content">
+          <h3>고궁</h3>
+          <p>전통 브런치와 디저트를 결합한 감각적인 카페 브랜드</p>
+          <ul>
+            <li>브런치 카페</li>
+            <li>MZ 타겟</li>
+          </ul>
+          <a class="btn" href="brand-gogung.html">상세보기</a>
+        </div>
+      </div>
+
+      <div class="card gilchae">
+        <div class="thumb">
+          <img src="img6.jpg" alt="길채정">
+          <div class="brand-tag">GILCHAEJEONG</div>
+        </div>
+        <div class="content">
+          <h3>길채정</h3>
+          <p>궁중 한식 기반의 프리미엄 레스토랑 브랜드</p>
+          <ul>
+            <li>갤러리아 입점</li>
+            <li>고급 상차림</li>
+          </ul>
+          <a class="btn" href="brand-gilchaejeong.html">상세보기</a>
+        </div>
+      </div>
+
+      <div class="card soba">
+        <div class="thumb">
+          <img src="img7.jpg" alt="소바공방">
+          <div class="brand-tag">SOBA GONGBANG</div>
+        </div>
+        <div class="content">
+          <h3>소바공방</h3>
+          <p>소바와 카츠를 중심으로 한 대중형 외식 브랜드</p>
+          <ul>
+            <li>빠른 회전율</li>
+            <li>가성비 메뉴</li>
+          </ul>
+          <a class="btn" href="brand-sobagongbang.html">상세보기</a>
+        </div>
+      </div>
+
+      <div class="card cafe">
+        <div class="thumb">
+          <img src="img8.jpg" alt="카페그랑떼">
+          <div class="brand-tag">CAFE GRANDE</div>
+        </div>
+        <div class="content">
+          <h3>카페그랑떼</h3>
+          <p>커피와 베이커리를 중심으로 한 라이프스타일 카페 브랜드</p>
+          <ul>
+            <li>커피·베이커리</li>
+            <li>캠퍼스 상권</li>
+          </ul>
+          <a class="btn" href="brand-cafegrande.html">상세보기</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  © THE BIG KOREA
+</footer>
+
+</body>
+</html>

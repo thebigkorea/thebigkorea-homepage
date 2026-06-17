@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>더큰코리아 | 직원모집</title>
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: "Noto Sans KR", "Malgun Gothic", Arial, sans-serif;
+      background: #f6f2ec;
+      color: #2b2118;
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    .container {
+      width: min(1240px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.95);
+      border-bottom: 1px solid #e6dbcf;
+      backdrop-filter: blur(12px);
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      padding: 16px 0;
+    }
+
+    .logo img {
+      max-height: 64px;
+      width: auto;
+    }
+
+    .logo small {
+      display: block;
+      font-size: 11px;
+      letter-spacing: 1.8px;
+      color: #8a7864;
+      margin-top: 6px;
+    }
+
+    .menu {
+      display: flex;
+      gap: 26px;
+      flex-wrap: wrap;
+      font-weight: 700;
+      color: #564c43;
+      font-size: 15px;
+      align-items: center;
+    }
+
+    .menu .recruit-link {
+      background: linear-gradient(135deg, #d8aa68, #b7792b);
+      color: #fff;
+      padding: 10px 18px;
+      border-radius: 999px;
+      box-shadow: 0 8px 18px rgba(106, 72, 38, 0.18);
+    }
+
+    .page-hero {
+      position: relative;
+      padding: 90px 0 80px;
+      color: #fff;
+      background:
+        linear-gradient(100deg, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0.10) 42%, rgba(255,255,255,0.04) 100%),
+        url('recruit-hero-team.png') center center / cover no-repeat;
+      overflow: hidden;
+    }
+
+    .page-hero .container {
+      position: relative;
+      z-index: 2;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      color: #7a5528;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      margin: 0 0 16px;
+      font-size: clamp(34px, 5vw, 64px);
+      line-height: 1.12;
+      color: #2f2418;
+      text-shadow: 0 2px 8px rgba(255,255,255,0.18);
+    }
+
+    .hero-desc {
+      max-width: 820px;
+      font-size: 18px;
+      color: #3f3123;
+      margin: 0 0 28px;
+      text-shadow: 0 1px 4px rgba(255,255,255,0.12);
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .hero-badges span {
+      display: inline-block;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.55);
+      border: 1px solid rgba(120, 85, 40, 0.18);
+      color: #3a2a1a;
+      font-weight: 700;
+      backdrop-filter: blur(6px);
+    }
+
+    section {
+      padding: 88px 0;
+    }
+
+    .section-head {
+      margin-bottom: 28px;
+    }
+
+    .section-head h2 {
+      margin: 0 0 10px;
+      font-size: 38px;
+      color: #3f2916;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: #72675a;
+      max-width: 760px;
+    }
+
+    .store-tabs {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .store-tab {
+      border: 1px solid #e3d7c8;
+      background: #fff;
+      border-radius: 22px;
+      padding: 18px 20px;
+      cursor: pointer;
+      box-shadow: 0 10px 24px rgba(53,35,17,0.04);
+      transition: all 0.2s ease;
+      text-align: left;
+    }
+
+    .store-tab:hover {
+      transform: translateY(-2px);
+      border-color: #c9a06b;
+    }
+
+    .store-tab.active {
+      background: linear-gradient(135deg, #6b4d2e, #8c5e2e);
+      color: #fff;
+      border-color: #8c5e2e;
+    }
+
+    .store-tab strong {
+      display: block;
+      font-size: 18px;
+      margin-bottom: 6px;
+    }
+
+    .store-tab span {
+      font-size: 13px;
+      opacity: 0.95;
+      line-height: 1.5;
+      display: block;
+    }
+
+    .highlight-card {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 24px;
+      background: #fff;
+      border: 1px solid #eadfce;
+      border-radius: 30px;
+      padding: 30px;
+      box-shadow: 0 14px 32px rgba(53,35,17,0.06);
+      margin-bottom: 28px;
+    }
+
+    .highlight-left h3 {
+      margin: 0 0 12px;
+      font-size: 34px;
+      line-height: 1.25;
+      color: #4a311c;
+    }
+
+    .highlight-left p {
+      margin: 0 0 18px;
+      color: #6f6458;
+      font-size: 16px;
+    }
+
+    .summary-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .summary-item {
+      background: #f9f5ef;
+      border: 1px solid #eadfce;
+      border-radius: 18px;
+      padding: 14px 16px;
+      color: #5d4430;
+      font-weight: 700;
+    }
+
+    .summary-item strong {
+      display: inline-block;
+      min-width: 92px;
+      color: #8c5e2e;
+    }
+
+    .highlight-right {
+      background: linear-gradient(135deg, #4a311c, #6b4d2e);
+      color: #fff;
+      border-radius: 24px;
+      padding: 24px;
+      display: grid;
+      gap: 14px;
+      align-content: center;
+    }
+
+    .highlight-right h4 {
+      margin: 0;
+      font-size: 24px;
+      color: #fff;
+    }
+
+    .highlight-right p {
+      margin: 0;
+      color: #f2e8dd;
+    }
+
+    .pay-banner {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin-bottom: 28px;
+    }
+
+    .pay-box {
+      background: #fff;
+      border: 1px solid #eadfce;
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: 0 10px 24px rgba(53,35,17,0.04);
+    }
+
+    .pay-box .label {
+      display: inline-block;
+      margin-bottom: 10px;
+      background: #f2e2c6;
+      color: #6b4d2e;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .pay-box h3 {
+      margin: 0 0 8px;
+      font-size: 28px;
+      color: #4a311c;
+    }
+
+    .pay-box .amount {
+      font-size: 28px;
+      font-weight: 900;
+      color: #8c5e2e;
+      line-height: 1.3;
+      margin-bottom: 8px;
+    }
+
+    .pay-box p {
+      margin: 0;
+      color: #6f6559;
+      font-size: 14px;
+    }
+
+    .jobs-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+      margin-bottom: 28px;
+    }
+
+    .job-card, .form-card, .process-card {
+      background: #fff;
+      border: 1px solid #eadfce;
+      border-radius: 28px;
+      padding: 30px;
+      box-shadow: 0 12px 30px rgba(53,35,17,0.05);
+    }
+
+    .job-card h3,
+    .form-card h3,
+    .process-card h3 {
+      margin: 0 0 16px;
+      font-size: 30px;
+      color: #4a311c;
+    }
+
+    .job-card .job-tag {
+      display: inline-block;
+      margin-bottom: 18px;
+      background: #f2e2c6;
+      color: #6b4d2e;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .job-card ul {
+      margin: 0;
+      padding-left: 18px;
+      color: #6f6458;
+      line-height: 1.9;
+      font-size: 15px;
+    }
+
+    .job-card li { margin-bottom: 10px; }
+    .job-card strong { color: #4f3822; }
+
+    .benefit-wrap {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-bottom: 28px;
+    }
+
+    .benefit-box {
+      background: #fff;
+      border: 1px solid #eadfce;
+      border-radius: 22px;
+      padding: 24px;
+      box-shadow: 0 10px 24px rgba(53,35,17,0.04);
+    }
+
+    .benefit-box h4 {
+      margin: 0 0 10px;
+      color: #4a311c;
+      font-size: 20px;
+    }
+
+    .benefit-box p {
+      margin: 0;
+      color: #6f6559;
+      font-size: 14px;
+    }
+
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .process-step {
+      background: #f6f2ec;
+      border: 1px solid #eadfce;
+      border-radius: 18px;
+      padding: 18px;
+      text-align: center;
+      font-weight: 800;
+      color: #5d4430;
+    }
+
+    .process-note {
+      margin: 0;
+      color: #6f6458;
+    }
+
+    .form-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .form-group.full {
+      grid-column: 1 / -1;
+    }
+
+    .form-group label {
+      font-weight: 800;
+      color: #5a4028;
+      font-size: 14px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1px solid #dccdbd;
+      border-radius: 14px;
+      background: #fffdf9;
+      font-size: 15px;
+      font-family: inherit;
+      color: #2b2118;
+    }
+
+    .form-group textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .form-group input:disabled,
+    .form-group textarea:disabled,
+    .form-group select:disabled {
+      background: #f3eee7;
+      color: #9b8b7c;
+    }
+
+    .readonly-box {
+      padding: 14px 16px;
+      border: 1px solid #dccdbd;
+      border-radius: 14px;
+      background: #f8f3ec;
+      color: #5d4430;
+      font-weight: 800;
+      min-height: 52px;
+      display: flex;
+      align-items: center;
+    }
+
+    .applicant-section {
+      display: none;
+      margin-top: 22px;
+      padding-top: 22px;
+      border-top: 1px solid #eadfce;
+    }
+
+    .applicant-section.show {
+      display: block;
+    }
+
+    .section-mini-title {
+      margin: 0 0 16px;
+      font-size: 20px;
+      font-weight: 900;
+      color: #4a311c;
+    }
+
+    .form-note {
+      margin: 16px 0 0;
+      color: #7a6b5d;
+      font-size: 13px;
+    }
+
+    .submit-wrap {
+      margin-top: 24px;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .submit-btn {
+      border: 0;
+      background: linear-gradient(135deg, #6b4d2e, #8c5e2e);
+      color: #fff;
+      padding: 15px 28px;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    .submit-btn:disabled {
+      opacity: 0.6;
+      cursor: default;
+    }
+
+    .status-message {
+      font-size: 14px;
+      font-weight: 700;
+      color: #6b4d2e;
+    }
+
+    footer {
+      text-align: center;
+      color: #807366;
+      padding: 28px 0 46px;
+      font-size: 14px;
+    }
+
+    @media (max-width: 1100px) {
+      .store-tabs,
+      .highlight-card,
+      .pay-banner,
+      .jobs-grid,
+      .benefit-wrap,
+      .process-steps,
+      .form-wrap {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .menu {
+        gap: 14px;
+        font-size: 14px;
+      }
+
+      section {
+        padding: 64px 0;
+      }
+
+      .page-hero {
+        padding: 76px 0 66px;
+      }
+
+      .highlight-card,
+      .job-card,
+      .process-card,
+      .form-card,
+      .pay-box {
+        padding: 22px;
+      }
+
+      .highlight-left h3,
+      .form-card h3 {
+        font-size: 26px;
+      }
+
+      .pay-box h3,
+      .pay-box .amount {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="logo">
+        <a href="index.html">
+          <img src="logo-thebig.jpg" alt="더큰코리아 로고">
+        </a>
+        <small>THE BIG KOREA · RECRUIT</small>
+      </div>
+      <nav class="menu">
+        <a href="index.html">홈</a>
+        <a href="company.html">회사소개</a>
+        <a href="history.html">연혁</a>
+        <a href="brands.html">브랜드</a>
+        <a href="strength.html">경쟁력</a>
+        <a href="contact.html">고객의소리</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <div class="container">
+      <div class="eyebrow">THE BIG KOREA RECRUIT</div>
+      <h1>더큰코리아<br>주방 · 홀 서빙 채용</h1>
+      <p class="hero-desc">
+        더큰코리아 각 점포에서 함께 근무할 주방 직원 및 홀 서빙 직원을 모집합니다.
+        아래에서 점포를 선택하시면 위치와 급여 정보를 포함한 채용 내용을 바로 확인할 수 있습니다.
+      </p>
+      <div class="hero-badges">
+        <span>주방 연봉 3,400만~4,000만원</span>
+        <span>점포별 홀 시급 상이</span>
+        <span>점포별 선택 지원</span>
+        <span>백화점 · 몰 근무환경</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-head">
+        <h2>점포 선택</h2>
+        <p>원하는 근무 점포를 선택하시면 상단 정보와 급여 안내가 함께 변경됩니다.</p>
+      </div>
+
+      <div class="store-tabs" id="storeTabs"></div>
+
+      <div class="highlight-card">
+        <div class="highlight-left">
+          <h3 id="storeTitle">한국의집 롯데월드몰점</h3>
+          <p id="storeDesc">
+            전통 한식을 현대적으로 선보이는 더큰코리아의 대표 매장에서
+            홀 서빙 및 주방 직원을 모집합니다.
+          </p>
+
+          <div class="summary-list">
+            <div class="summary-item"><strong>점포명</strong> <span id="storeName">한국의집 롯데월드몰점</span></div>
+            <div class="summary-item"><strong>위치</strong> <span id="storeLocation">서울 송파구 올림픽로 300 롯데월드몰 5층</span></div>
+            <div class="summary-item"><strong>모집직무</strong> <span id="storeJobs">주방 / 홀 서빙</span></div>
+            <div class="summary-item"><strong>근무형태</strong> <span id="storeType">스케줄 근무 / 협의 가능</span></div>
+            <div class="summary-item"><strong>매장특징</strong> <span id="storeFeature">롯데월드몰 내 깔끔한 한식 다이닝 매장</span></div>
+          </div>
+        </div>
+
+        <div class="highlight-right">
+          <h4>이런 분을 환영합니다</h4>
+          <p>밝은 서비스 마인드와 책임감 있는 태도를 가진 분</p>
+          <p>외식업 현장 경험을 쌓고 싶거나 장기 근무가 가능한 분</p>
+          <p>백화점·몰 환경에서 깔끔하게 근무하고 싶은 분</p>
+        </div>
+      </div>
+
+      <div class="section-head">
+        <h2>급여 안내</h2>
+        <p>선택한 점포 기준으로 주방과 홀 서빙 급여가 아래에 표시됩니다.</p>
+      </div>
+
+      <div class="pay-banner">
+        <div class="pay-box">
+          <span class="label">KITCHEN</span>
+          <h3>주방</h3>
+          <div class="amount" id="kitchenPay">연봉 3,400만 ~ 4,000만원</div>
+          <p>경력 및 근무 조건에 따라 면접 후 최종 협의 가능합니다.</p>
+        </div>
+
+        <div class="pay-box">
+          <span class="label">HALL SERVICE</span>
+          <h3>홀 서빙</h3>
+          <div class="amount" id="hallPay">시급 13,000원</div>
+          <p id="hallPayDesc">선택 점포 기준 시급입니다.</p>
+        </div>
+      </div>
+
+      <div class="section-head">
+        <h2>공통 모집 내용</h2>
+        <p>점포별 분위기는 다르지만 아래 직무 내용은 공통 채용 기준으로 사용하시면 됩니다.</p>
+      </div>
+
+      <div class="jobs-grid">
+        <div class="job-card">
+          <span class="job-tag">HALL SERVICE</span>
+          <h3>홀 서빙</h3>
+          <ul>
+            <li><strong>급여</strong> <span id="jobHallPay">시급 13,000원</span></li>
+            <li><strong>담당업무</strong> 고객 응대, 주문 접수, 메뉴 서빙, 테이블 정리, 오픈·마감 보조</li>
+            <li><strong>자격요건</strong> 학력 무관, 신입·경력 지원 가능</li>
+            <li><strong>우대사항</strong> 백화점·외식업 근무 경험자, 서비스 마인드 우수자, 장기근무 가능자</li>
+            <li><strong>근무형태</strong> 점포별 스케줄 근무 / 시간 협의 가능</li>
+          </ul>
+        </div>
+
+        <div class="job-card">
+          <span class="job-tag">KITCHEN</span>
+          <h3>주방</h3>
+          <ul>
+            <li><strong>급여</strong> <span id="jobKitchenPay">연봉 3,400만 ~ 4,000만원</span></li>
+            <li><strong>담당업무</strong> 식재료 준비, 조리 보조, 플레이팅, 위생관리, 주방 정리</li>
+            <li><strong>자격요건</strong> 학력 무관, 신입·경력 지원 가능</li>
+            <li><strong>우대사항</strong> 한식·외식업 주방 경험자, 즉시출근 가능자, 주말 근무 가능자</li>
+            <li><strong>근무형태</strong> 점포별 스케줄 근무 / 협의 가능</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="section-head">
+        <h2>근무 장점</h2>
+        <p>더큰코리아 점포에서 일하면 아래와 같은 장점이 있습니다.</p>
+      </div>
+
+      <div class="benefit-wrap">
+        <div class="benefit-box">
+          <h4>깔끔한 근무환경</h4>
+          <p>백화점 및 몰 중심 점포로 쾌적하고 정돈된 환경에서 근무할 수 있습니다.</p>
+        </div>
+        <div class="benefit-box">
+          <h4>안정적인 조건</h4>
+          <p>주방은 연봉 기준, 홀 서빙은 점포별 시급 기준으로 명확하게 안내됩니다.</p>
+        </div>
+        <div class="benefit-box">
+          <h4>실무 경험</h4>
+          <p>홀 서비스와 주방 업무를 통해 외식업 현장 경험을 체계적으로 쌓을 수 있습니다.</p>
+        </div>
+      </div>
+
+      <div class="process-card">
+        <h3>지원 절차</h3>
+        <div class="process-steps">
+          <div class="process-step">점포 선택</div>
+          <div class="process-step">지원 분야 선택</div>
+          <div class="process-step">지원서 제출</div>
+        </div>
+        <p class="process-note">
+          지원 점포와 지원 분야를 선택하면 해당 조건에 맞춰 지원서가 접수됩니다.
+        </p>
+      </div>
+
+      <div class="form-card">
+        <h3>채용 지원서</h3>
+
+        <form id="recruitForm">
+          <div class="form-wrap">
+            <div class="form-group">
+              <label for="storeSelect">지원 점포</label>
+              <select id="storeSelect" name="storeSelect" required></select>
+            </div>
+
+            <div class="form-group">
+              <label for="applyJob">지원 분야</label>
+              <select id="applyJob" name="applyJob" required>
+                <option value="">선택하세요</option>
+                <option value="홀 서빙">홀 서빙</option>
+                <option value="주방">주방</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>지원 분야 급여</label>
+              <div class="readonly-box" id="selectedPayInfo">지원 분야를 선택하면 급여가 표시됩니다.</div>
+            </div>
+
+            <div class="form-group">
+              <label>근무지 주소</label>
+              <div class="readonly-box" id="selectedStoreAddress">서울 송파구 올림픽로 300 롯데월드몰 5층</div>
+            </div>
+          </div>
+
+          <div id="applicantSection" class="applicant-section">
+            <div class="section-mini-title">지원자 정보</div>
+
+            <div class="form-wrap">
+              <div class="form-group">
+                <label for="name">성명</label>
+                <input type="text" id="name" name="name" />
+              </div>
+
+              <div class="form-group">
+                <label for="birth">생년월일</label>
+                <input type="text" id="birth" name="birth" placeholder="예: 1998-05-10" />
+              </div>
+
+              <div class="form-group">
+                <label for="phone">연락처</label>
+                <input type="text" id="phone" name="phone" placeholder="예: 010-1234-5678" />
+              </div>
+
+              <div class="form-group">
+                <label for="email">이메일</label>
+                <input type="email" id="email" name="email" />
+              </div>
+
+              <div class="form-group">
+                <label for="address">거주지역</label>
+                <input type="text" id="address" name="address" placeholder="예: 서울 송파구" />
+              </div>
+
+              <div class="form-group">
+                <label for="availableDate">근무 가능 시작일</label>
+                <input type="text" id="availableDate" name="availableDate" placeholder="예: 즉시 가능 / 2026-04-20" />
+              </div>
+
+              <div class="form-group full">
+                <label for="careerDetail">관련 경험</label>
+                <textarea id="careerDetail" name="careerDetail" placeholder="아르바이트 경험, 외식업 경험, 서비스 경험 등을 적어주세요."></textarea>
+              </div>
+
+              <div class="form-group full">
+                <label for="selfIntro">간단한 자기소개</label>
+                <textarea id="selfIntro" name="selfIntro" placeholder="지원동기, 성격, 장점 등을 자유롭게 적어주세요."></textarea>
+              </div>
+
+              <div class="form-group full">
+                <label for="memo">기타사항</label>
+                <textarea id="memo" name="memo" placeholder="희망 근무시간, 주말 가능 여부, 추가 전달사항 등"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <p class="form-note">
+            제출된 정보는 채용 검토 목적으로만 사용됩니다.
+          </p>
+
+          <div class="submit-wrap">
+            <button type="submit" class="submit-btn" id="submitBtn">지원서 제출</button>
+            <span class="status-message" id="statusMessage"></span>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">© THE BIG KOREA. All Rights Reserved.</div>
+  </footer>
+
+  <script>
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwvcZ3HMaFQBSt6gVlLvKumsAnP8M_pNDQOhZzRtsUkRLYfrz8tDqga5nHgpVZNrGrI/exec";
+
+    const stores = [
+      {
+        id: "koreahouse-lotteworldmall",
+        name: "한국의집 롯데월드몰점",
+        shortName: "한국의집",
+        location: "서울 송파구 올림픽로 300 롯데월드몰 5층",
+        jobs: "주방 / 홀 서빙",
+        workType: "스케줄 근무 / 협의 가능",
+        feature: "롯데월드몰 내 깔끔한 한식 다이닝 매장",
+        desc: "전통 한식을 현대적으로 선보이는 더큰코리아의 대표 매장에서 홀 서빙 및 주방 직원을 모집합니다.",
+        kitchenPay: "연봉 3,400만 ~ 4,000만원",
+        hallPay: "시급 13,000원",
+        hallPayDesc: "한국의집 롯데월드몰점 홀 서빙 기준 시급입니다."
+      },
+      {
+        id: "gilchaejeong-apgujeong",
+        name: "길채정 압구정점",
+        shortName: "길채정",
+        location: "서울 강남구 압구정로 343 갤러리아백화점 명품관 WEST 지하1층",
+        jobs: "주방 / 홀 서빙",
+        workType: "스케줄 근무 / 협의 가능",
+        feature: "압구정 갤러리아 내 한식 브랜드 매장",
+        desc: "길채정 압구정점에서 고객 응대와 주방 업무를 함께할 성실한 직원을 모집합니다.",
+        kitchenPay: "연봉 3,400만 ~ 4,000만원",
+        hallPay: "시급 14,000원",
+        hallPayDesc: "길채정 압구정점 홀 서빙 기준 시급입니다."
+      },
+      {
+        id: "sobagongbang-pyeongchon",
+        name: "소바공방 롯데백화점 평촌점",
+        shortName: "소바공방",
+        location: "경기 안양시 동안구 시민대로 180 롯데백화점 평촌점 7층",
+        jobs: "주방 / 홀 서빙",
+        workType: "스케줄 근무 / 협의 가능",
+        feature: "백화점 내 소바 · 돈까스 전문 매장",
+        desc: "소바공방 롯데백화점 평촌점에서 활기차게 근무할 홀 서빙 및 주방 직원을 모집합니다.",
+        kitchenPay: "연봉 3,400만 ~ 4,000만원",
+        hallPay: "시급 12,500원",
+        hallPayDesc: "소바공방 롯데백화점 평촌점 홀 서빙 기준 시급입니다."
+      }
+    ];
+
+    const storeTabs = document.getElementById("storeTabs");
+    const storeSelect = document.getElementById("storeSelect");
+    const storeTitle = document.getElementById("storeTitle");
+    const storeDesc = document.getElementById("storeDesc");
+    const storeName = document.getElementById("storeName");
+    const storeLocation = document.getElementById("storeLocation");
+    const storeJobs = document.getElementById("storeJobs");
+    const storeType = document.getElementById("storeType");
+    const storeFeature = document.getElementById("storeFeature");
+    const kitchenPay = document.getElementById("kitchenPay");
+    const hallPay = document.getElementById("hallPay");
+    const hallPayDesc = document.getElementById("hallPayDesc");
+    const jobKitchenPay = document.getElementById("jobKitchenPay");
+    const jobHallPay = document.getElementById("jobHallPay");
+    const selectedPayInfo = document.getElementById("selectedPayInfo");
+    const selectedStoreAddress = document.getElementById("selectedStoreAddress");
+
+    const form = document.getElementById("recruitForm");
+    const submitBtn = document.getElementById("submitBtn");
+    const statusMessage = document.getElementById("statusMessage");
+    const applyJob = document.getElementById("applyJob");
+    const applicantSection = document.getElementById("applicantSection");
+
+    const controlledFields = [
+      "name",
+      "birth",
+      "phone",
+      "email",
+      "address",
+      "availableDate",
+      "careerDetail",
+      "selfIntro",
+      "memo"
+    ];
+
+    function renderStoreTabs() {
+      storeTabs.innerHTML = stores.map((store, index) => `
+        <button type="button" class="store-tab ${index === 0 ? "active" : ""}" data-id="${store.id}">
+          <strong>${store.name}</strong>
+          <span>${store.location}</span>
+        </button>
+      `).join("");
+    }
+
+    function renderStoreSelect() {
+      storeSelect.innerHTML = `
+        <option value="">점포를 선택하세요</option>
+        ${stores.map((store, index) => `
+          <option value="${store.id}" ${index === 0 ? "selected" : ""}>${store.name}</option>
+        `).join("")}
+      `;
+    }
+
+    function getSelectedStore() {
+      return stores.find(item => item.id === storeSelect.value) || stores[0];
+    }
+
+    function updatePayInfo() {
+      const store = getSelectedStore();
+      const job = applyJob.value;
+
+      selectedStoreAddress.textContent = store.location;
+
+      if (job === "홀 서빙") {
+        selectedPayInfo.textContent = store.hallPay;
+      } else if (job === "주방") {
+        selectedPayInfo.textContent = store.kitchenPay;
+      } else {
+        selectedPayInfo.textContent = "지원 분야를 선택하면 급여가 표시됩니다.";
+      }
+    }
+
+    function updateStoreInfo(storeId) {
+      const store = stores.find(item => item.id === storeId) || stores[0];
+
+      storeTitle.textContent = store.name;
+      storeDesc.textContent = store.desc;
+      storeName.textContent = store.name;
+      storeLocation.textContent = store.location;
+      storeJobs.textContent = store.jobs;
+      storeType.textContent = store.workType;
+      storeFeature.textContent = store.feature;
+      kitchenPay.textContent = store.kitchenPay;
+      hallPay.textContent = store.hallPay;
+      hallPayDesc.textContent = store.hallPayDesc;
+      jobKitchenPay.textContent = store.kitchenPay;
+      jobHallPay.textContent = store.hallPay;
+      selectedStoreAddress.textContent = store.location;
+      storeSelect.value = store.id;
+
+      document.querySelectorAll(".store-tab").forEach(tab => {
+        tab.classList.toggle("active", tab.dataset.id === store.id);
+      });
+
+      updatePayInfo();
+    }
+
+    function setFieldsEnabled(enabled) {
+      controlledFields.forEach((id) => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        el.disabled = !enabled;
+
+        if (enabled) {
+          if (["name", "birth", "phone", "email"].includes(id)) {
+            el.setAttribute("required", "required");
+          }
+        } else {
+          el.removeAttribute("required");
+        }
+      });
+    }
+
+    function toggleApplicantSection() {
+      if (storeSelect.value && applyJob.value) {
+        applicantSection.classList.add("show");
+        setFieldsEnabled(true);
+      } else {
+        applicantSection.classList.remove("show");
+        setFieldsEnabled(false);
+      }
+      updatePayInfo();
+    }
+
+    storeTabs.addEventListener("click", (e) => {
+      const tab = e.target.closest(".store-tab");
+      if (!tab) return;
+      updateStoreInfo(tab.dataset.id);
+      toggleApplicantSection();
+    });
+
+    storeSelect.addEventListener("change", () => {
+      updateStoreInfo(storeSelect.value);
+      toggleApplicantSection();
+    });
+
+    applyJob.addEventListener("change", toggleApplicantSection);
+
+    form.addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      if (!storeSelect.value) {
+        statusMessage.textContent = "지원 점포를 먼저 선택해 주세요.";
+        return;
+      }
+
+      if (!applyJob.value) {
+        statusMessage.textContent = "지원 분야를 먼저 선택해 주세요.";
+        return;
+      }
+
+      if (!SCRIPT_URL) {
+        statusMessage.textContent = "앱스크립트 URL을 먼저 입력해 주세요.";
+        return;
+      }
+
+      submitBtn.disabled = true;
+      statusMessage.textContent = "제출 중입니다...";
+
+      const selectedStore = getSelectedStore();
+      const formData = new FormData(form);
+      const payload = Object.fromEntries(formData.entries());
+
+      payload.storeName = selectedStore.name;
+      payload.storeLocation = selectedStore.location;
+      payload.selectedPay = applyJob.value === "주방" ? selectedStore.kitchenPay : selectedStore.hallPay;
+
+      try {
+        const response = await fetch(SCRIPT_URL, {
+          method: "POST",
+          mode: "cors",
+          headers: {
+            "Content-Type": "text/plain;charset=utf-8"
+          },
+          body: JSON.stringify(payload)
+        });
+
+        const result = await response.json();
+
+        if (result.result === "success") {
+          statusMessage.textContent = "지원서가 정상 접수되었습니다.";
+          form.reset();
+          renderStoreSelect();
+          updateStoreInfo(stores[0].id);
+          selectedPayInfo.textContent = "지원 분야를 선택하면 급여가 표시됩니다.";
+          applicantSection.classList.remove("show");
+          setFieldsEnabled(false);
+        } else {
+          statusMessage.textContent = result.message || "접수 중 오류가 발생했습니다.";
+        }
+      } catch (error) {
+        statusMessage.textContent = "전송에 실패했습니다. 잠시 후 다시 시도해 주세요.";
+        console.error(error);
+      } finally {
+        submitBtn.disabled = false;
+      }
+    });
+
+    renderStoreTabs();
+    renderStoreSelect();
+    updateStoreInfo(stores[0].id);
+    setFieldsEnabled(false);
+  </script>
+</body>
+</html>

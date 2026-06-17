@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>카페그랑떼 | 더큰코리아</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Noto Sans KR", "Malgun Gothic", sans-serif;
+      background: #f6f2ec;
+      color: #2b2118;
+      line-height: 1.7;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { display: block; max-width: 100%; }
+    .container {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,.96);
+      border-bottom: 1px solid #e8ddcf;
+      backdrop-filter: blur(10px);
+    }
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      padding: 16px 0;
+    }
+    .logo {
+      font-size: 30px;
+      font-weight: 900;
+      color: #6a4826;
+    }
+    .logo small {
+      display: block;
+      font-size: 11px;
+      color: #8a7864;
+      margin-top: 6px;
+    }
+    .menu {
+      display: flex;
+      gap: 22px;
+      font-weight: 700;
+      color: #5a4f43;
+      flex-wrap: wrap;
+    }
+
+    .hero {
+      padding: 90px 0 52px;
+      background:
+        linear-gradient(100deg, rgba(48,30,15,.88), rgba(95,63,34,.68)),
+        url('img8.jpg') center/cover;
+      color: #fff;
+    }
+    .hero-wrap {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 28px;
+      align-items: center;
+    }
+    h1 {
+      margin: 0 0 14px;
+      font-size: 60px;
+      line-height: 1.08;
+    }
+    .hero p {
+      margin: 0 0 18px;
+      color: #f4ece4;
+      font-size: 18px;
+    }
+    .badge {
+      display: inline-block;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.18);
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+    .hero-card {
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: 26px;
+      padding: 26px;
+    }
+    .hero-card h3 {
+      margin: 0 0 12px;
+      font-size: 22px;
+    }
+    .hero-card ul {
+      margin: 0;
+      padding-left: 18px;
+      color: #f6eee6;
+    }
+
+    section {
+      padding: 74px 0;
+    }
+    .section-head h2 {
+      margin: 0 0 10px;
+      font-size: 38px;
+      color: #3f2916;
+    }
+    .section-head p {
+      margin: 0;
+      color: #706458;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 28px;
+    }
+    .card {
+      background: #fff;
+      border: 1px solid #eadfce;
+      border-radius: 28px;
+      padding: 30px;
+    }
+    .card h3 {
+      margin-top: 0;
+      color: #3f2916;
+    }
+    .feature-list {
+      margin: 0;
+      padding-left: 18px;
+      color: #5f5449;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-top: 28px;
+    }
+    .stat {
+      background: #fff;
+      border: 1px solid #eadfce;
+      border-radius: 22px;
+      padding: 22px;
+    }
+    .stat strong {
+      display: block;
+      color: #6b4d2e;
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+    .stat span {
+      color: #6f6458;
+      font-size: 14px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 28px;
+    }
+    .gallery img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 20px;
+    }
+
+    .back {
+      display: inline-block;
+      margin-top: 24px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      background: #6b4d2e;
+      color: #fff;
+      font-weight: 700;
+    }
+
+    footer {
+      text-align: center;
+      color: #807366;
+      padding: 20px 0 40px;
+    }
+
+    @media (max-width: 900px) {
+      .hero-wrap,
+      .grid-2,
+      .stats,
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+      h1 { font-size: 44px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <div class="logo">더큰코리아<small>THE BIG KOREA</small></div>
+    <nav class="menu">
+      <a href="index.html">메인</a>
+      <a href="company.html">회사소개</a>
+      <a href="history.html">연혁</a>
+      <a href="brands.html">브랜드</a>
+      <a href="contact.html">문의</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container hero-wrap">
+    <div>
+      <div class="badge">Lifestyle Cafe Brand</div>
+      <h1>카페그랑떼</h1>
+      <p>카페그랑떼는 다양한 먹거리와 커피를 즐길 수 있는 라이프스타일 카페 브랜드로, 편안한 일상 속에서 자연스럽게 머무를 수 있는 공간형 브랜드입니다.</p>
+      <p>캠퍼스와 생활권 중심 상권에서 운영되며, 커피와 베이커리를 중심으로 누구나 부담 없이 즐길 수 있는 친근한 브랜드 경험을 제공합니다.</p>
+    </div>
+    <div class="hero-card">
+      <h3>브랜드 핵심 포인트</h3>
+      <ul>
+        <li>라이프스타일 카페 브랜드</li>
+        <li>캠퍼스 및 생활권 상권 중심 운영</li>
+        <li>커피·음료·베이커리 중심 구성</li>
+        <li>편안하고 친근한 브랜드 이미지</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-head">
+      <h2>브랜드 소개</h2>
+      <p>카페그랑떼는 일상 속에서 부담 없이 즐길 수 있는 커피와 베이커리, 다양한 간편 먹거리를 통해 생활 밀착형 카페 경험을 제공하는 브랜드입니다.</p>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <h3>브랜드 특징</h3>
+        <ul class="feature-list">
+          <li>커피, 음료, 베이커리 중심의 친근한 메뉴 구성</li>
+          <li>캠퍼스 및 생활권 상권에 적합한 브랜드 포맷</li>
+          <li>편안하고 안정적인 카페 공간 경험 제공</li>
+          <li>일상적 소비와 재방문을 유도하는 구조</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>운영 방향</h3>
+        <p>카페그랑떼는 누구나 편안하게 머무를 수 있는 공간을 지향하며, 일상적 소비와 반복 방문이 가능한 브랜드 운영 구조를 갖추고 있습니다. 더큰코리아는 카페그랑떼를 통해 생활형 카페 시장에서도 경쟁력 있는 포트폴리오를 구축하고 있습니다.</p>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><strong>라이프스타일 카페</strong><span>생활형 카페 브랜드 포지셔닝</span></div>
+      <div class="stat"><strong>캠퍼스 상권</strong><span>학교·생활권 중심 운영</span></div>
+      <div class="stat"><strong>커피·베이커리</strong><span>친근한 메뉴 중심 구성</span></div>
+      <div class="stat"><strong>재방문 구조</strong><span>일상형 소비와 안정적 운영</span></div>
+    </div>
+
+    <div class="section-head" style="margin-top:52px;">
+      <h2>브랜드 이미지</h2>
+      <p>대표 사진 중심으로 카페그랑떼의 브랜드 분위기와 공간 감성을 보여줍니다.</p>
+    </div>
+
+    <div class="gallery">
+      <img src="cafegrande-img1.jpg" alt="카페그랑떼 이미지 1">
+      <img src="cafegrande-img2.jpg" alt="카페그랑떼 이미지 2">
+      <img src="cafegrande-img3.jpg" alt="카페그랑떼 이미지 3">
+    </div>
+
+    <a class="back" href="brands.html">브랜드 목록으로 돌아가기</a>
+  </div>
+</section>
+
+<footer>© THE BIG KOREA</footer>
+
+</body>
+</html>
