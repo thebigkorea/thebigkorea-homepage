@@ -280,11 +280,9 @@
     }
 
     .ceo-wrap {
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 24px;
-      align-items: stretch;
-    }
+       display: grid;
+       grid-template-columns: 1fr;
+     }
 
     .quote-box {
       padding: 22px 24px;
@@ -476,6 +474,32 @@
         padding: 60px 0;
       }
     }
+   .store-slider{
+  position:relative;
+  height:520px;
+  overflow:hidden;
+  border-radius:24px;
+  border:1px solid #eadfce;
+  margin-top:24px;
+  background:#f7f1e9;
+}
+
+.store-slider .store-slide{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  opacity:0;
+  transform:scale(1.04);
+  transition:opacity 1s ease, transform 4s ease;
+}
+
+.store-slider .store-slide.active{
+  opacity:1;
+  transform:scale(1);
+}
+
   </style>
 </head>
 <body>
@@ -597,11 +621,18 @@
                 주식회사 더큰코리아<br>
                 대표이사 박 병 호
               </p>
-            </div>
 
-            <div class="ceo-image">
-              <img src="ceo-photo.jpg" alt="대표이사 박병호">
+              <div class="store-slider">
+  <img src="images/store1.jpg" class="store-slide active" alt="한국의집 롯데월드몰점">
+  <img src="images/store2.jpg" class="store-slide" alt="길채정 압구정 갤러리아">
+  <img src="images/store3.jpg" class="store-slide" alt="효종갱 파주 프리미엄아울렛">
+  <img src="images/store4.jpg" class="store-slide" alt="소바공방 평촌점">
+</div>
+
+
+
             </div>
+            
           </div>
         </div>
       </div>
@@ -665,5 +696,25 @@
   </section>
 
   <footer>© THE BIG KOREA. All Rights Reserved.</footer>
+
+  <script>
+const storeSlides =
+  document.querySelectorAll(".store-slider .store-slide");
+
+let storeSlideIndex = 0;
+
+setInterval(function(){
+  if(!storeSlides.length) return;
+
+  storeSlides[storeSlideIndex].classList.remove("active");
+
+  storeSlideIndex =
+    (storeSlideIndex + 1) % storeSlides.length;
+
+  storeSlides[storeSlideIndex].classList.add("active");
+}, 3000);
+</script>
+
+
 </body>
 </html>
