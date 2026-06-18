@@ -474,31 +474,7 @@
         padding: 60px 0;
       }
     }
-   .store-slider{
-  position:relative;
-  height:520px;
-  overflow:hidden;
-  border-radius:24px;
-  border:1px solid #eadfce;
-  margin-top:24px;
-  background:#f7f1e9;
-}
-
-.store-slider .store-slide{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  opacity:0;
-  transform:scale(1.04);
-  transition:opacity 1s ease, transform 4s ease;
-}
-
-.store-slider .store-slide.active{
-  opacity:1;
-  transform:scale(1);
-}
+ 
 
 @media (max-width:720px){
 
@@ -539,6 +515,14 @@
     padding:9px 4px;
     text-align:center;
   }
+
+  .ceo-wrap{
+  display:block;
+}
+
+.ceo-text{
+  max-width:100%;
+}
 
 }
 
@@ -664,26 +648,7 @@
                 대표이사 박 병 호
               </p>
 
-              <div class="store-slider">
-                <img src="gilchae-img1.jpg"
-                class="store-slide active"
-               alt="길채정 압구정점">
-
-               <img src="gogung-img1.jpg"
-                class="store-slide"
-               alt="고궁 부여점">
-
-              <img src="cafegande-img1.jpg"
-               class="store-slide"
-                alt="카페그랑떼">
-
-              <img src="dosleug-img1.jpg"
-               class="store-slide"
-               alt="도슭">
-             </div>
-
-
-
+              
             </div>
             
           </div>
@@ -751,21 +716,7 @@
   <footer>© THE BIG KOREA. All Rights Reserved.</footer>
 
   <script>
-const storeSlides =
-  document.querySelectorAll(".store-slider .store-slide");
 
-let storeSlideIndex = 0;
-
-setInterval(function(){
-  if(!storeSlides.length) return;
-
-  storeSlides[storeSlideIndex].classList.remove("active");
-
-  storeSlideIndex =
-    (storeSlideIndex + 1) % storeSlides.length;
-
-  storeSlides[storeSlideIndex].classList.add("active");
-}, 3000);
 </script>
 
 
