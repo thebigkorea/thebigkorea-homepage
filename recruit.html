@@ -34,12 +34,13 @@
     }
 
     .nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 24px;
-      padding: 16px 0;
-    }
+  height: 96px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  padding: 0;
+}
 
     .logo img{
       max-height:64px;
@@ -532,6 +533,14 @@
     }
 
     @media (max-width: 720px) {
+
+      .nav{
+        height:auto;
+        padding:16px 0;
+        flex-direction:column;
+        align-items:flex-start;
+      }
+
       .menu {
         gap: 14px;
         font-size: 14px;
