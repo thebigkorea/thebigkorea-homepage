@@ -1,0 +1,82 @@
+/* ==============================
+   공통 상단 메뉴
+============================== */
+
+.site-header {
+  height: 96px;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+}
+
+.header-inner {
+  width: 1240px;
+  height: 100%;
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  text-decoration: none;
+  color: #4a2b16;
+  line-height: 1;
+}
+
+.logo-title {
+  font-size: 30px;
+  font-weight: 900;
+  letter-spacing: -1px;
+}
+
+.logo-sub {
+  margin-top: 7px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #9a7a5a;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 34px;
+}
+
+.nav a {
+  text-decoration: none;
+  color: #3a2a20;
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: -0.4px;
+  white-space: nowrap;
+}
+
+.nav a:hover {
+  color: #9b6a2f;
+}
+
+@media (max-width: 768px) {
+  .site-header {
+    height: auto;
+    padding: 18px 0;
+  }
+
+  .header-inner {
+    width: calc(100% - 32px);
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .nav {
+    width: 100%;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .nav a {
+    font-size: 14px;
+  }
+}
