@@ -3,10 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>더큰코리아 | 경쟁력</title>
 
   <style>
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
     body {
       margin: 0;
@@ -16,7 +19,10 @@
       line-height: 1.7;
     }
 
-    a { color: inherit; text-decoration: none; }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
     .container {
       width: min(1240px, calc(100% - 40px));
@@ -62,12 +68,18 @@
       color: #5a4f43;
     }
 
-    .menu a:hover { color: #8c5e2e; }
+    .menu a:hover {
+      color: #8c5e2e;
+    }
 
     .hero {
       padding: 96px 0 58px;
       background:
-        linear-gradient(90deg, rgba(255,255,255,.78), rgba(255,255,255,.25)),
+        linear-gradient(
+          90deg,
+          rgba(255,255,255,.78),
+          rgba(255,255,255,.25)
+        ),
         url("strength-hero.jpg") center center / cover no-repeat;
     }
 
@@ -86,7 +98,9 @@
       font-weight: 600;
     }
 
-    section { padding: 72px 0; }
+    section {
+      padding: 72px 0;
+    }
 
     .section-head h2 {
       margin: 0 0 10px;
@@ -115,26 +129,56 @@
       overflow: hidden;
     }
 
-    .summary-box { padding: 24px 22px; }
+    .summary-box {
+      padding: 24px 22px;
+    }
 
     .summary-box::before,
     .strength-card::before {
       content: "";
       position: absolute;
-      top: 0; left: 0; right: 0;
+      top: 0;
+      left: 0;
+      right: 0;
       height: 6px;
       background: #c9964f;
     }
 
-    .summary-box:nth-child(1){ background:#fff4e5; border-color:#e7c89c; }
-    .summary-box:nth-child(2){ background:#edf8ed; border-color:#b7d7b7; }
-    .summary-box:nth-child(3){ background:#edf4ff; border-color:#b8cde8; }
-    .summary-box:nth-child(4){ background:#fff0f0; border-color:#e7c3c3; }
+    .summary-box:nth-child(1) {
+      background:#fff4e5;
+      border-color:#e7c89c;
+    }
 
-    .summary-box:nth-child(1)::before{ background:#c9964f; }
-    .summary-box:nth-child(2)::before{ background:#7fa87f; }
-    .summary-box:nth-child(3)::before{ background:#6f9ed6; }
-    .summary-box:nth-child(4)::before{ background:#d89a9a; }
+    .summary-box:nth-child(2) {
+      background:#edf8ed;
+      border-color:#b7d7b7;
+    }
+
+    .summary-box:nth-child(3) {
+      background:#edf4ff;
+      border-color:#b8cde8;
+    }
+
+    .summary-box:nth-child(4) {
+      background:#fff0f0;
+      border-color:#e7c3c3;
+    }
+
+    .summary-box:nth-child(1)::before {
+      background:#c9964f;
+    }
+
+    .summary-box:nth-child(2)::before {
+      background:#7fa87f;
+    }
+
+    .summary-box:nth-child(3)::before {
+      background:#6f9ed6;
+    }
+
+    .summary-box:nth-child(4)::before {
+      background:#d89a9a;
+    }
 
     .summary-box strong {
       display: block;
@@ -181,7 +225,9 @@
       min-height: 650px;
       border-radius: 32px;
       border: 1px solid #eadfce;
-      background: linear-gradient(180deg,#ffffff,#fbf7f1);
+      background:
+        radial-gradient(circle at 50% 20%, rgba(216,170,104,.16), transparent 28%),
+        linear-gradient(180deg,#ffffff,#fbf7f1);
       box-shadow: 0 16px 38px rgba(53,35,17,.08);
       overflow: hidden;
     }
@@ -190,13 +236,14 @@
       position: absolute;
       top: 28px;
       left: 28px;
-      z-index: 3;
+      z-index: 4;
     }
 
     .map-title strong {
       display: block;
       font-size: 22px;
       color: #3f2916;
+      line-height: 1.2;
     }
 
     .map-title span {
@@ -206,37 +253,29 @@
       font-size: 13px;
     }
 
-    .map-svg {
+    .korea-map-img {
       position: absolute;
       left: 50%;
-      top: 53%;
+      top: 54%;
       width: 390px;
       max-width: 58%;
       transform: translate(-50%, -50%);
+      opacity: .96;
       filter: drop-shadow(0 18px 30px rgba(53,35,17,.12));
-    }
-
-    .map-svg path {
-      fill: #eadcc8;
-      stroke: #cfa66f;
-      stroke-width: 2;
-    }
-
-    .map-svg .island {
-      fill: #f3e8d9;
-      stroke: #d5b98e;
-      stroke-width: 1.5;
+      z-index: 1;
     }
 
     .pin {
       position: absolute;
-      z-index: 4;
+      z-index: 5;
       min-width: 126px;
       background: rgba(255,255,255,.96);
       border: 1px solid #dfc8aa;
       border-radius: 16px;
       padding: 10px 12px 10px 32px;
       box-shadow: 0 10px 24px rgba(53,35,17,.14);
+      backdrop-filter: blur(3px);
+      -webkit-backdrop-filter: blur(3px);
     }
 
     .pin span {
@@ -266,21 +305,74 @@
       line-height: 1.35;
     }
 
-    .pin.seoul{ left:54%; top:13%; }
-    .pin.paju{ left:32%; top:15%; }
-    .pin.siheung{ left:24%; top:26%; }
-    .pin.uiwang{ left:39%; top:27%; }
-    .pin.pyeongchon{ left:58%; top:27%; }
-    .pin.dongtan{ left:47%; top:39%; }
-    .pin.yeoju{ left:62%; top:43%; }
-    .pin.daejeon{ left:34%; top:56%; }
-    .pin.buyeo{ left:48%; top:66%; }
-    .pin.busan{ left:61%; top:82%; }
+    .pin.seoul {
+      left: 54%;
+      top: 15%;
+    }
+
+    .pin.paju {
+      left: 31%;
+      top: 16%;
+    }
+
+    .pin.siheung {
+      left: 22%;
+      top: 29%;
+    }
+
+    .pin.uiwang {
+      left: 39%;
+      top: 29%;
+    }
+
+    .pin.pyeongchon {
+      left: 58%;
+      top: 29%;
+    }
+
+    .pin.dongtan {
+      left: 47%;
+      top: 40%;
+    }
+
+    .pin.yeoju {
+      left: 62%;
+      top: 44%;
+    }
+
+    .pin.daejeon {
+      left: 34%;
+      top: 57%;
+    }
+
+    .pin.buyeo {
+      left: 49%;
+      top: 68%;
+    }
+
+    .pin.busan {
+      left: 60%;
+      top: 83%;
+    }
 
     @keyframes pulsePin {
-      0% { box-shadow: 0 0 0 0 rgba(199,131,50,.55), 0 0 0 0 rgba(199,131,50,.25); }
-      70% { box-shadow: 0 0 0 10px rgba(199,131,50,0), 0 0 0 18px rgba(199,131,50,0); }
-      100% { box-shadow: 0 0 0 0 rgba(199,131,50,0), 0 0 0 0 rgba(199,131,50,0); }
+      0% {
+        box-shadow:
+          0 0 0 0 rgba(199,131,50,.55),
+          0 0 0 0 rgba(199,131,50,.25);
+      }
+
+      70% {
+        box-shadow:
+          0 0 0 10px rgba(199,131,50,0),
+          0 0 0 18px rgba(199,131,50,0);
+      }
+
+      100% {
+        box-shadow:
+          0 0 0 0 rgba(199,131,50,0),
+          0 0 0 0 rgba(199,131,50,0);
+      }
     }
 
     .strength-grid {
@@ -290,21 +382,63 @@
       margin-top: 34px;
     }
 
-    .strength-card { padding: 30px 28px 28px; }
+    .strength-card {
+      padding: 30px 28px 28px;
+    }
 
-    .strength-card:nth-child(1){ background:#fff8f0; border-color:#e7c89c; }
-    .strength-card:nth-child(2){ background:#f7fbf7; border-color:#b7d7b7; }
-    .strength-card:nth-child(3){ background:#f5f8fc; border-color:#b8cde8; }
-    .strength-card:nth-child(4){ background:#fff7f7; border-color:#e7c3c3; }
-    .strength-card:nth-child(5){ background:#f8f6ff; border-color:#c8c0e8; }
-    .strength-card:nth-child(6){ background:#f6fbfb; border-color:#b8dede; }
+    .strength-card:nth-child(1) {
+      background:#fff8f0;
+      border-color:#e7c89c;
+    }
 
-    .strength-card:nth-child(1)::before{ background:#c9964f; }
-    .strength-card:nth-child(2)::before{ background:#7fa87f; }
-    .strength-card:nth-child(3)::before{ background:#6f9ed6; }
-    .strength-card:nth-child(4)::before{ background:#d89a9a; }
-    .strength-card:nth-child(5)::before{ background:#9b8ad6; }
-    .strength-card:nth-child(6)::before{ background:#6fb5b5; }
+    .strength-card:nth-child(2) {
+      background:#f7fbf7;
+      border-color:#b7d7b7;
+    }
+
+    .strength-card:nth-child(3) {
+      background:#f5f8fc;
+      border-color:#b8cde8;
+    }
+
+    .strength-card:nth-child(4) {
+      background:#fff7f7;
+      border-color:#e7c3c3;
+    }
+
+    .strength-card:nth-child(5) {
+      background:#f8f6ff;
+      border-color:#c8c0e8;
+    }
+
+    .strength-card:nth-child(6) {
+      background:#f6fbfb;
+      border-color:#b8dede;
+    }
+
+    .strength-card:nth-child(1)::before {
+      background:#c9964f;
+    }
+
+    .strength-card:nth-child(2)::before {
+      background:#7fa87f;
+    }
+
+    .strength-card:nth-child(3)::before {
+      background:#6f9ed6;
+    }
+
+    .strength-card:nth-child(4)::before {
+      background:#d89a9a;
+    }
+
+    .strength-card:nth-child(5)::before {
+      background:#9b8ad6;
+    }
+
+    .strength-card:nth-child(6)::before {
+      background:#6fb5b5;
+    }
 
     .strength-card h3 {
       margin: 0 0 12px;
@@ -363,14 +497,28 @@
 
     @media (max-width: 980px) {
       .summary-row,
-      .strength-grid { grid-template-columns: repeat(2, 1fr); }
-      .map-section { grid-template-columns: 1fr; }
-      .korea-map { min-height: 650px; }
-      .map-svg { width: 360px; max-width: 62%; }
+      .strength-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .map-section {
+        grid-template-columns: 1fr;
+      }
+
+      .korea-map {
+        min-height: 650px;
+      }
+
+      .korea-map-img {
+        width: 360px;
+        max-width: 62%;
+      }
     }
 
-    @media (max-width:720px) {
-      .container { width: calc(100% - 28px); }
+    @media (max-width: 720px) {
+      .container {
+        width: calc(100% - 28px);
+      }
 
       .nav {
         height: auto;
@@ -380,7 +528,9 @@
         gap: 12px;
       }
 
-      .logo img { max-height: 50px; }
+      .logo img {
+        max-height: 50px;
+      }
 
       .logo small {
         font-size: 10px;
@@ -404,12 +554,18 @@
         text-align:center;
       }
 
-      .hero { padding: 64px 0 42px; }
+      .hero {
+        padding: 64px 0 42px;
+      }
 
       .summary-row,
-      .strength-grid { grid-template-columns: 1fr; }
+      .strength-grid {
+        grid-template-columns: 1fr;
+      }
 
-      .korea-map { min-height: 760px; }
+      .korea-map {
+        min-height: 780px;
+      }
 
       .map-title {
         position: relative;
@@ -418,7 +574,7 @@
         padding: 22px 22px 0;
       }
 
-      .map-svg {
+      .korea-map-img {
         top: 45%;
         width: 260px;
         max-width: 72%;
@@ -429,60 +585,24 @@
         padding: 8px 10px 8px 28px;
       }
 
-     .store-region-grid{
-  padding:100px 32px 32px;
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:18px;
-}
+      .pin strong {
+        font-size: 14px;
+      }
 
-.region-card{
-  position:relative;
-  background:#fff;
-  border:1px solid #eadfce;
-  border-radius:20px;
-  padding:22px 22px 22px 48px;
-  box-shadow:0 10px 24px rgba(53,35,17,.08);
-}
+      .pin em {
+        font-size: 10px;
+      }
 
-.region-card .dot{
-  position:absolute;
-  left:22px;
-  top:28px;
-  width:12px;
-  height:12px;
-  background:#c78332;
-  border-radius:50%;
-  animation:pulsePin 1.4s infinite;
-}
-
-.region-card strong{
-  display:block;
-  font-size:22px;
-  color:#3f2916;
-  margin-bottom:6px;
-}
-
-.region-card p{
-  margin:0;
-  color:#6f6458;
-  font-size:14px;
-}
-
-
-      .pin strong { font-size: 14px; }
-      .pin em { font-size: 10px; }
-
-      .pin.seoul{ left:48%; top:17%; }
-      .pin.paju{ left:8%; top:21%; }
-      .pin.siheung{ left:6%; top:31%; }
-      .pin.uiwang{ left:30%; top:31%; }
-      .pin.pyeongchon{ left:56%; top:31%; }
-      .pin.dongtan{ left:40%; top:42%; }
-      .pin.yeoju{ left:57%; top:48%; }
-      .pin.daejeon{ left:16%; top:58%; }
-      .pin.buyeo{ left:43%; top:66%; }
-      .pin.busan{ left:50%; top:81%; }
+      .pin.seoul { left: 48%; top: 17%; }
+      .pin.paju { left: 8%; top: 21%; }
+      .pin.siheung { left: 6%; top: 31%; }
+      .pin.uiwang { left: 30%; top: 31%; }
+      .pin.pyeongchon { left: 56%; top: 31%; }
+      .pin.dongtan { left: 40%; top: 42%; }
+      .pin.yeoju { left: 57%; top: 48%; }
+      .pin.daejeon { left: 16%; top: 58%; }
+      .pin.buyeo { left: 43%; top: 66%; }
+      .pin.busan { left: 50%; top: 81%; }
     }
   </style>
 </head>
@@ -530,14 +650,17 @@
           <strong>전국 백화점 상권형</strong>
           <span>롯데·신세계·갤러리아 중심 입점 경험</span>
         </div>
+
         <div class="summary-box">
           <strong>8개 브랜드</strong>
           <span>전통 한식부터 카페까지 다층적 운영</span>
         </div>
+
         <div class="summary-box">
           <strong>스토리 기반</strong>
           <span>효종갱·궁중다과·궁중도시락 등 차별화</span>
         </div>
+
         <div class="summary-box">
           <strong>확장 가능성</strong>
           <span>상권별 맞춤 포맷 운영 역량</span>
@@ -554,60 +677,79 @@
           </p>
         </div>
 
-        <div class="korea-map store-list-map">
+        <div class="korea-map">
+          <div class="map-title">
+            <strong>THE BIG KOREA STORE MAP</strong>
+            <span>전국 주요 점포 및 운영 거점</span>
+          </div>
 
-  <div class="map-title">
-    <strong>THE BIG KOREA STORE MAP</strong>
-    <span>전국 주요 점포 및 운영 거점</span>
-  </div>
+          <img
+  class="korea-map-img"
+  src="korea-map.png"
+  alt="더큰코리아 전국 점포 지도"
+>
 
-  <div class="store-region-grid">
+          <div class="pin seoul">
+            <span></span>
+            <strong>서울</strong>
+            <em>잠실 · 압구정</em>
+          </div>
 
-    <div class="region-card">
-      <span class="dot"></span>
-      <strong>서울</strong>
-      <p>한국의집 · 고호재 · 길채정 압구정</p>
-    </div>
+          <div class="pin paju">
+            <span></span>
+            <strong>파주</strong>
+            <em>신세계 파주</em>
+          </div>
 
-    <div class="region-card">
-      <span class="dot"></span>
-      <strong>경기권</strong>
-      <p>
-        파주 효종갱 · 동탄 효종갱 ·
-        의왕 효종갱 · 평촌 소바공방 ·
-        시흥 소바공방 · 여주 소바공방
-      </p>
-    </div>
+          <div class="pin siheung">
+            <span></span>
+            <strong>시흥</strong>
+            <em>신세계 시흥</em>
+          </div>
 
-    <div class="region-card">
-      <span class="dot"></span>
-      <strong>대전</strong>
-      <p>
-        더큰코리아 본사 ·
-        길채정 갤러리아타임월드점
-      </p>
-    </div>
+          <div class="pin uiwang">
+            <span></span>
+            <strong>의왕</strong>
+            <em>타임빌라스</em>
+          </div>
 
-    <div class="region-card">
-      <span class="dot"></span>
-      <strong>충남 부여</strong>
-      <p>
-        고궁 · 소바공방 ·
-        카페그랑떼
-      </p>
-    </div>
+          <div class="pin pyeongchon">
+            <span></span>
+            <strong>평촌</strong>
+            <em>롯데 평촌</em>
+          </div>
 
-    <div class="region-card">
-      <span class="dot"></span>
-      <strong>부산</strong>
-      <p>
-        상궁전 센텀시티점
-      </p>
-    </div>
+          <div class="pin dongtan">
+            <span></span>
+            <strong>동탄</strong>
+            <em>롯데 동탄</em>
+          </div>
 
-  </div>
+          <div class="pin yeoju">
+            <span></span>
+            <strong>여주</strong>
+            <em>신세계 여주</em>
+          </div>
 
-</div>
+          <div class="pin daejeon">
+            <span></span>
+            <strong>대전</strong>
+            <em>본사 · 길채정 타임월드</em>
+          </div>
+
+          <div class="pin buyeo">
+            <span></span>
+            <strong>부여</strong>
+            <em>롯데부여아울렛</em>
+          </div>
+
+          <div class="pin busan">
+            <span></span>
+            <strong>부산</strong>
+            <em>센텀시티</em>
+          </div>
+        </div>
+      </div>
 
       <div class="strength-grid">
         <div class="strength-card">
