@@ -429,6 +429,47 @@
         padding: 8px 10px 8px 28px;
       }
 
+     .store-region-grid{
+  padding:100px 32px 32px;
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:18px;
+}
+
+.region-card{
+  position:relative;
+  background:#fff;
+  border:1px solid #eadfce;
+  border-radius:20px;
+  padding:22px 22px 22px 48px;
+  box-shadow:0 10px 24px rgba(53,35,17,.08);
+}
+
+.region-card .dot{
+  position:absolute;
+  left:22px;
+  top:28px;
+  width:12px;
+  height:12px;
+  background:#c78332;
+  border-radius:50%;
+  animation:pulsePin 1.4s infinite;
+}
+
+.region-card strong{
+  display:block;
+  font-size:22px;
+  color:#3f2916;
+  margin-bottom:6px;
+}
+
+.region-card p{
+  margin:0;
+  color:#6f6458;
+  font-size:14px;
+}
+
+
       .pin strong { font-size: 14px; }
       .pin em { font-size: 10px; }
 
@@ -513,29 +554,60 @@
           </p>
         </div>
 
-        <div class="korea-map">
-          <div class="map-title">
-            <strong>THE BIG KOREA STORE MAP</strong>
-            <span>전국 주요 점포 및 운영 거점</span>
-          </div>
+        <div class="korea-map store-list-map">
 
-          <svg class="map-svg" viewBox="0 0 360 520" aria-label="대한민국 지도" role="img">
-            <path d="M185 12 C218 24 240 52 244 82 C248 112 231 132 236 158 C242 189 276 209 266 242 C258 272 231 288 236 322 C242 365 221 405 198 444 C184 467 170 494 145 508 C133 487 124 466 111 443 C93 411 76 381 82 346 C88 314 62 291 70 258 C77 228 103 211 96 181 C90 153 73 128 85 100 C98 69 124 53 143 32 C155 20 168 12 185 12 Z" />
-            <path class="island" d="M278 392 C301 388 322 401 327 420 C333 443 312 462 285 458 C262 455 247 438 252 419 C256 404 263 396 278 392 Z" />
-          </svg>
+  <div class="map-title">
+    <strong>THE BIG KOREA STORE MAP</strong>
+    <span>전국 주요 점포 및 운영 거점</span>
+  </div>
 
-          <div class="pin seoul"><span></span><strong>서울</strong><em>잠실 · 압구정</em></div>
-          <div class="pin paju"><span></span><strong>파주</strong><em>신세계 파주</em></div>
-          <div class="pin siheung"><span></span><strong>시흥</strong><em>신세계 시흥</em></div>
-          <div class="pin uiwang"><span></span><strong>의왕</strong><em>타임빌라스</em></div>
-          <div class="pin pyeongchon"><span></span><strong>평촌</strong><em>롯데 평촌</em></div>
-          <div class="pin dongtan"><span></span><strong>동탄</strong><em>롯데 동탄</em></div>
-          <div class="pin yeoju"><span></span><strong>여주</strong><em>신세계 여주</em></div>
-          <div class="pin daejeon"><span></span><strong>대전</strong><em>본사 · 길채정 타임월드</em></div>
-          <div class="pin buyeo"><span></span><strong>부여</strong><em>롯데부여아울렛</em></div>
-          <div class="pin busan"><span></span><strong>부산</strong><em>센텀시티</em></div>
-        </div>
-      </div>
+  <div class="store-region-grid">
+
+    <div class="region-card">
+      <span class="dot"></span>
+      <strong>서울</strong>
+      <p>한국의집 · 고호재 · 길채정 압구정</p>
+    </div>
+
+    <div class="region-card">
+      <span class="dot"></span>
+      <strong>경기권</strong>
+      <p>
+        파주 효종갱 · 동탄 효종갱 ·
+        의왕 효종갱 · 평촌 소바공방 ·
+        시흥 소바공방 · 여주 소바공방
+      </p>
+    </div>
+
+    <div class="region-card">
+      <span class="dot"></span>
+      <strong>대전</strong>
+      <p>
+        더큰코리아 본사 ·
+        길채정 갤러리아타임월드점
+      </p>
+    </div>
+
+    <div class="region-card">
+      <span class="dot"></span>
+      <strong>충남 부여</strong>
+      <p>
+        고궁 · 소바공방 ·
+        카페그랑떼
+      </p>
+    </div>
+
+    <div class="region-card">
+      <span class="dot"></span>
+      <strong>부산</strong>
+      <p>
+        상궁전 센텀시티점
+      </p>
+    </div>
+
+  </div>
+
+</div>
 
       <div class="strength-grid">
         <div class="strength-card">
