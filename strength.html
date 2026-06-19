@@ -6,6 +6,7 @@
   <title>더큰코리아 | 경쟁력</title>
   <style>
     * { box-sizing: border-box; }
+
     body {
       margin: 0;
       font-family: "Noto Sans KR", "Malgun Gothic", sans-serif;
@@ -13,11 +14,14 @@
       color: #2b2118;
       line-height: 1.7;
     }
+
     a { color: inherit; text-decoration: none; }
+
     .container {
-  width: min(1240px, calc(100% - 40px));
-  margin: 0 auto;
-}
+      width: min(1240px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
     header {
       position: sticky;
       top: 0;
@@ -26,22 +30,21 @@
       border-bottom: 1px solid #e8ddcf;
       backdrop-filter: blur(10px);
     }
-    .nav {
-  height: 96px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 24px;
-  padding: 0;
-}
 
-    
+    .nav {
+      height: 96px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      padding: 0;
+    }
+
     .logo img {
       max-height: 64px;
       width: auto;
       display: block;
     }
-
 
     .logo small {
       display: block;
@@ -50,6 +53,7 @@
       color: #8a7864;
       margin-top: 6px;
     }
+
     .menu {
       display: flex;
       gap: 22px;
@@ -58,18 +62,22 @@
       color: #5a4f43;
     }
 
-    .hero {
-      padding: 88px 0 44px;
-      background:
-        linear-gradient(100deg, rgba(48,30,15,.9), rgba(95,63,34,.72)),
-        url('https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1800&q=80') center/cover;
-      color: #fff;
+    .menu a:hover {
+      color: #8c5e2e;
     }
+
+    .hero{
+  padding:96px 0 58px;
+  background:
+    url("strength-hero.jpg")
+    center center / cover no-repeat;
+}
     h1 {
       margin: 0 0 12px;
-      font-size: 56px;
+      font-size: clamp(42px, 5vw, 64px);
       line-height: 1.1;
     }
+
     .hero p {
       max-width: 860px;
       margin: 0;
@@ -80,42 +88,16 @@
     section {
       padding: 72px 0;
     }
+
     .section-head h2 {
       margin: 0 0 10px;
       font-size: 38px;
       color: #3f2916;
     }
+
     .section-head p {
       margin: 0;
       color: #706458;
-    }
-
-    .strength-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 22px;
-      margin-top: 30px;
-    }
-    .strength-card {
-      background: #fff;
-      border: 1px solid #eadfce;
-      border-radius: 26px;
-      padding: 28px;
-      box-shadow: 0 12px 30px rgba(53,35,17,.05);
-    }
-    .strength-card h3 {
-      margin: 0 0 12px;
-      font-size: 24px;
-      color: #4a311c;
-    }
-    .strength-card p {
-      margin: 0 0 12px;
-      color: #6f6458;
-    }
-    .strength-card ul {
-      margin: 0;
-      padding-left: 18px;
-      color: #5f5449;
     }
 
     .summary-row {
@@ -124,37 +106,209 @@
       gap: 18px;
       margin-top: 30px;
     }
+
     .summary-box {
-      background: #fff;
+      position: relative;
       border: 1px solid #eadfce;
       border-radius: 22px;
-      padding: 22px;
+      padding: 24px 22px;
       box-shadow: 0 12px 28px rgba(0,0,0,.05);
+      overflow: hidden;
     }
+
+    .summary-box::before,
+    .strength-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 6px;
+      background: #c9964f;
+    }
+
+    .summary-box:nth-child(1){ background:#fff4e5; border-color:#e7c89c; }
+    .summary-box:nth-child(2){ background:#edf8ed; border-color:#b7d7b7; }
+    .summary-box:nth-child(3){ background:#edf4ff; border-color:#b8cde8; }
+    .summary-box:nth-child(4){ background:#fff0f0; border-color:#e7c3c3; }
+
+    .summary-box:nth-child(1)::before{ background:#c9964f; }
+    .summary-box:nth-child(2)::before{ background:#7fa87f; }
+    .summary-box:nth-child(3)::before{ background:#6f9ed6; }
+    .summary-box:nth-child(4)::before{ background:#d89a9a; }
+
     .summary-box strong {
       display: block;
-      color: #6b4d2e;
+      color: #5b3a1c;
       font-size: 24px;
       margin-bottom: 8px;
+      line-height: 1.25;
     }
+
     .summary-box span {
       color: #6f6458;
       font-size: 14px;
     }
 
+    .map-section{
+      margin-top:34px;
+      display:grid;
+      grid-template-columns:.8fr 1.2fr;
+      gap:24px;
+      align-items:center;
+    }
+
+    .map-copy{
+      background:#fff;
+      border:1px solid #eadfce;
+      border-radius:28px;
+      padding:30px;
+      box-shadow:0 12px 30px rgba(53,35,17,.05);
+    }
+
+    .map-copy h3{
+      margin:0 0 12px;
+      font-size:28px;
+      color:#3f2916;
+    }
+
+    .map-copy p{
+      margin:0;
+      color:#6f6458;
+    }
+
+    .korea-map{
+      position:relative;
+      min-height:430px;
+      border-radius:32px;
+      border:1px solid #eadfce;
+      background:
+        radial-gradient(circle at 50% 20%, rgba(216,170,104,.18), transparent 25%),
+        linear-gradient(180deg,#ffffff,#fbf7f1);
+      box-shadow:0 16px 38px rgba(53,35,17,.08);
+      overflow:hidden;
+    }
+
+    .korea-map::before{
+      content:"";
+      position:absolute;
+      left:50%;
+      top:50%;
+      width:210px;
+      height:330px;
+      transform:translate(-50%,-50%) rotate(8deg);
+      background:#efe3d4;
+      border:2px solid #d7b98e;
+      border-radius:48% 52% 44% 56% / 34% 42% 58% 66%;
+      box-shadow:inset 0 0 0 12px rgba(255,255,255,.35);
+    }
+
+    .pin{
+      position:absolute;
+      z-index:2;
+      width:170px;
+      background:rgba(255,255,255,.94);
+      border:1px solid #e4d3bd;
+      border-radius:18px;
+      padding:12px 14px 12px 34px;
+      box-shadow:0 10px 24px rgba(53,35,17,.12);
+    }
+
+    .pin span{
+      position:absolute;
+      left:12px;
+      top:17px;
+      width:12px;
+      height:12px;
+      background:#b87932;
+      border-radius:50%;
+      box-shadow:0 0 0 6px rgba(184,121,50,.18);
+    }
+
+    .pin strong{
+      display:block;
+      color:#3f2916;
+      font-size:17px;
+      line-height:1.2;
+    }
+
+    .pin em{
+      display:block;
+      margin-top:4px;
+      font-style:normal;
+      color:#6f6458;
+      font-size:12px;
+      line-height:1.4;
+    }
+
+    .pin.seoul{ left:50%; top:22%; }
+    .pin.gyeonggi{ left:58%; top:39%; }
+    .pin.daejeon{ left:36%; top:55%; }
+    .pin.buyeo{ left:48%; top:69%; }
+
+    .strength-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+      margin-top: 34px;
+    }
+
+    .strength-card {
+      position: relative;
+      border: 1px solid #eadfce;
+      border-radius: 26px;
+      padding: 30px 28px 28px;
+      box-shadow: 0 12px 30px rgba(53,35,17,.05);
+      overflow: hidden;
+    }
+
+    .strength-card:nth-child(1){ background:#fff8f0; border-color:#e7c89c; }
+    .strength-card:nth-child(2){ background:#f7fbf7; border-color:#b7d7b7; }
+    .strength-card:nth-child(3){ background:#f5f8fc; border-color:#b8cde8; }
+    .strength-card:nth-child(4){ background:#fff7f7; border-color:#e7c3c3; }
+    .strength-card:nth-child(5){ background:#f8f6ff; border-color:#c8c0e8; }
+    .strength-card:nth-child(6){ background:#f6fbfb; border-color:#b8dede; }
+
+    .strength-card:nth-child(1)::before{ background:#c9964f; }
+    .strength-card:nth-child(2)::before{ background:#7fa87f; }
+    .strength-card:nth-child(3)::before{ background:#6f9ed6; }
+    .strength-card:nth-child(4)::before{ background:#d89a9a; }
+    .strength-card:nth-child(5)::before{ background:#9b8ad6; }
+    .strength-card:nth-child(6)::before{ background:#6fb5b5; }
+
+    .strength-card h3 {
+      margin: 0 0 12px;
+      font-size: 24px;
+      color: #4a311c;
+    }
+
+    .strength-card p {
+      margin: 0 0 12px;
+      color: #6f6458;
+    }
+
+    .strength-card ul {
+      margin: 0;
+      padding-left: 18px;
+      color: #5f5449;
+    }
+
     .highlight-box {
       margin-top: 34px;
-      background: #fff;
-      border: 1px solid #eadfce;
+      background:
+        linear-gradient(135deg, #fffaf3, #ffffff);
+      border: 1px solid #e7c89c;
       border-radius: 28px;
       padding: 30px;
       box-shadow: 0 12px 30px rgba(53,35,17,.05);
     }
+
     .highlight-box h3 {
       margin: 0 0 14px;
       color: #3f2916;
       font-size: 26px;
     }
+
     .highlight-box p {
       margin: 0;
       color: #6f6458;
@@ -163,11 +317,12 @@
     .back {
       display: inline-block;
       margin-top: 26px;
-      padding: 12px 18px;
+      padding: 13px 22px;
       border-radius: 999px;
-      background: #6b4d2e;
+      background: linear-gradient(135deg, #8b5a2b, #c9964f);
       color: #fff;
-      font-weight: 700;
+      font-weight: 800;
+      box-shadow: 0 10px 24px rgba(91,55,25,.20);
     }
 
     footer {
@@ -179,69 +334,80 @@
 
     @media (max-width: 980px) {
       .strength-grid,
-      .summary-row {
+      .summary-row,
+      .map-section {
         grid-template-columns: 1fr 1fr;
       }
+
+      .summary-row {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
       h1 { font-size: 42px; }
     }
 
-    @media (max-width: 720px) {
+    @media (max-width:720px){
+      .container{
+        width:calc(100% - 28px);
+      }
 
-  .nav{
-    height:auto;
-    padding:16px 0;
-    flex-direction:column;
-    align-items:flex-start;
-  }
+      .nav{
+        height:auto;
+        flex-direction:column;
+        align-items:flex-start;
+        padding:14px 0;
+        gap:12px;
+      }
 
-  .strength-grid,
-  .summary-row{
-    grid-template-columns:1fr;
-  }
+      .logo img{
+        max-height:50px;
+      }
 
-}
+      .logo small{
+        font-size:10px;
+        line-height:1.25;
+        letter-spacing:1px;
+      }
 
-@media (max-width:720px){
+      .menu{
+        width:100%;
+        display:grid;
+        grid-template-columns:repeat(3, 1fr);
+        gap:8px;
+        font-size:13px;
+      }
 
-  .container{
-    width:calc(100% - 28px);
-  }
+      .menu a{
+        background:#fffaf2;
+        border:1px solid #eadfce;
+        border-radius:12px;
+        padding:9px 4px;
+        text-align:center;
+      }
 
-  .nav{
-    height:auto;
-    flex-direction:column;
-    align-items:flex-start;
-    padding:14px 0;
-    gap:12px;
-  }
+      .hero{
+        padding:64px 0 42px;
+      }
 
-  .logo img{
-    max-height:50px;
-  }
+      .strength-grid,
+      .summary-row,
+      .map-section{
+        grid-template-columns:1fr;
+      }
 
-  .logo small{
-    font-size:10px;
-    line-height:1.25;
-    letter-spacing:1px;
-  }
+      .korea-map{
+        min-height:520px;
+      }
 
-  .menu{
-    width:100%;
-    display:grid;
-    grid-template-columns:repeat(3, 1fr);
-    gap:8px;
-    font-size:13px;
-  }
+      .pin{
+        width:145px;
+      }
 
-  .menu a{
-    background:#fffaf2;
-    border:1px solid #eadfce;
-    border-radius:12px;
-    padding:9px 4px;
-    text-align:center;
-  }
-
-}
+      .pin.seoul{ left:45%; top:18%; }
+      .pin.gyeonggi{ left:50%; top:34%; }
+      .pin.daejeon{ left:18%; top:52%; }
+      .pin.buyeo{ left:40%; top:70%; }
+    }
   </style>
 </head>
 <body>
@@ -268,7 +434,7 @@
     <div class="container">
       <h1>Operational & Brand Strength</h1>
       <p>
-        더큰코리아는 전통의 본질을 지키면서도 백화점과 프리미엄 상권에 맞는 브랜드 운영 역량을 갖춘 F&B 기업입니다.
+        더큰코리아는 전통의 본질을 지키면서도 백화점과 프리미엄 상권에 맞는 브랜드 운영 역량을 갖춘 F&amp;B 기업입니다.
         브랜드 기획, 공간 경험, 상권 적응력, 포맷 다양성에서 경쟁력을 확보하고 있습니다.
       </p>
     </div>
@@ -297,6 +463,42 @@
         <div class="summary-box">
           <strong>확장 가능성</strong>
           <span>상권별 맞춤 포맷 운영 역량</span>
+        </div>
+      </div>
+
+      <div class="map-section">
+        <div class="map-copy">
+          <h3>전국 주요 상권 입점 현황</h3>
+          <p>
+            더큰코리아는 서울, 경기, 대전, 충청권을 중심으로 백화점·아울렛·복합상업시설 상권에서
+            브랜드 운영 경험을 축적하고 있습니다.
+          </p>
+        </div>
+
+        <div class="korea-map">
+          <div class="pin seoul">
+            <span></span>
+            <strong>서울</strong>
+            <em>롯데월드몰 · 갤러리아 압구정</em>
+          </div>
+
+          <div class="pin gyeonggi">
+            <span></span>
+            <strong>경기</strong>
+            <em>롯데 평촌 · 신세계 파주</em>
+          </div>
+
+          <div class="pin daejeon">
+            <span></span>
+            <strong>대전</strong>
+            <em>본사</em>
+          </div>
+
+          <div class="pin buyeo">
+            <span></span>
+            <strong>부여</strong>
+            <em>롯데부여아울렛</em>
+          </div>
         </div>
       </div>
 
