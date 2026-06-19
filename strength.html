@@ -265,97 +265,55 @@
   z-index:1;
 }
 
-    .pin {
-      position: absolute;
-      z-index: 5;
-      min-width: 126px;
-      background: rgba(255,255,255,.96);
-      border: 1px solid #dfc8aa;
-      border-radius: 16px;
-      padding: 10px 12px 10px 32px;
-      box-shadow: 0 10px 24px rgba(53,35,17,.14);
-      backdrop-filter: blur(3px);
-      -webkit-backdrop-filter: blur(3px);
-    }
-
-  
-
-    .pin span {
-      position: absolute;
-      left: 11px;
-      top: 15px;
-      width: 11px;
-      height: 11px;
-      background: #c78332;
-      border-radius: 50%;
-      animation: pulsePin 1.4s infinite;
-    }
-
-    .pin strong {
-      display: block;
-      color: #3f2916;
-      font-size: 15px;
-      line-height: 1.15;
-    }
-
-    .pin em {
-      display: block;
-      margin-top: 3px;
-      color: #6f6458;
-      font-style: normal;
-      font-size: 11px;
-      line-height: 1.35;
-    }
-
-    .pin.paju{
-  left:31%;
-  top:18%;
+   .map-dot{
+  position:absolute;
+  z-index:5;
+  width:16px;
+  height:16px;
+  border:0;
+  border-radius:50%;
+  background:#c78332;
+  cursor:pointer;
+  box-shadow:0 0 0 7px rgba(199,131,50,.20);
+  animation:pulsePin 1.4s infinite;
 }
 
-.pin.seoul{
-  left:50%;
-  top:20%;
+.map-dot::after{
+  content:attr(data-label);
+  position:absolute;
+  left:22px;
+  top:50%;
+  transform:translateY(-50%);
+  min-width:220px;
+  background:#fff;
+  border:1px solid #dfc8aa;
+  border-radius:14px;
+  padding:10px 14px;
+  color:#3f2916;
+  font-size:13px;
+  font-weight:700;
+  box-shadow:0 10px 24px rgba(53,35,17,.14);
+  opacity:0;
+  pointer-events:none;
+  transition:.2s;
+  white-space:normal;
 }
 
-.pin.siheung{
-  left:35%;
-  top:30%;
+.map-dot:hover::after,
+.map-dot:focus::after{
+  opacity:1;
 }
 
-.pin.uiwang{
-  left:43%;
-  top:30%;
-}
-
-.pin.pyeongchon{
-  left:49%;
-  top:30%;
-}
-
-.pin.dongtan{
-  left:47%;
-  top:38%;
-}
-
-.pin.yeoju{
-  left:57%;
-  top:42%;
-}
-
-.pin.daejeon{
-  left:42%;
-  top:54%;
-}
-
-.pin.buyeo{
-  left:39%;
-  top:64%;
-}
-
-.pin.busan{
-  left:64%;
-  top:78%;
-}
+.map-dot.seoul{ left:54%; top:24%; }
+.map-dot.paju{ left:44%; top:20%; }
+.map-dot.siheung{ left:39%; top:32%; }
+.map-dot.uiwang{ left:46%; top:33%; }
+.map-dot.pyeongchon{ left:48%; top:34%; }
+.map-dot.dongtan{ left:50%; top:41%; }
+.map-dot.yeoju{ left:57%; top:43%; }
+.map-dot.daejeon{ left:46%; top:58%; }
+.map-dot.buyeo{ left:43%; top:68%; }
+.map-dot.busan{ left:64%; top:82%; }
 
     @keyframes pulsePin {
       0% {
@@ -691,67 +649,16 @@
   alt="더큰코리아 전국 점포 지도"
 >
 
-          <div class="pin seoul">
-            <span></span>
-            <strong>서울</strong>
-            <em>잠실 · 압구정</em>
-          </div>
-
-          <div class="pin paju">
-            <span></span>
-            <strong>파주</strong>
-            <em>신세계 파주</em>
-          </div>
-
-          <div class="pin siheung">
-            <span></span>
-            <strong>시흥</strong>
-            <em>신세계 시흥</em>
-          </div>
-
-          <div class="pin uiwang">
-            <span></span>
-            <strong>의왕</strong>
-            <em>타임빌라스</em>
-          </div>
-
-          <div class="pin pyeongchon">
-            <span></span>
-            <strong>평촌</strong>
-            <em>롯데 평촌</em>
-          </div>
-
-          <div class="pin dongtan">
-            <span></span>
-            <strong>동탄</strong>
-            <em>롯데 동탄</em>
-          </div>
-
-          <div class="pin yeoju">
-            <span></span>
-            <strong>여주</strong>
-            <em>신세계 여주</em>
-          </div>
-
-          <div class="pin daejeon">
-            <span></span>
-            <strong>대전</strong>
-            <em>본사 · 길채정 타임월드</em>
-          </div>
-
-          <div class="pin buyeo">
-            <span></span>
-            <strong>부여</strong>
-            <em>롯데부여아울렛</em>
-          </div>
-
-          <div class="pin busan">
-            <span></span>
-            <strong>부산</strong>
-            <em>센텀시티</em>
-          </div>
-        </div>
-      </div>
+          <button class="map-dot seoul" data-label="서울 | 한국의집 · 고호재 · 길채정 압구정"></button>
+<button class="map-dot paju" data-label="파주 | 한국의집 효종갱 신세계파주"></button>
+<button class="map-dot siheung" data-label="시흥 | 소바공방 신세계시흥"></button>
+<button class="map-dot uiwang" data-label="의왕 | 한국의집 효종갱 타임빌라스"></button>
+<button class="map-dot pyeongchon" data-label="평촌 | 소바공방 롯데평촌"></button>
+<button class="map-dot dongtan" data-label="동탄 | 한국의집 효종갱 롯데동탄"></button>
+<button class="map-dot yeoju" data-label="여주 | 소바공방 신세계여주"></button>
+<button class="map-dot daejeon" data-label="대전 | 본사 · 길채정 갤러리아타임월드"></button>
+<button class="map-dot buyeo" data-label="부여 | 고궁 · 소바공방 · 카페그랑떼"></button>
+<button class="map-dot busan" data-label="부산 | 상궁전 센텀시티"></button>
 
       <div class="strength-grid">
         <div class="strength-card">
