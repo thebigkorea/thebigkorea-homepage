@@ -190,18 +190,44 @@
     }
 
     .korea-map::before{
-      content:"";
-      position:absolute;
-      left:50%;
-      top:50%;
-      width:210px;
-      height:330px;
-      transform:translate(-50%,-50%) rotate(8deg);
-      background:#efe3d4;
-      border:2px solid #d7b98e;
-      border-radius:48% 52% 44% 56% / 34% 42% 58% 66%;
-      box-shadow:inset 0 0 0 12px rgba(255,255,255,.35);
-    }
+  content:"";
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:270px;
+  height:360px;
+  transform:translate(-50%,-50%);
+
+  background:#efe3d4;
+  border:2px solid #d7b98e;
+
+  clip-path:polygon(
+    49% 0%,
+    60% 5%,
+    67% 14%,
+    63% 25%,
+    72% 34%,
+    66% 45%,
+    73% 55%,
+    63% 67%,
+    58% 78%,
+    48% 88%,
+    38% 100%,
+    30% 88%,
+    24% 78%,
+    18% 66%,
+    22% 55%,
+    16% 45%,
+    22% 33%,
+    18% 22%,
+    28% 12%,
+    38% 6%
+  );
+
+  box-shadow:
+    inset 0 0 0 12px rgba(255,255,255,.35),
+    0 14px 30px rgba(53,35,17,.10);
+}
 
     .pin{
       position:absolute;
@@ -241,10 +267,25 @@
       line-height:1.4;
     }
 
-    .pin.seoul{ left:50%; top:22%; }
-    .pin.gyeonggi{ left:58%; top:39%; }
-    .pin.daejeon{ left:36%; top:55%; }
-    .pin.buyeo{ left:48%; top:69%; }
+    .pin.seoul{
+  left:48%;
+  top:21%;
+}
+
+.pin.gyeonggi{
+  left:55%;
+  top:34%;
+}
+
+.pin.daejeon{
+  left:37%;
+  top:51%;
+}
+
+.pin.buyeo{
+  left:45%;
+  top:66%;
+}
 
     .strength-grid {
       display: grid;
@@ -408,6 +449,30 @@
       .pin.daejeon{ left:18%; top:52%; }
       .pin.buyeo{ left:40%; top:70%; }
     }
+
+    .pin span{
+  animation: pulsePin 1.4s infinite;
+}
+
+@keyframes pulsePin{
+  0%{
+    box-shadow:
+      0 0 0 0 rgba(184,121,50,.45),
+      0 0 0 0 rgba(184,121,50,.25);
+  }
+
+  70%{
+    box-shadow:
+      0 0 0 10px rgba(184,121,50,0),
+      0 0 0 18px rgba(184,121,50,0);
+  }
+
+  100%{
+    box-shadow:
+      0 0 0 0 rgba(184,121,50,0),
+      0 0 0 0 rgba(184,121,50,0);
+  }
+}
   </style>
 </head>
 <body>
