@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>더큰코리아 | 매장찾기</title>
+  <style>
+    *{box-sizing:border-box}
+    body{margin:0;font-family:"Noto Sans KR","Malgun Gothic",sans-serif;background:#f6f2ec;color:#2b2118;line-height:1.7}
+    a{color:inherit;text-decoration:none}
+    .container{width:min(1240px,calc(100% - 40px));margin:0 auto}
+    header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);border-bottom:1px solid #e8ddcf;backdrop-filter:blur(10px)}
+    .nav{height:96px;display:flex;justify-content:space-between;align-items:center;gap:24px}
+    .logo img{max-height:64px;width:auto;display:block}
+    .logo small{display:block;font-size:11px;letter-spacing:1.8px;color:#8a7864;margin-top:6px}
+    .menu{display:flex;gap:22px;flex-wrap:wrap;font-weight:700;color:#5a4f43}
+    .menu a:hover,.menu a.active{color:#8c5e2e}
+    .hero{padding:86px 0 70px;background:linear-gradient(100deg,rgba(48,30,15,.78),rgba(120,75,35,.45)),url("store-hero.jpg") center/cover no-repeat;color:#fff;text-align:center}
+    .hero .eyebrow{display:inline-block;padding:6px 18px;background:#b77a35;border-radius:999px;letter-spacing:3px;font-size:13px;font-weight:800;margin-bottom:18px}
+    .hero h1{margin:0 0 14px;font-size:clamp(42px,5vw,62px);line-height:1.1}
+    .hero p{margin:0 auto;max-width:760px;color:#f6ede1;font-size:18px;font-weight:600}
+    section{padding:64px 0}
+    .search-panel{background:#fff;border:1px solid #eadfce;border-radius:30px;padding:30px;box-shadow:0 16px 40px rgba(53,35,17,.08);margin-bottom:34px}
+    .filter-grid{display:grid;grid-template-columns:1fr 1fr 1.2fr auto;gap:16px;align-items:end}
+    .field label{display:block;font-weight:800;color:#3f2916;margin-bottom:8px}
+    select,input{width:100%;height:50px;border:1px solid #e0cfb7;border-radius:14px;padding:0 14px;background:#fffaf4;color:#3f2916;font-size:15px;outline:none}
+    select:focus,input:focus{border-color:#b77a35;box-shadow:0 0 0 4px rgba(183,122,53,.12)}
+    .search-btn{height:50px;border:0;border-radius:999px;padding:0 28px;background:linear-gradient(135deg,#8b5a2b,#c9964f);color:#fff;font-weight:900;cursor:pointer;box-shadow:0 10px 24px rgba(91,55,25,.20)}
+    .search-btn:hover{transform:translateY(-2px)}
+    .count{margin:20px 0 0;color:#7b6d5f;font-size:15px}
+    .store-list{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .store-card{background:#fff;border:1px solid #eadfce;border-radius:26px;padding:24px;box-shadow:0 12px 30px rgba(53,35,17,.06);position:relative;overflow:hidden}
+    .store-card::before{content:"";position:absolute;top:0;left:0;right:0;height:6px;background:#c9964f}
+    .store-card[data-brand="한국의집"]::before,.store-card[data-brand="한국의집 효종갱"]::before{background:#b77a35}
+    .store-card[data-brand="소바공방"]::before{background:#6f9ed6}
+    .store-card[data-brand="길채정"]::before{background:#7fa87f}
+    .store-card[data-brand="고궁"]::before{background:#d89a9a}
+    .store-card[data-brand="카페그랑떼"]::before{background:#9b8ad6}
+    .store-card[data-brand="상궁전"]::before{background:#6fb5b5}
+    .badge{display:inline-block;padding:5px 11px;border-radius:999px;background:#fff4e5;color:#8b5a2b;font-size:12px;font-weight:900;margin-bottom:12px}
+    .store-card h3{margin:0 0 8px;font-size:22px;color:#3f2916;line-height:1.35}
+    .meta{margin:0 0 12px;color:#6f6458;font-size:14px;font-weight:700}
+    .addr{margin:0;color:#5f5449;font-size:14px;word-break:keep-all}
+    .empty{display:none;background:#fff;border:1px dashed #d6bea0;border-radius:24px;padding:36px;text-align:center;color:#7b6d5f;font-weight:800}
+    .back{display:inline-block;margin-top:34px;padding:13px 22px;border-radius:999px;background:#6b4d2e;color:#fff;font-weight:800}
+    footer{text-align:center;color:#807366;padding:20px 0 40px;font-size:14px}
+    @media(max-width:980px){.filter-grid{grid-template-columns:1fr 1fr}.store-list{grid-template-columns:repeat(2,1fr)}.search-btn{width:100%}}
+    @media(max-width:720px){.container{width:calc(100% - 28px)}.nav{height:auto;flex-direction:column;align-items:flex-start;padding:14px 0;gap:12px}.logo img{max-height:50px}.logo small{font-size:10px;line-height:1.25;letter-spacing:1px}.menu{width:100%;display:grid;grid-template-columns:repeat(3,1fr);gap:8px;font-size:13px}.menu a{background:#fffaf2;border:1px solid #eadfce;border-radius:12px;padding:9px 4px;text-align:center}.hero{padding:62px 0 50px}.filter-grid,.store-list{grid-template-columns:1fr}.search-panel{padding:22px}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="logo">
+        <a href="index.html"><img src="logo-thebig.jpg" alt="더큰코리아 로고"></a>
+        <small>THE BIG KOREA · OFFICIAL PARTNER OF KOREA HERITAGE AGENCY</small>
+      </div>
+      <nav class="menu">
+        <a href="index.html">홈</a>
+        <a href="company.html">회사소개</a>
+        <a href="history.html">연혁</a>
+        <a href="brands.html">브랜드</a>
+        <a href="strength.html">경쟁력</a>
+        <a href="stores.html" class="active">매장찾기</a>
+        <a href="contact.html">고객의소리</a>
+        <a href="recruit.html">직원모집</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <span class="eyebrow">THE BIG KOREA STORE</span>
+      <h1>매장찾기</h1>
+      <p>더큰코리아가 운영하는 전국 주요 백화점·아울렛·복합상업시설 매장을 지역과 브랜드별로 확인할 수 있습니다.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="search-panel">
+        <div class="filter-grid">
+          <div class="field">
+            <label for="regionFilter">지역검색</label>
+            <select id="regionFilter">
+              <option value="">전체</option><option value="서울">서울</option><option value="경기">경기</option><option value="대전">대전</option><option value="충남">충남</option><option value="부산">부산</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="brandFilter">브랜드 선택</label>
+            <select id="brandFilter">
+              <option value="">전체</option><option value="한국의집">한국의집</option><option value="한국의집 효종갱">한국의집 효종갱</option><option value="길채정">길채정</option><option value="소바공방">소바공방</option><option value="고궁">고궁</option><option value="카페그랑떼">카페그랑떼</option><option value="상궁전">상궁전</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="keywordInput">매장명 검색</label>
+            <input id="keywordInput" type="text" placeholder="예: 동탄, 평촌, 길채정, 소바공방">
+          </div>
+          <button class="search-btn" type="button" onclick="renderStores()">검색</button>
+        </div>
+        <p class="count" id="countText"></p>
+      </div>
+
+      <div class="store-list" id="storeList"></div>
+      <div class="empty" id="emptyBox">검색 조건에 맞는 매장이 없습니다.</div>
+      <a class="back" href="index.html">메인으로 돌아가기</a>
+    </div>
+  </section>
+
+  <footer>© THE BIG KOREA. All Rights Reserved.</footer>
+
+  <script>
+    const stores=[
+      ["한국의집 효종갱","한국의집 롯데백화점 동탄점","롯데","경기","동탄","경기도 화성시 동탄역로 160, 지하1층 오산동 B1 효종갱","위탁"],
+      ["카페그랑떼","카페그랑떼 롯데아울렛 부여점","롯데","충남","부여","충청남도 부여군 규암면 백제문로 387, 롯데프리미엄아울렛 1층 카페그랑떼","위탁"],
+      ["소바공방","더큰식탁과 소바공방","롯데","충남","부여","충청남도 부여군 규암면 백제문로 387, 롯데프리미엄아울렛 2층 더큰식탁소바공방","위탁"],
+      ["한국의집 효종갱","한국의집 효종갱 롯데의왕타임빌라스점","롯데","경기","의왕","경기도 의왕시 바라산로 1, 2층 한식당, 롯데프리미엄아울렛의왕점","위탁"],
+      ["한국의집","한국의집 롯데월드몰점","롯데","서울","잠실","서울특별시 송파구 올림픽로 300, 5층 롯데월드몰 5층 한국의집","직영"],
+      ["한국의집","고호재 롯데월드몰점","롯데","서울","잠실","서울특별시 송파구 올림픽로 300, 5층 롯데월드몰 5층 고호재","위탁"],
+      ["소바공방","소바공방 롯데백화점평촌점","롯데","경기","평촌","경기도 안양시 동안구 시민대로 180, 롯데백화점 평촌점","위탁"],
+      ["본사","주식회사 더큰코리아","본점","대전","대전","대전광역시 유성구 테크노4로 29 201호","직영"],
+      ["상궁전","상궁전 롯데백화점 센텀시티점","롯데","부산","부산","부산광역시 해운대구 센텀남대로 59, 지하1층 롯데백화점센텀시티점 B1 상궁전","위탁"],
+      ["고궁","고궁 롯데 아울렛 부여점","롯데","충남","부여","충청남도 부여군 규암면 백제문로 387, 롯데프리미엄아울렛 1층 고궁","위탁"],
+      ["소바공방","소바공방 시흥신세계프리미엄아울렛점","신세계","경기","시흥","경기도 시흥시 서해안로 699, 1층 115호 테이스트빌리지 소바공방","위탁"],
+      ["소바공방","소바공방 여주신세계프리미엄빌리지점","신세계","경기","여주","경기도 여주시 명품1로 22-1, 3-1블럭 104~105호 프리미엄빌리지 소바공방","직영"],
+      ["길채정","길채정","갤러리아","서울","압구정","서울특별시 강남구 압구정로 343, 지하1층 갤러리아백화점 명품관 WEST B1 길채정","직영"],
+      ["길채정","길채정 갤러리아타임월드점","갤러리아","대전","대전","대전 서구 둔산동 1036번지 갤러리아타임월드백화점 11층 길채정","위탁"],
+      ["한국의집 효종갱","한국의집 효종갱 신세계프리미엄아울렛 파주점","신세계","경기","파주","경기도 파주시 필승로 200 파주프리미엄아울렛","직영"]
+    ].map(s=>({brand:s[0],name:s[1],mall:s[2],region:s[3],area:s[4],address:s[5],type:s[6]}));
+
+    const regionFilter=document.getElementById("regionFilter");
+    const brandFilter=document.getElementById("brandFilter");
+    const keywordInput=document.getElementById("keywordInput");
+    const storeList=document.getElementById("storeList");
+    const emptyBox=document.getElementById("emptyBox");
+    const countText=document.getElementById("countText");
+
+    function renderStores(){
+      const region=regionFilter.value;
+      const brand=brandFilter.value;
+      const keyword=keywordInput.value.trim().toLowerCase();
+      const filtered=stores.filter(store=>{
+        const matchRegion=!region||store.region===region;
+        const matchBrand=!brand||store.brand===brand;
+        const haystack=[store.brand,store.name,store.mall,store.region,store.area,store.address,store.type].join(" ").toLowerCase();
+        const matchKeyword=!keyword||haystack.includes(keyword);
+        return matchRegion&&matchBrand&&matchKeyword;
+      });
+
+      storeList.innerHTML=filtered.map(store=>`
+        <article class="store-card" data-brand="${store.brand}">
+          <span class="badge">${store.region} · ${store.area} · ${store.type}</span>
+          <h3>${store.name}</h3>
+          <p class="meta">${store.brand} / ${store.mall}</p>
+          <p class="addr">${store.address}</p>
+        </article>
+      `).join("");
+
+      countText.textContent=`총 ${filtered.length}개 매장이 검색되었습니다.`;
+      emptyBox.style.display=filtered.length?"none":"block";
+    }
+
+    regionFilter.addEventListener("change",renderStores);
+    brandFilter.addEventListener("change",renderStores);
+    keywordInput.addEventListener("input",renderStores);
+    renderStores();
+  </script>
+</body>
+</html>
