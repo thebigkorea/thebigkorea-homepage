@@ -81,15 +81,13 @@
 
   background:
     linear-gradient(
-      90deg,
-      rgba(255,255,255,0.92) 0%,
-      rgba(255,255,255,0.70) 42%,
-      rgba(255,255,255,0.22) 70%,
-      rgba(255,255,255,0.05) 100%
-    ),
-    url("company-hero.jpg") center center / cover no-repeat;
-
-  border-bottom: 1px solid #eadfce;
+    90deg,
+    rgba(255,255,255,0.60) 0%,
+    rgba(255,255,255,0.20) 35%,
+    rgba(255,255,255,0.05) 60%,
+    rgba(255,255,255,0) 100%
+  ),
+  url("company-hero.jpg") center center / cover no-repeat;
 }
 
     .hero::after {
@@ -105,8 +103,8 @@
       position: relative;
       z-index: 2;
       min-height: 520px;
-      display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
+      min-height:700px;
+      display:flex;
       align-items: center;
       gap: 30px;
       padding: 56px 0;
@@ -568,29 +566,39 @@
         </div>
       </div>
 
-      <div class="hero-panel">
-        <h2>IR Summary</h2>
-        <div class="hero-kpis">
-          <div class="hero-kpi">
-            <strong>8+</strong>
-            <span>운영 브랜드 포트폴리오</span>
-          </div>
-          <div class="hero-kpi">
-            <strong>2021</strong>
-            <span>한국의집 경영상표 사용 지정</span>
-          </div>
-          <div class="hero-kpi">
-            <strong>백화점</strong>
-            <span>롯데·신세계·갤러리아 입점 경험</span>
-          </div>
-          <div class="hero-kpi">
-            <strong>다포맷</strong>
-            <span>한식·다과·도시락·카페 운영</span>
-          </div>
-        </div>
-      </div>
+      
     </div>
   </section>
+
+  <section style="padding-top:40px;padding-bottom:40px;">
+  <div class="container">
+
+    <div class="ir-grid">
+
+      <div class="ir-item">
+        <strong>8+</strong>
+        <span>운영 브랜드 포트폴리오</span>
+      </div>
+
+      <div class="ir-item">
+        <strong>2021</strong>
+        <span>한국의집 경영상표 사용 지정</span>
+      </div>
+
+      <div class="ir-item">
+        <strong>백화점</strong>
+        <span>롯데·신세계·갤러리아 입점 경험</span>
+      </div>
+
+      <div class="ir-item">
+        <strong>다포맷</strong>
+        <span>한식·다과·도시락·카페 운영</span>
+      </div>
+
+    </div>
+
+  </div>
+</section>
 
   <section>
     <div class="container">
