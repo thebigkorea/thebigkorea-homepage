@@ -605,6 +605,37 @@
 }
 
 }
+.menu a{
+  position:relative;
+}
+
+.menu a.active{
+  color:#8b5a2b;
+  font-weight:900;
+}
+
+.menu a.active::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:-10px;
+  height:4px;
+  border-radius:999px;
+  background:#c9964f;
+}
+
+@media (max-width:720px){
+  .menu a.active{
+    background:#8b5a2b;
+    color:#fff;
+    border-color:#8b5a2b;
+  }
+
+  .menu a.active::after{
+    display:none;
+  }
+}
 
   </style>
 </head>
