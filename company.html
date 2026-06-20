@@ -571,6 +571,39 @@
   color: #fff;
 }
 
+.menu a{
+  position:relative;
+}
+
+.menu a.active{
+  color:#8b5a2b;
+  font-weight:900;
+}
+
+.menu a.active::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:-10px;
+  height:4px;
+  border-radius:999px;
+  background:#c9964f;
+}
+@media (max-width:720px){
+
+  .menu a.active{
+    background:#8b5a2b;
+    color:#fff;
+    border-color:#8b5a2b;
+  }
+
+  .menu a.active::after{
+    display:none;
+  }
+
+}
+
 }
 
   </style>
@@ -586,11 +619,12 @@
       </div>
       <nav class="menu">
         <a href="index.html">홈</a>
-        <a href="history.html">연혁</a>
-        <a href="brands.html">브랜드</a>
-        <a href="strength.html">경쟁력</a>
-        <a href="contact.html">고객의소리</a>
-        <a href="recruit.html">직원모집</a>
+<a href="company.html" class="active">회사소개</a>
+<a href="history.html">연혁</a>
+<a href="brands.html">브랜드</a>
+<a href="strength.html">경쟁력</a>
+<a href="contact.html">고객의소리</a>
+<a href="recruit.html">직원모집</a>
       </nav>
     </div>
   </header>
