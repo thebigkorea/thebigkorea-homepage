@@ -157,26 +157,31 @@
       display:grid;
       grid-template-columns:.82fr 1.18fr;
       gap:24px;
-      align-items:center;
+      align-items:stretch;
     }
 
     .map-copy{
       background:#fff;
       border:1px solid #eadfce;
       border-radius:28px;
-      padding:30px;
+      padding:34px;
       box-shadow:0 12px 30px rgba(53,35,17,.05);
+      min-height:650px;
+      display:flex;
+      flex-direction:column;
     }
 
-    .map-copy h3{
-      margin:0 0 12px;
-      font-size:28px;
+    .map-copy h2{
+      margin:0 0 8px;
+      font-size:30px;
       color:#3f2916;
+      line-height:1.25;
     }
 
-    .map-copy p{
-      margin:0;
+    .map-copy-sub{
+      margin:0 0 20px;
       color:#6f6458;
+      font-size:15px;
     }
 
     .korea-map{
@@ -369,11 +374,7 @@
       color:#6f6458;
     }
 
-    .store-btn-wrap{
-  margin-top:24px;
-}
-
-.store-find-btn{
+    .store-find-btn{
   display:inline-flex;
   align-items:center;
   gap:8px;
@@ -397,6 +398,41 @@
   transform:translateY(-3px);
   box-shadow:
     0 18px 36px rgba(91,55,25,.28);
+}
+
+.region-summary{
+  margin-top:12px;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+
+.region-item{
+  background:#fffaf4;
+  border:1px solid #eadfce;
+  border-radius:18px;
+  padding:15px 18px;
+  box-shadow:0 8px 18px rgba(53,35,17,.04);
+}
+
+.region-item strong{
+  display:block;
+  font-size:18px;
+  font-weight:900;
+  color:#3f2916;
+  margin-bottom:4px;
+}
+
+.region-item span{
+  display:block;
+  color:#6d6256;
+  font-size:14px;
+  line-height:1.55;
+}
+
+.store-btn-wrap{
+  margin-top:auto;
+  padding-top:24px;
 }
 
     .back{
@@ -510,21 +546,6 @@
         font-size:12px;
       }
 
-      .store-search-btn{
-  display:inline-block;
-  margin-top:22px;
-  padding:13px 28px;
-  border-radius:999px;
-  background:linear-gradient(135deg,#8b5a2b,#c9964f);
-  color:#fff;
-  font-weight:800;
-  box-shadow:0 10px 24px rgba(91,55,25,.20);
-}
-
-.store-search-btn:hover{
-  transform:translateY(-2px);
-}
-
 
 
       .map-dot.seoul{left:50%;top:26%}
@@ -533,7 +554,6 @@
       .map-dot.uiwang{left:44%;top:35%}
       .map-dot.pyeongchon{left:47%;top:36%}
       .map-dot.dongtan{left:49%;top:43%}
-      .map-dot.yeoju{left:57%;top:45%}
       .map-dot.daejeon{left:45%;top:58%}
       .map-dot.buyeo{left:41%;top:69%}
       .map-dot.busan{left:66%;top:82%}
@@ -556,6 +576,8 @@
         <a href="company.html">회사소개</a>
         <a href="history.html">연혁</a>
         <a href="brands.html">브랜드</a>
+        <a href="strength.html">경쟁력</a>
+        <a href="stores.html">매장찾기</a>
         <a href="contact.html">고객의소리</a>
         <a href="recruit.html">직원모집</a>
       </nav>
@@ -603,17 +625,43 @@
 
       <div class="map-section">
         <div class="map-copy">
-          <h3>전국 주요 상권 입점 현황</h3>
-          <p>
-            더큰코리아는 서울 잠실·압구정, 경기 동탄·의왕·평촌·시흥·여주·파주,
-            대전 본사·길채정 타임월드, 충남 부여, 부산 센텀시티 등 전국 주요 백화점·아울렛 상권에서
-            브랜드 운영 경험을 축적하고 있습니다.
-          </p>         
+          <h2>전국 주요 상권 입점 현황</h2>
+          <p class="map-copy-sub">
+            더큰코리아는 주요 백화점·아울렛 상권을 중심으로 브랜드 운영 경험을 축적하고 있습니다.
+          </p>
+
+          <div class="region-summary">
+            <div class="region-item">
+              <strong>서울</strong>
+              <span>잠실 롯데월드몰 · 압구정 갤러리아</span>
+            </div>
+
+            <div class="region-item">
+              <strong>경기</strong>
+              <span>파주 · 동탄 · 의왕 · 평촌 · 시흥</span>
+            </div>
+
+            <div class="region-item">
+              <strong>대전</strong>
+              <span>길채정 갤러리아타임월드</span>
+            </div>
+
+            <div class="region-item">
+              <strong>충남 부여</strong>
+              <span>고궁 · 소바공방 · 카페그랑떼</span>
+            </div>
+
+            <div class="region-item">
+              <strong>부산</strong>
+              <span>상궁전 센텀시티</span>
+            </div>
+          </div>
+
           <div class="store-btn-wrap">
             <a href="stores.html" class="store-find-btn">
-            🔍 전국 매장찾기
+              🔍 전국 매장찾기
             </a>
-           </div>
+          </div>
         </div>
 
         <div class="korea-map">
@@ -634,7 +682,7 @@
           <button class="map-dot uiwang" data-label="의왕 | 한국의집 효종갱 타임빌라스"></button>
           <button class="map-dot pyeongchon" data-label="평촌 | 소바공방 롯데평촌"></button>
           <button class="map-dot dongtan" data-label="동탄 | 한국의집 효종갱 롯데동탄"></button>          
-          <button class="map-dot daejeon" data-label="대전 | 본사 · 길채정 갤러리아타임월드"></button>
+          <button class="map-dot daejeon" data-label="대전 | 길채정 갤러리아타임월드"></button>
           <button class="map-dot buyeo" data-label="부여 | 고궁 · 소바공방 · 카페그랑떼"></button>
           <button class="map-dot busan" data-label="부산 | 상궁전 센텀시티"></button>
         </div>
