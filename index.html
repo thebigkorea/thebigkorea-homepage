@@ -357,21 +357,89 @@
     }
 
     .brand-section {
-      padding: 84px 0 70px;
+      padding: 76px 0 78px;
       background: linear-gradient(180deg, #f6f2ec 0%, #fffaf3 100%);
     }
 
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(360px, 0.95fr);
+      gap: 28px;
+      align-items: stretch;
+    }
+
     .brand-slider-card {
-      max-width: 860px;
-      margin: 0 auto;
+      max-width: none;
+      margin: 0;
     }
 
     .brand-slider-card .slider-frame {
-      min-height: 390px;
+      min-height: 330px;
     }
 
     .brand-slider-card .slide-photo {
-      height: 360px;
+      height: 300px;
+    }
+
+    .strength-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .strength-panel-head {
+      background: linear-gradient(135deg, #4b2f18 0%, #8b5a2b 100%);
+      color: #fff;
+      border-radius: 26px;
+      padding: 28px 28px 24px;
+      box-shadow: 0 18px 40px rgba(67,45,24,0.16);
+    }
+
+    .strength-panel-head strong {
+      display: inline-block;
+      margin-bottom: 10px;
+      color: #e6bd78;
+      font-size: 13px;
+      letter-spacing: 1.5px;
+    }
+
+    .strength-panel-head h2 {
+      margin: 0 0 10px;
+      font-size: 32px;
+      line-height: 1.18;
+    }
+
+    .strength-panel-head p {
+      margin: 0;
+      color: #f0dfc9;
+      font-size: 15px;
+    }
+
+    .strength-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .strength-item {
+      background: rgba(255,255,255,0.88);
+      border: 1px solid #eadfce;
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 10px 24px rgba(67,45,24,0.06);
+    }
+
+    .strength-item h4 {
+      margin: 0 0 8px;
+      color: #4a311c;
+      font-size: 18px;
+    }
+
+    .strength-item p {
+      margin: 0;
+      color: #6f6559;
+      font-size: 13px;
+      line-height: 1.65;
     }
 
     .stats {
@@ -590,15 +658,17 @@
     }
 
     @media (max-width: 1100px) {
-      .hero-grid, .contact { grid-template-columns: 1fr; }
+      .hero-grid, .contact, .portfolio-grid { grid-template-columns: 1fr; }
       .stats, .feature-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .hero { min-height: auto; }
       .hero-grid { min-height: auto; padding: 72px 0; }
+      .brand-slider-card .slider-frame { min-height: 330px; }
+      .brand-slider-card .slide-photo { height: 300px; }
     }
 
     @media (max-width: 720px) {
       .menu { gap: 14px; font-size: 14px; }
-      .stats, .feature-grid { grid-template-columns: 1fr; }
+      .stats, .feature-grid, .strength-list { grid-template-columns: 1fr; }
       .timeline-item { grid-template-columns: 1fr; }
       .section-head { display: block; }
       .hero { min-height: auto; }
@@ -608,6 +678,13 @@
       .slide-photo { height: 190px; }
       .brand-slider-card .slider-frame { min-height: 250px; }
       .brand-slider-card .slide-photo { height: 220px; }
+      .strength-panel-head {
+        border-radius: 22px;
+        padding: 24px;
+      }
+      .strength-panel-head h2 {
+        font-size: 27px;
+      }
       .stat::after {
         width: 42px;
         height: 42px;
@@ -755,9 +832,12 @@
 
 .hero-slider{
   position:relative;
-  height:100vh;
-  min-height:760px;
+  min-height:calc(100vh - 110px);
+  height:min(720px, calc(100vw / 2.45));
+  max-height:720px;
+  background:#070503;
   overflow:hidden;
+  isolation:isolate;
 }
 
 .hero-slide{
@@ -765,12 +845,29 @@
   inset:0;
   opacity:0;
   transition:opacity .8s ease;
-  background-size:cover;
+  background-size:contain;
   background-position:center;
+  background-repeat:no-repeat;
 }
 
 .hero-slide.active{
   opacity:1;
+}
+
+.hero-slider::after{
+  display:none;
+}
+
+.sr-only{
+  position:absolute;
+  width:1px;
+  height:1px;
+  padding:0;
+  margin:-1px;
+  overflow:hidden;
+  clip:rect(0,0,0,0);
+  white-space:nowrap;
+  border:0;
 }
 
 .hero-prev,
@@ -778,23 +875,32 @@
   position:absolute;
   top:50%;
   transform:translateY(-50%);
-  width:60px;
-  height:60px;
-  border:none;
+  width:82px;
+  height:82px;
+  border:1px solid rgba(255,255,255,.5);
   border-radius:50%;
-  background:rgba(255,255,255,.15);
+  background:rgba(8,8,8,.96);
   color:#fff;
-  font-size:34px;
+  font-size:42px;
   cursor:pointer;
-  z-index:10;
+  z-index:3;
+  box-shadow:0 0 0 10px rgba(5,5,5,.98), 0 10px 28px rgba(0,0,0,.34);
+  transition:background .18s ease, border-color .18s ease, transform .18s ease;
+}
+
+.hero-prev:hover,
+.hero-next:hover{
+  background:rgba(18,18,18,.98);
+  border-color:#d7a64e;
+  transform:translateY(-50%) scale(1.04);
 }
 
 .hero-prev{
-  left:30px;
+  left:-2px;
 }
 
 .hero-next{
-  right:30px;
+  right:-2px;
 }
 
 .hero-dots{
@@ -804,6 +910,7 @@
   transform:translateX(-50%);
   display:flex;
   gap:12px;
+  z-index:3;
 }
 
 .dot{
@@ -815,6 +922,42 @@
 
 .dot.active{
   background:#d4a25a;
+}
+
+@media (max-width:720px){
+  header{
+    height:auto;
+  }
+
+  .logo{
+    height:auto;
+  }
+
+  .menu{
+    grid-template-columns:repeat(4,1fr);
+    gap:6px;
+    font-size:12px;
+  }
+
+  .menu a{
+    padding:8px 3px;
+    border-radius:10px;
+  }
+
+  .hero-slider{
+    height:calc(100vw / 2.45);
+    min-height:0;
+  }
+
+  .hero-prev,
+  .hero-next{
+    width:58px;
+    height:58px;
+    font-size:32px;
+  }
+
+  .hero-prev{left:-2px}
+  .hero-next{right:-2px}
 }
   </style>
 </head>
@@ -857,8 +1000,10 @@
        style="background-image:url('images/hero04.jpg')">
   </div>
 
-  <button class="hero-prev">‹</button>
-  <button class="hero-next">›</button>
+  <h1 class="sr-only">더큰코리아 사업소개 홈페이지</h1>
+
+  <button class="hero-prev" type="button" aria-label="이전 슬라이드">‹</button>
+  <button class="hero-next" type="button" aria-label="다음 슬라이드">›</button>
 
   <div class="hero-dots">
     <span class="dot active"></span>
@@ -868,7 +1013,6 @@
   </div>
 
 </section>
-  </section>
 
   <div class="container stats">
     <a class="stat" href="brands.html">
@@ -893,39 +1037,56 @@
     <div class="container">
       <div class="section-head">
         <div>
-          <h2>Brand Portfolio</h2>
-          <p>더큰코리아의 다양한 브랜드를 통해 전통과 현대가 어우러진 새로운 식문화 경험을 만나보세요.</p>
+          <h2>Brand Portfolio & Strength</h2>
+          <p>더큰코리아의 브랜드 포트폴리오와 운영 경쟁력을 한눈에 확인해보세요.</p>
         </div>
       </div>
 
-      <div class="hero-card brand-slider-card">
-        <h2>브랜드 소개</h2>
+      <div class="portfolio-grid">
+        <div class="hero-card brand-slider-card">
+          <h2>브랜드 소개</h2>
 
-        <div class="slider-frame" id="brandSlider">
-          <div class="slide active"><div class="slide-photo"><img src="img1.jpg" alt="한국의집"><span>한국의집</span></div></div>
-          <div class="slide"><div class="slide-photo"><img src="img2.jpg" alt="효종갱"><span>효종갱</span></div></div>
-          <div class="slide"><div class="slide-photo"><img src="img3.jpg" alt="고호재"><span>고호재</span></div></div>
-          <div class="slide"><div class="slide-photo"><img src="img4.jpg" alt="도슭"><span>도슭</span></div></div>
-          <div class="slide"><div class="slide-photo"><img src="img5.jpg" alt="고궁"><span>고궁</span></div></div>
-          <div class="slide"><div class="slide-photo"><img src="img6.jpg" alt="길채정"><span>길채정</span></div></div>
-          <div class="slide"><div class="slide-photo"><img src="img7.jpg" alt="소바공방"><span>소바공방</span></div></div>
-          <div class="slide"><div class="slide-photo"><img src="img8.jpg" alt="카페그랑떼"><span>카페그랑떼</span></div></div>
+          <div class="slider-frame" id="brandSlider">
+            <div class="slide active"><div class="slide-photo"><img src="img1.jpg" alt="한국의집"><span>한국의집</span></div></div>
+            <div class="slide"><div class="slide-photo"><img src="img2.jpg" alt="효종갱"><span>효종갱</span></div></div>
+            <div class="slide"><div class="slide-photo"><img src="img3.jpg" alt="고호재"><span>고호재</span></div></div>
+            <div class="slide"><div class="slide-photo"><img src="img4.jpg" alt="도슭"><span>도슭</span></div></div>
+            <div class="slide"><div class="slide-photo"><img src="img5.jpg" alt="고궁"><span>고궁</span></div></div>
+            <div class="slide"><div class="slide-photo"><img src="img6.jpg" alt="길채정"><span>길채정</span></div></div>
+            <div class="slide"><div class="slide-photo"><img src="img7.jpg" alt="소바공방"><span>소바공방</span></div></div>
+            <div class="slide"><div class="slide-photo"><img src="img8.jpg" alt="카페그랑떼"><span>카페그랑떼</span></div></div>
+          </div>
+
+          <div class="slider-dots" id="sliderDots">
+            <span class="slider-dot active"></span>
+            <span class="slider-dot"></span>
+            <span class="slider-dot"></span>
+            <span class="slider-dot"></span>
+            <span class="slider-dot"></span>
+            <span class="slider-dot"></span>
+            <span class="slider-dot"></span>
+            <span class="slider-dot"></span>
+          </div>
+
+          <div class="brand-info-box">
+            <h3 id="sliderBrandTitle">한국의집</h3>
+            <p id="sliderBrandDesc">국가유산진흥원 산하의 전통적이고 품격 있는 브랜드로, 다채로운 정통 한식을 고급스럽고 모던한 상차림으로 선보입니다.</p>
+          </div>
         </div>
 
-        <div class="slider-dots" id="sliderDots">
-          <span class="slider-dot active"></span>
-          <span class="slider-dot"></span>
-          <span class="slider-dot"></span>
-          <span class="slider-dot"></span>
-          <span class="slider-dot"></span>
-          <span class="slider-dot"></span>
-          <span class="slider-dot"></span>
-          <span class="slider-dot"></span>
-        </div>
+        <div class="strength-panel">
+          <div class="strength-panel-head">
+            <strong>OPERATIONAL STRENGTH</strong>
+            <h2>브랜드를 만들고, 상권에 맞게 운영합니다</h2>
+            <p>전통의 스토리, 메뉴 기획, 백화점·아울렛 입점 경험을 바탕으로 다양한 외식 포맷을 전개합니다.</p>
+          </div>
 
-        <div class="brand-info-box">
-          <h3 id="sliderBrandTitle">한국의집</h3>
-          <p id="sliderBrandDesc">국가유산진흥원 산하의 전통적이고 품격 있는 브랜드로, 다채로운 정통 한식을 고급스럽고 모던한 상차림으로 선보입니다.</p>
+          <div class="strength-list">
+            <div class="strength-item"><h4>공신력 있는 브랜드 운영</h4><p>국가유산진흥원과 연결된 한국의집 운영 경험을 바탕으로 전통성과 신뢰를 확보합니다.</p></div>
+            <div class="strength-item"><h4>다양한 포맷 운영</h4><p>한식당, 도시락, 궁중다과, 브런치 카페, 퓨전 레스토랑 등 다채로운 형태를 운영합니다.</p></div>
+            <div class="strength-item"><h4>입점 확장력</h4><p>롯데월드몰, 갤러리아, 롯데프리미엄아울렛, 신세계아울렛 등 주요 상권 경험을 축적했습니다.</p></div>
+            <div class="strength-item"><h4>스토리텔링 상품력</h4><p>효종갱, 궁중다과, 궁중도시락, 전통 브런치 등 역사성과 콘셉트를 살린 메뉴를 기획합니다.</p></div>
+          </div>
         </div>
       </div>
     </div>
@@ -945,23 +1106,6 @@
         <div class="timeline-item"><div class="year">2023</div><div>전통디저트카페 고궁 롯데부여프리미엄아울렛 1층 입점, 소바공방 신세계여주아울렛 1층 입점</div></div>
         <div class="timeline-item"><div class="year">2024</div><div>소바공방 신세계시흥아울렛 1층 입점, 길채정 갤러리아 압구정점 지하 1층 입점, (주)더큰코리아로 백화점 파트 분사</div></div>
         <div class="timeline-item"><div class="year">2025</div><div>길채정 갤러리아 타임월드점 11층 입점</div></div>
-      </div>
-    </div>
-  </section>
-
-  <section id="strength">
-    <div class="container">
-      <div class="section-head">
-        <div>
-          <h2>Operational & Brand Strength</h2>
-          <p>사업소개서의 구조에 맞춰 더큰코리아의 핵심 경쟁력을 정리한 영역입니다.</p>
-        </div>
-      </div>
-      <div class="feature-grid">
-        <div class="feature-box"><h4>공신력 있는 브랜드 운영</h4><p>국가유산진흥원과 연결된 한국의집 브랜드 운영 경험을 바탕으로 전통성과 신뢰를 확보하고 있습니다.</p></div>
-        <div class="feature-box"><h4>다양한 포맷 운영</h4><p>한식당, 도시락, 궁중다과, 브런치 카페, 퓨전 레스토랑, 캠퍼스 카페 등 다채로운 형태의 브랜드를 운영합니다.</p></div>
-        <div class="feature-box"><h4>입점 확장력</h4><p>롯데월드몰, 갤러리아, 롯데프리미엄아울렛, 신세계아울렛 등 주요 상권 입점 경험을 축적하고 있습니다.</p></div>
-        <div class="feature-box"><h4>스토리텔링 기반 상품력</h4><p>효종갱, 궁중다과, 궁중도시락, 전통 브런치 등 역사성과 콘셉트를 살린 메뉴 기획 역량을 보유하고 있습니다.</p></div>
       </div>
     </div>
   </section>
