@@ -832,8 +832,9 @@
 
 .hero-slider{
   position:relative;
-  height:calc(100vh - 110px);
-  min-height:720px;
+  min-height:calc(100vh - 110px);
+  height:min(720px, calc(100vw / 2.45));
+  max-height:720px;
   background:#070503;
   overflow:hidden;
   isolation:isolate;
@@ -845,8 +846,8 @@
   opacity:0;
   transition:opacity .8s ease;
 
-  background-size:cover;
-  background-position:center center;
+  background-size:contain;
+  background-position:center;
   background-repeat:no-repeat;
 }
 
