@@ -752,6 +752,70 @@
     display:none;
   }
 }
+
+.hero-slider{
+  position:relative;
+  height:100vh;
+  min-height:760px;
+  overflow:hidden;
+}
+
+.hero-slide{
+  position:absolute;
+  inset:0;
+  opacity:0;
+  transition:opacity .8s ease;
+  background-size:cover;
+  background-position:center;
+}
+
+.hero-slide.active{
+  opacity:1;
+}
+
+.hero-prev,
+.hero-next{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  width:60px;
+  height:60px;
+  border:none;
+  border-radius:50%;
+  background:rgba(255,255,255,.15);
+  color:#fff;
+  font-size:34px;
+  cursor:pointer;
+  z-index:10;
+}
+
+.hero-prev{
+  left:30px;
+}
+
+.hero-next{
+  right:30px;
+}
+
+.hero-dots{
+  position:absolute;
+  left:50%;
+  bottom:40px;
+  transform:translateX(-50%);
+  display:flex;
+  gap:12px;
+}
+
+.dot{
+  width:12px;
+  height:12px;
+  border-radius:50%;
+  background:rgba(255,255,255,.4);
+}
+
+.dot.active{
+  background:#d4a25a;
+}
   </style>
 </head>
 <body>
@@ -775,22 +839,35 @@
     </div>
   </header>
 
-  <section class="hero">
-    <div class="container hero-grid">
-      <div class="hero-main">
-        <div class="eyebrow">Traditional Food · Modern Design · Brand Experience</div>
-        <h1>대한민국 식문화의<br>품격을<br>현대적 감각으로<br>디자인하다</h1>
-        <p>
-          더큰코리아는 전통의 가치를 현대적으로 재해석하여 새로운 외식 문화와 공간 경험을 창조하는 F&B 전문 기업입니다.
-          전통 한식, 궁중다과, 프리미엄 도시락, 브런치 카페, 퓨전 레스토랑, 캠퍼스 카페까지 폭넓은 브랜드 포트폴리오를 운영합니다.
-        </p>
+  <section class="hero-slider">
 
-        <div class="btn-wrap">
-          <a class="btn btn-primary" href="brands.html">브랜드 포트폴리오 보기</a>
-          <a class="btn btn-secondary" href="contact.html">고객의소리</a>
-        </div>
-      </div>
-    </div>
+  <div class="hero-slide active"
+       style="background-image:url('images/hero01.jpg')">
+  </div>
+
+  <div class="hero-slide"
+       style="background-image:url('images/hero02.jpg')">
+  </div>
+
+  <div class="hero-slide"
+       style="background-image:url('images/hero03.jpg')">
+  </div>
+
+  <div class="hero-slide"
+       style="background-image:url('images/hero04.jpg')">
+  </div>
+
+  <button class="hero-prev">‹</button>
+  <button class="hero-next">›</button>
+
+  <div class="hero-dots">
+    <span class="dot active"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+  </div>
+
+</section>
   </section>
 
   <div class="container stats">
@@ -983,5 +1060,63 @@
       startSlider();
     })();
   </script>
+
+  <script>
+
+const slides =
+document.querySelectorAll(".hero-slide");
+
+const dots =
+document.querySelectorAll(".dot");
+
+let current = 0;
+
+function showSlide(index){
+
+  slides.forEach(s =>
+    s.classList.remove("active"));
+
+  dots.forEach(d =>
+    d.classList.remove("active"));
+
+  slides[index].classList.add("active");
+  dots[index].classList.add("active");
+
+  current = index;
+}
+
+document
+.querySelector(".hero-next")
+.onclick = () => {
+
+  let next =
+  (current + 1) % slides.length;
+
+  showSlide(next);
+
+};
+
+document
+.querySelector(".hero-prev")
+.onclick = () => {
+
+  let prev =
+  (current - 1 + slides.length)
+  % slides.length;
+
+  showSlide(prev);
+
+};
+
+setInterval(() => {
+
+  let next =
+  (current + 1) % slides.length;
+
+  showSlide(next);
+
+},6000);
+
+</script>
 </body>
 </html>
