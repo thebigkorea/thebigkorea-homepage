@@ -101,16 +101,18 @@ img{display:block;max-width:100%}
 }
 
 .nav{
-  position:sticky;
+  position:absolute;
   top:0;
-  z-index:20;
-  background:rgba(248,246,241,.95);
-  border-bottom:1px solid var(--line);
-  backdrop-filter:blur(14px);
+  left:0;
+  width:100%;
+  z-index:30;
+  background:rgba(255,255,255,.82);
+  border-bottom:1px solid rgba(255,255,255,.35);
+  backdrop-filter:blur(12px);
 }
 
 .nav-inner{
-  height:64px;
+  height:78px;
   display:flex;
   align-items:center;
   justify-content:space-between;
@@ -119,13 +121,16 @@ img{display:block;max-width:100%}
 
 .nav-title{
   font-weight:900;
-  color:var(--clay-dark);
+  color:#5a321f;
+  font-size:20px;
 }
 
 .nav-links{
   display:flex;
-  gap:22px;
-  font-size:14px;
+  align-items:center;
+  gap:28px;
+  color:#241812;
+  font-size:17px;
   font-weight:900;
 }
 
@@ -593,6 +598,21 @@ footer{
 
 <body>
 
+ <nav class="nav">
+  <div class="container nav-inner">
+    <a class="nav-title" href="#main">한국의집</a>
+    <div class="nav-links">
+      <a href="#intro">소개</a>
+      <a href="#point">매력 포인트</a>
+      <a href="#menu">메뉴</a>
+      <a href="#service">편의시설</a>
+      <a href="#space">매장 전경</a>
+      <a href="#map">오시는 길</a>
+      <a href="#info">매장 정보</a>
+    </div>
+  </div>
+</nav> 
+
 <section class="hero" id="main">
   <div class="container hero-inner">
     <div class="brand-mark">Korea House · Lotte World Mall</div>
@@ -609,20 +629,7 @@ footer{
   </div>
 </section>
 
-<nav class="nav">
-  <div class="container nav-inner">
-    <a class="nav-title" href="#main">한국의집</a>
-    <div class="nav-links">
-      <a href="#intro">소개</a>
-      <a href="#point">매력 포인트</a>
-      <a href="#menu">메뉴</a>
-      <a href="#service">편의시설</a>
-      <a href="#space">매장 전경</a>
-      <a href="#map">오시는 길</a>
-      <a href="#info">매장 정보</a>
-    </div>
-  </div>
-</nav>
+
 
 <section id="intro">
   <div class="container story-layout">
