@@ -117,8 +117,15 @@
 
 .hero img{
   width:100%;
-  height:auto;
+  max-height:520px;
+  object-fit:contain;
   display:block;
+  margin:0 auto;
+}
+
+.hero{
+  max-height:520px;
+  overflow:hidden;
 }
 
     .hero::after{
