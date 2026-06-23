@@ -8,447 +8,647 @@
   <style>
     *{box-sizing:border-box}
 
+    :root{
+      --ink:#201916;
+      --muted:#6b625c;
+      --line:#e3ddd4;
+      --paper:#f8f6f1;
+      --panel:#ffffff;
+      --clay:#a85f2a;
+      --clay-dark:#713f25;
+      --sage:#697760;
+      --charcoal:#282420;
+      --soft:#f1ebe2;
+    }
+
+    html{scroll-behavior:smooth}
+
     body{
       margin:0;
-      font-family:"Noto Sans KR","Malgun Gothic",sans-serif;
-      background:#f7f3ed;
-      color:#251a13;
-      line-height:1.7;
+      font-family:"Noto Sans KR","Malgun Gothic",Arial,sans-serif;
+      background:var(--paper);
+      color:var(--ink);
+      line-height:1.65;
     }
 
-    a{
-      color:inherit;
-      text-decoration:none;
-    }
+    a{color:inherit;text-decoration:none}
+    img{display:block;max-width:100%}
 
     .container{
-      width:min(1180px,calc(100% - 40px));
+      width:min(1120px,calc(100% - 40px));
       margin:0 auto;
     }
 
     .hero{
-      min-height:560px;
-      display:flex;
-      align-items:center;
+      min-height:640px;
+      display:grid;
+      align-items:end;
+      position:relative;
       color:#fff;
       background:
-        linear-gradient(90deg,rgba(35,24,17,.86) 0%,rgba(35,24,17,.55) 42%,rgba(35,24,17,.12) 100%),
-        url('koreahouse-hero01.jpg') center / cover no-repeat;
+        linear-gradient(90deg,rgba(22,18,15,.74) 0%,rgba(22,18,15,.46) 38%,rgba(22,18,15,.08) 100%),
+        url("koreahouse-hero01.jpg") center / cover no-repeat;
+      overflow:hidden;
     }
 
-    .hero-content{
-      max-width:720px;
+    .hero::after{
+      content:"";
+      position:absolute;
+      inset:auto 0 0;
+      height:120px;
+      background:linear-gradient(180deg,rgba(248,246,241,0),var(--paper));
+      pointer-events:none;
     }
 
-    .eyebrow{
-      color:#d1a05a;
-      font-size:14px;
-      letter-spacing:3px;
-      font-weight:900;
-      margin-bottom:18px;
+    .hero-inner{
+      position:relative;
+      z-index:1;
+      padding:90px 0 105px;
+    }
+
+    .brand-mark{
+      display:inline-grid;
+      gap:6px;
+      margin-bottom:24px;
+      color:rgba(255,255,255,.88);
+      font-size:13px;
+      letter-spacing:1.8px;
+      text-transform:uppercase;
+      font-weight:800;
+    }
+
+    .brand-mark span:last-child{
+      width:48px;
+      height:2px;
+      background:var(--clay);
     }
 
     .hero h1{
       margin:0;
-      font-size:58px;
-      line-height:1.15;
-      letter-spacing:-2px;
+      max-width:720px;
+      font-size:clamp(44px,7vw,78px);
+      line-height:1.04;
       font-weight:900;
+      letter-spacing:-1px;
     }
 
     .hero p{
-      margin:24px 0 0;
-      max-width:660px;
-      font-size:19px;
+      margin:26px 0 0;
+      max-width:640px;
       color:rgba(255,255,255,.92);
+      font-size:19px;
+      word-break:keep-all;
     }
 
-    .hero-buttons{
+    .hero-actions{
       display:flex;
       flex-wrap:wrap;
       gap:12px;
-      margin-top:30px;
+      margin-top:34px;
     }
 
-    .btn{
+    .button{
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      padding:13px 21px;
+      min-height:48px;
+      padding:0 20px;
       border-radius:999px;
-      background:#b47a35;
-      color:#fff;
+      border:1px solid rgba(255,255,255,.28);
+      background:#fff;
+      color:var(--ink);
       font-weight:900;
-      box-shadow:0 10px 22px rgba(0,0,0,.18);
+      font-size:15px;
     }
 
-    .btn.sub{
-      background:rgba(255,255,255,.16);
-      border:1px solid rgba(255,255,255,.32);
-      box-shadow:none;
+    .button.secondary{
+      background:rgba(255,255,255,.12);
+      color:#fff;
+      backdrop-filter:blur(8px);
     }
 
     .nav{
       position:sticky;
       top:0;
-      z-index:50;
-      background:rgba(255,250,242,.96);
-      border-bottom:1px solid #eadfce;
-      backdrop-filter:blur(12px);
+      z-index:20;
+      background:rgba(248,246,241,.94);
+      border-bottom:1px solid var(--line);
+      backdrop-filter:blur(14px);
     }
 
     .nav-inner{
-      height:68px;
+      height:64px;
       display:flex;
-      justify-content:center;
       align-items:center;
-      gap:34px;
+      justify-content:space-between;
+      gap:28px;
+    }
+
+    .nav-title{
       font-weight:900;
-      color:#4d392a;
+      color:var(--clay-dark);
+      white-space:nowrap;
     }
 
-    .nav-inner a:hover{
-      color:#9a632d;
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:22px;
+      color:#4c443e;
+      font-size:14px;
+      font-weight:900;
     }
 
-    section{
-      padding:78px 0;
-    }
+    .nav-links a:hover{color:var(--clay)}
+
+    section{padding:86px 0}
 
     .section-head{
-      text-align:center;
+      max-width:760px;
       margin-bottom:36px;
     }
 
-    .section-head span{
-      color:#b47a35;
-      font-size:13px;
-      font-weight:900;
-      letter-spacing:2px;
+    .section-head.center{
+      text-align:center;
+      margin-left:auto;
+      margin-right:auto;
     }
 
-    .section-head h2{
-      margin:8px 0 10px;
-      font-size:38px;
-      line-height:1.25;
-      letter-spacing:-1px;
-      color:#2b1c12;
+    .section-kicker{
+      color:var(--clay);
+      font-size:12px;
+      font-weight:900;
+      letter-spacing:1.8px;
+      text-transform:uppercase;
+    }
+
+    h2{
+      margin:10px 0 14px;
+      font-size:clamp(30px,4vw,46px);
+      line-height:1.18;
+      letter-spacing:-.5px;
     }
 
     .section-head p{
-      margin:0 auto;
-      max-width:760px;
-      color:#75685c;
+      margin:0;
+      color:var(--muted);
+      font-size:17px;
+      word-break:keep-all;
     }
 
-    .intro-card{
-      background:#fffaf2;
-      border:1px solid #eadfce;
-      border-radius:28px;
-      padding:38px;
-      box-shadow:0 20px 45px rgba(70,45,25,.08);
+    .story-layout{
       display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:30px;
+      grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);
+      gap:54px;
       align-items:center;
     }
 
-    .intro-card h3{
-      margin:0 0 14px;
-      font-size:30px;
-      color:#2b1c12;
+    .story-image{
+      min-height:480px;
+      background:
+        linear-gradient(180deg,rgba(32,25,22,0),rgba(32,25,22,.12)),
+        url("store2.jpg") center / cover no-repeat,
+        #d8c8b7;
+      border:1px solid var(--line);
+      border-radius:28px;
+      box-shadow:0 18px 40px rgba(50,35,20,.08);
     }
 
-    .intro-card p{
+    .story-copy{
+      display:grid;
+      gap:22px;
+    }
+
+    .lead{
       margin:0;
-      color:#5f5146;
-      font-size:17px;
+      color:#3c332e;
+      font-size:20px;
+      font-weight:800;
+      word-break:keep-all;
     }
 
-    .intro-photo{
-      border-radius:24px;
-      overflow:hidden;
-      min-height:320px;
+    .story-copy p:not(.lead){
+      margin:0;
+      color:var(--muted);
+      word-break:keep-all;
     }
 
-    .intro-photo img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      display:block;
-    }
-
-    .keyword-row{
+    .keywords{
       display:flex;
       flex-wrap:wrap;
       gap:10px;
-      margin-top:22px;
+      margin-top:6px;
     }
 
     .keyword{
-      padding:9px 14px;
+      padding:8px 13px;
+      border:1px solid #d7c7b8;
+      color:var(--clay-dark);
+      background:rgba(255,255,255,.62);
       border-radius:999px;
-      background:#efe3d5;
-      color:#6b4b31;
+      font-size:13px;
       font-weight:900;
-      font-size:14px;
     }
 
-    .value-grid{
+    .values{
       display:grid;
       grid-template-columns:repeat(4,1fr);
       gap:18px;
     }
 
     .value{
+      min-height:220px;
+      padding:30px 26px;
       background:#fff;
-      border:1px solid #eadfce;
-      border-radius:24px;
-      padding:28px 22px;
-      text-align:center;
-      box-shadow:0 14px 30px rgba(70,45,25,.07);
+      border:1px solid var(--line);
+      border-radius:26px;
+      box-shadow:0 16px 34px rgba(60,40,24,.06);
+    }
+
+    .value small{
+      color:var(--sage);
+      font-weight:900;
+      letter-spacing:1px;
     }
 
     .value strong{
       display:block;
-      font-size:21px;
-      margin-bottom:8px;
-      color:#2b1c12;
+      margin:14px 0 10px;
+      font-size:22px;
     }
 
     .value span{
-      color:#75685c;
-      font-size:14px;
+      color:var(--muted);
+      font-size:15px;
+      word-break:keep-all;
+    }
+
+    .point-detail{
+      margin-top:26px;
+      padding:34px;
+      background:linear-gradient(135deg,#fff,#fbf3e9);
+      border:1px solid var(--line);
+      border-radius:28px;
+      box-shadow:0 18px 38px rgba(60,40,24,.06);
+    }
+
+    .point-detail h3{
+      margin:0 0 12px;
+      font-size:25px;
+      color:var(--clay-dark);
+    }
+
+    .point-detail p{
+      margin:10px 0 0;
+      color:#5f554e;
+      word-break:keep-all;
+    }
+
+    .menu-section{
+      background:#fff;
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
     }
 
     .menu-grid{
       display:grid;
       grid-template-columns:repeat(3,1fr);
-      gap:22px;
+      gap:20px;
     }
 
     .menu-card{
+      border:1px solid var(--line);
       background:#fff;
       border-radius:24px;
       overflow:hidden;
-      border:1px solid #eadfce;
-      box-shadow:0 16px 36px rgba(60,35,18,.1);
+      box-shadow:0 14px 30px rgba(60,40,24,.06);
     }
 
     .menu-card img{
       width:100%;
       aspect-ratio:4/3;
       object-fit:cover;
-      display:block;
+      background:#d8c8b7;
     }
 
-    .menu-card div{
+    .menu-card-content{
       padding:22px;
     }
 
     .menu-card h3{
       margin:0 0 8px;
-      font-size:23px;
-      color:#2b1c12;
+      font-size:22px;
     }
 
     .menu-card p{
-      margin:0 0 12px;
-      color:#66584d;
+      margin:0 0 18px;
+      color:var(--muted);
       font-size:15px;
+      word-break:keep-all;
     }
 
-    .menu-card strong{
-      color:#8b5a2b;
-      font-size:18px;
-    }
-
-    .all-menu{
-      margin-top:30px;
-      background:#fff;
-      border:1px solid #eadfce;
-      border-radius:24px;
-      padding:26px;
-      box-shadow:0 12px 28px rgba(60,35,18,.08);
-    }
-
-    .all-menu summary{
-      cursor:pointer;
+    .price{
+      color:var(--clay-dark);
       font-weight:900;
-      font-size:21px;
-      color:#2b1c12;
+    }
+
+    .menu-list{
+      margin-top:26px;
+      padding:0 24px 14px;
+      border:1px solid var(--line);
+      border-radius:24px;
+      background:#fbfaf7;
+    }
+
+    .menu-list summary{
+      cursor:pointer;
+      padding:20px 0;
+      font-size:18px;
+      font-weight:900;
     }
 
     .simple-menu{
-      margin-top:22px;
       display:grid;
       grid-template-columns:repeat(2,1fr);
-      gap:10px 34px;
+      gap:0 40px;
+      padding-bottom:10px;
     }
 
     .simple-menu p{
       margin:0;
       display:flex;
       justify-content:space-between;
-      gap:16px;
-      border-bottom:1px solid #eee2d4;
-      padding:9px 0;
-      color:#3c2c22;
-    }
-
-    .simple-menu b{
-      font-weight:900;
+      gap:18px;
+      padding:12px 0;
+      border-top:1px solid var(--line);
+      color:#3d3631;
     }
 
     .simple-menu span{
-      color:#8b5a2b;
+      color:var(--clay-dark);
       font-weight:900;
       white-space:nowrap;
     }
 
-    .gallery{
+    .facility-grid{
       display:grid;
-      grid-template-columns:1.2fr .8fr .8fr;
-      gap:16px;
-    }
-
-    .gallery img{
-      width:100%;
-      height:260px;
-      object-fit:cover;
-      border-radius:24px;
-      box-shadow:0 16px 35px rgba(70,45,25,.12);
-    }
-
-    .gallery img:first-child{
-      height:536px;
-      grid-row:span 2;
-    }
-
-    .info-section{
-      background:#2e2117;
-      color:#fff;
-    }
-
-    .info-section .section-head h2{
-      color:#fff;
-    }
-
-    .info-section .section-head p{
-      color:rgba(255,255,255,.72);
-    }
-
-    .info-grid{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
+      grid-template-columns:repeat(4,1fr);
       gap:18px;
     }
 
-    .info-box{
-      background:rgba(255,255,255,.08);
-      border:1px solid rgba(255,255,255,.16);
+    .facility-item{
+      padding:26px 22px;
+      background:#fff;
+      border:1px solid var(--line);
       border-radius:24px;
-      padding:28px;
-    }
-
-    .info-box h3{
-      margin:0 0 12px;
-      font-size:22px;
-      color:#d5a45f;
-    }
-
-    .info-box p{
-      margin:0;
-      color:rgba(255,255,255,.88);
-    }
-
-    .notice{
-      margin-top:28px;
-      padding:22px;
-      border-radius:22px;
-      background:rgba(255,255,255,.08);
-      border:1px solid rgba(255,255,255,.16);
-      color:rgba(255,255,255,.82);
+      box-shadow:0 12px 26px rgba(60,40,24,.05);
       text-align:center;
+    }
+
+    .facility-icon{
+      width:52px;
+      height:52px;
+      margin:0 auto 14px;
+      display:grid;
+      place-items:center;
+      border-radius:50%;
+      background:var(--soft);
+      color:var(--clay-dark);
+      font-size:24px;
+    }
+
+    .facility-item strong{
+      display:block;
+      margin-bottom:8px;
+      font-size:19px;
+    }
+
+    .facility-item span{
+      color:var(--muted);
+      font-size:14px;
+      word-break:keep-all;
+    }
+
+    .space-grid{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:18px;
+      align-items:stretch;
+    }
+
+    .space-grid img{
+      width:100%;
+      height:100%;
+      min-height:360px;
+      object-fit:cover;
+      border:1px solid var(--line);
+      border-radius:24px;
+      background:#d8c8b7;
+      box-shadow:0 16px 34px rgba(60,40,24,.07);
+    }
+
+    .space-stack{
+      display:grid;
+      gap:18px;
+    }
+
+    .map-section{
+      background:#fffaf4;
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+    }
+
+    .map-layout{
+      display:grid;
+      grid-template-columns:.9fr 1.1fr;
+      gap:30px;
+      align-items:stretch;
+    }
+
+    .way-card{
+      padding:34px;
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:28px;
+      box-shadow:0 16px 34px rgba(60,40,24,.06);
+    }
+
+    .way-card h3{
+      margin:0 0 14px;
+      font-size:26px;
+    }
+
+    .way-card p{
+      margin:0 0 18px;
+      color:var(--muted);
+      word-break:keep-all;
+    }
+
+    .way-list{
+      margin:0;
+      padding:0;
+      list-style:none;
+    }
+
+    .way-list li{
+      padding:13px 0;
+      border-top:1px solid var(--line);
+      color:#4c443e;
+    }
+
+    .way-list b{
+      color:var(--clay-dark);
+      margin-right:8px;
+    }
+
+    .map-box{
+      min-height:420px;
+      overflow:hidden;
+      border:1px solid var(--line);
+      border-radius:28px;
+      box-shadow:0 16px 34px rgba(60,40,24,.06);
+      background:#e8e0d5;
+    }
+
+    .map-box iframe{
+      width:100%;
+      height:100%;
+      min-height:420px;
+      border:0;
+      display:block;
+    }
+
+    .info-section{
+      color:#efece6;
+      background:var(--charcoal);
+    }
+
+    .info-section .section-head p{
+      color:rgba(239,236,230,.72);
+    }
+
+    .info-layout{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:50px;
+      align-items:start;
+    }
+
+    .info-list{
+      border-top:1px solid rgba(255,255,255,.16);
+    }
+
+    .info-row{
+      display:grid;
+      grid-template-columns:110px 1fr;
+      gap:24px;
+      padding:22px 0;
+      border-bottom:1px solid rgba(255,255,255,.16);
+    }
+
+    .info-row dt{
+      color:#cfa06e;
+      font-weight:900;
+    }
+
+    .info-row dd{
+      margin:0;
+      color:rgba(255,255,255,.9);
+    }
+
+    .visit-panel{
+      padding:30px;
+      border:1px solid rgba(255,255,255,.16);
+      border-radius:26px;
+      background:rgba(255,255,255,.06);
+    }
+
+    .visit-panel strong{
+      display:block;
+      margin-bottom:12px;
+      font-size:24px;
+    }
+
+    .visit-panel p{
+      margin:0 0 24px;
+      color:rgba(255,255,255,.74);
+      word-break:keep-all;
+    }
+
+    .info-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+
+    .info-actions .button{
+      border-color:rgba(255,255,255,.22);
     }
 
     footer{
-      padding:28px;
-      text-align:center;
-      color:#8a7864;
-      background:#f7f3ed;
+      padding:30px 0;
+      color:#83786f;
+      font-size:13px;
+      background:var(--paper);
     }
 
-    @media(max-width:900px){
-      .hero{
-        min-height:520px;
+    @media(max-width:940px){
+      .hero{min-height:590px}
+
+      .nav-inner{
+        height:auto;
+        padding:14px 0;
+        align-items:flex-start;
+        flex-direction:column;
       }
 
-      .hero h1{
-        font-size:44px;
+      .nav-links{
+        flex-wrap:wrap;
+        gap:12px 18px;
       }
 
-      .intro-card,
+      .story-layout,
+      .info-layout,
+      .space-grid,
+      .map-layout{
+        grid-template-columns:1fr;
+      }
+
+      .story-image{min-height:360px}
+
+      .values,
       .menu-grid,
-      .info-grid{
-        grid-template-columns:1fr;
-      }
-
-      .value-grid,
-      .simple-menu{
-        grid-template-columns:1fr 1fr;
-      }
-
-      .gallery{
-        grid-template-columns:1fr;
-      }
-
-      .gallery img,
-      .gallery img:first-child{
-        height:300px;
+      .facility-grid{
+        grid-template-columns:repeat(2,1fr);
       }
     }
 
     @media(max-width:640px){
-      .container{
-        width:calc(100% - 28px);
-      }
+      .container{width:calc(100% - 28px)}
 
       .hero{
-        min-height:500px;
+        min-height:540px;
+        background:
+          linear-gradient(180deg,rgba(22,18,15,.78),rgba(22,18,15,.38)),
+          url("koreahouse-hero01.jpg") center / cover no-repeat;
       }
 
-      .hero h1{
-        font-size:36px;
-      }
+      .hero-inner{padding:72px 0 90px}
+      .hero p{font-size:16px}
+      section{padding:64px 0}
 
-      .hero p{
-        font-size:16px;
-      }
-
-      .nav-inner{
-        height:auto;
-        padding:12px;
-        gap:10px;
-        flex-wrap:wrap;
-        font-size:14px;
-      }
-
-      section{
-        padding:62px 0;
-      }
-
-      .section-head h2{
-        font-size:30px;
-      }
-
-      .intro-card{
-        padding:24px;
-      }
-
-      .value-grid,
-      .simple-menu{
+      .values,
+      .menu-grid,
+      .simple-menu,
+      .facility-grid{
         grid-template-columns:1fr;
+      }
+
+      .value{min-height:0}
+
+      .info-row{
+        grid-template-columns:1fr;
+        gap:6px;
       }
     }
   </style>
@@ -456,250 +656,341 @@
 
 <body>
 
-<section
-  class="hero"
-  id="main"
-  style="background-image:url('koreahouse-hero01.jpg');">
-  <div class="container">
-    <div class="hero-content">
-      <div class="eyebrow">KOREA HOUSE · LOTTE WORLD MALL</div>
-      <h1>한국의집<br>롯데월드몰점</h1>
-      <p>
-        조선시대 궁중한정식을 전통방식 그대로 재현해낸
-        품격 있는 한식 공간입니다.
-      </p>
+<section class="hero" id="main">
+  <div class="container hero-inner">
+    <div class="brand-mark">
+      <span>Korea House · Lotte World Mall</span>
+      <span></span>
+    </div>
 
-      <div class="hero-buttons">
-        <a class="btn" href="#intro">매장 소개</a>
-        <a class="btn sub" href="#menu">메뉴 보기</a>
-        <a class="btn sub" href="#info">매장 안내</a>
-      </div>
+    <h1>한국의집<br>롯데월드몰점</h1>
+
+    <p>
+      궁중 음식의 품격과 한식의 따뜻함을 현대적인 공간 안에 담았습니다.
+      바쁜 도심 속에서도 정갈한 한 상을 천천히 즐길 수 있는 한국의집입니다.
+    </p>
+
+    <div class="hero-actions">
+      <a class="button" href="#intro">브랜드 소개</a>
+      <a class="button secondary" href="#menu">대표 메뉴</a>
+      <a class="button secondary" href="#map">오시는 길</a>
     </div>
   </div>
 </section>
 
 <nav class="nav">
-  <div class="nav-inner">
-    <a href="index.html">메인</a>
-    <a href="brands.html">브랜드</a>
-    <a href="#intro">소개</a>
-    <a href="#menu">메뉴</a>
-    <a href="#space">공간</a>
-    <a href="#info">매장안내</a>
+  <div class="container nav-inner">
+    <a class="nav-title" href="#main">한국의집</a>
+    <div class="nav-links">
+      <a href="#intro">소개</a>
+      <a href="#point">매력 포인트</a>
+      <a href="#menu">메뉴</a>
+      <a href="#service">편의시설</a>
+      <a href="#space">매장 전경</a>
+      <a href="#map">오시는 길</a>
+      <a href="#info">매장 정보</a>
+    </div>
   </div>
 </nav>
 
 <section id="intro">
-  <div class="container">
-    <div class="section-head">
-      <span>INTRODUCTION</span>
-      <h2>전통의 품격을 담은 한국 한식</h2>
-      <p>한국의집 롯데월드몰점의 소개입니다.</p>
-    </div>
+  <div class="container story-layout">
+    <div class="story-image" aria-label="한국의집 매장 이미지"></div>
 
-    <div class="intro-card">
-      <div>
-        <h3>조선시대 궁중음식의 명맥을 잇다</h3>
+    <div class="story-copy">
+      <div class="section-head">
+        <span class="section-kicker">Introduction</span>
+        <h2>전통의 깊이를 오늘의 한식으로</h2>
         <p>
-          한국의집은 조선시대 궁중한정식을 전통방식 그대로 재현해낸
-          품격 있는 아름다움을 추구합니다.
-          잔칫상계, 진연의궤, 궁중음식발기, 조선왕조실록,
-          음식디미방 등 옛 문헌을 토대로 한 조리법으로
-          조선시대 궁중음식의 명맥을 이어오고 있습니다.
+          한국의집은 한국 음식의 아름다움과 예법을 현대적인 감각으로 풀어낸 한식 브랜드입니다.
         </p>
-
-        <div class="keyword-row">
-          <span class="keyword">골동반반상</span>
-          <span class="keyword">어린이떡갈비반상</span>
-          <span class="keyword">녹음정식</span>
-          <span class="keyword">설리적한상</span>
-          <span class="keyword">물골동면</span>
-        </div>
       </div>
 
-      <div class="intro-photo">
-        <img src="store2.jpg" alt="한국의집 매장 이미지">
+      <p class="lead">
+        정갈한 상차림, 담백한 맛, 편안한 서비스가 어우러지는 도심 속 전통 한식 공간.
+      </p>
+
+      <p>
+        한국의집은 조선시대 궁중한정식을 전통 방식 그대로 재현해낸 품격 있는 아름다움을 추구합니다.
+        잔칫상계, 진연의궤, 궁중음식발기, 조선왕조실록, 음식디미방 등 옛 문헌을 토대로 한
+        조리법으로 궁중음식의 명맥을 이어가고 있습니다.
+      </p>
+
+      <p>
+        롯데월드몰점은 일상적인 식사부터 가족 모임, 외국인 고객 접대까지 자연스럽게 어울리는 공간을 지향합니다.
+        메뉴는 한식의 기본을 지키되 누구나 편안하게 즐길 수 있도록 구성했습니다.
+      </p>
+
+      <div class="keywords">
+        <span class="keyword">궁중 음식</span>
+        <span class="keyword">정갈한 반상</span>
+        <span class="keyword">가족 모임</span>
+        <span class="keyword">도심 한식</span>
+        <span class="keyword">롯데월드몰 5층</span>
       </div>
     </div>
   </div>
 </section>
 
-<section>
+<section id="point">
   <div class="container">
-    <div class="section-head">
-      <span>POINT</span>
+    <div class="section-head center">
+      <span class="section-kicker">Brand Point</span>
       <h2>한국의집의 매력 포인트</h2>
-      <p>전통 한식, 정갈한 반상, 넓은 매장, 가족 외식에 어울리는 구성을 갖추고 있습니다.</p>
+      <p>
+        처음 방문하는 고객도 한국의집의 장점을 쉽게 이해할 수 있도록 핵심 경험을 정리했습니다.
+      </p>
     </div>
 
-    <div class="value-grid">
+    <div class="values">
       <div class="value">
+        <small>01</small>
         <strong>전통 한식</strong>
-        <span>궁중음식의 품격을 현대적으로 경험합니다.</span>
+        <span>궁중 음식의 품격을 일상적인 식사 경험으로 편안하게 풀어냅니다.</span>
       </div>
+
       <div class="value">
+        <small>02</small>
         <strong>다양한 반상</strong>
-        <span>한상·반상·정식 메뉴를 폭넓게 제공합니다.</span>
+        <span>밥, 국, 찬, 주요리를 균형 있게 구성해 한 끼의 만족감을 높입니다.</span>
       </div>
+
       <div class="value">
+        <small>03</small>
         <strong>가족 외식</strong>
-        <span>어린이 메뉴와 단체 이용이 가능합니다.</span>
+        <span>어린이 메뉴와 단체 이용이 가능해 가족 식사와 모임에 적합합니다.</span>
       </div>
+
       <div class="value">
-        <strong>롯데월드몰</strong>
-        <span>잠실 롯데월드몰 5층에 위치합니다.</span>
+        <small>04</small>
+        <strong>뛰어난 접근성</strong>
+        <span>잠실 롯데월드몰 5층에서 만나는 편리한 한식 다이닝입니다.</span>
       </div>
+    </div>
+
+    <div class="point-detail">
+      <h3>이런 분들께 추천합니다</h3>
+      <p>
+        부모님과 함께하는 식사, 아이와 함께하는 가족 외식, 쇼핑 중 편안하게 즐기는 한식,
+        외국인 고객에게 한국적인 식문화를 소개하는 자리까지 모두 잘 어울립니다.
+      </p>
+      <p>
+        한국의집은 메뉴를 복잡하게 설명하기보다 한식의 기본과 정갈한 상차림,
+        그리고 편안한 공간 경험을 통해 고객에게 기억되는 식사 시간을 제공합니다.
+      </p>
     </div>
   </div>
 </section>
 
-<section id="menu">
+<section class="menu-section" id="menu">
   <div class="container">
-    <div class="section-head">
-      <span>MENU</span>
+    <div class="section-head center">
+      <span class="section-kicker">Menu</span>
       <h2>대표 메뉴</h2>
-      <p>한국의집 롯데월드몰점의 대표 한식 메뉴를 소개합니다.</p>
+      <p>
+        대표 메뉴를 먼저 소개하고, 주요 메뉴는 접어서 볼 수 있도록 정리했습니다.
+      </p>
     </div>
 
     <div class="menu-grid">
-      <div class="menu-card">
-        <img src="menu-22.jpg" alt="골동반 반상">
-        <div>
+      <article class="menu-card">
+        <img src="menu-22.jpg" alt="골동반 반상" />
+        <div class="menu-card-content">
           <h3>골동반 반상</h3>
-          <p>몸에 좋은 갖은 야채와 소고기를 올리고 특제 양념 고추장을 곁들여 먹는 비빔밥입니다.</p>
-          <strong>18,000원</strong>
+          <p>몸에 좋은 야채와 소고기를 올리고 특제 양념 고추장을 곁들여 즐기는 비빔밥 반상입니다.</p>
+          <span class="price">18,000원</span>
         </div>
-      </div>
+      </article>
 
-      <div class="menu-card">
-        <img src="menu-33.jpg" alt="어린이떡갈비 반상">
-        <div>
-          <h3>어린이떡갈비 반상</h3>
-          <p>아이들 눈높이에 맞춘 밑반찬과 떡갈비 구성의 어린이 메뉴입니다.</p>
-          <strong>14,000원</strong>
+      <article class="menu-card">
+        <img src="menu-33.jpg" alt="어린이 떡갈비 반상" />
+        <div class="menu-card-content">
+          <h3>어린이 떡갈비 반상</h3>
+          <p>아이들이 편하게 즐길 수 있도록 구성한 어린이 메뉴입니다.</p>
+          <span class="price">14,000원</span>
         </div>
-      </div>
+      </article>
 
-      <div class="menu-card">
-        <img src="menu-02.jpg" alt="녹음정식">
-        <div>
+      <article class="menu-card">
+        <img src="menu-02.jpg" alt="녹음정식" />
+        <div class="menu-card-content">
           <h3>녹음정식</h3>
-          <p>계절 식재료와 전통 요리를 정갈하게 담아낸 한국의집 정식 메뉴입니다.</p>
-          <strong>70,000원</strong>
+          <p>전통 조리법과 계절 식재료를 담은 한국의집 정식 메뉴입니다.</p>
+          <span class="price">70,000원</span>
         </div>
-      </div>
+      </article>
     </div>
 
-    <details class="all-menu" open>
-      <summary>전체 메뉴 보기</summary>
+    <details class="menu-list">
+      <summary>주요 메뉴 더 보기</summary>
 
       <div class="simple-menu">
         <p><b>청우정식</b><span>100,000원</span></p>
         <p><b>녹음정식</b><span>70,000원</span></p>
         <p><b>우금정식</b><span>50,000원</span></p>
-
         <p><b>골동반 반상</b><span>18,000원</span></p>
         <p><b>강된장골동반 반상</b><span>18,000원</span></p>
         <p><b>물골동면 반상</b><span>18,000원</span></p>
-        <p><b>비빔골동면 반상</b><span>18,000원</span></p>
         <p><b>육회골동반상</b><span>22,000원</span></p>
         <p><b>쭈꾸미골동반상</b><span>22,000원</span></p>
-        <p><b>꼬막골동반상</b><span>22,000원</span></p>
-        <p><b>고등어자반 반상</b><span>18,000원</span></p>
-        <p><b>연자반 반상</b><span>18,000원</span></p>
-        <p><b>파육계장 반상</b><span>20,000원</span></p>
-        <p><b>황태해장국반상</b><span>22,000원</span></p>
-        <p><b>전복효종갱반상</b><span>28,000원</span></p>
-        <p><b>전복설리갱반상</b><span>28,000원</span></p>
-        <p><b>닭불고기 반상</b><span>22,000원</span></p>
-        <p><b>소불고기 반상</b><span>22,000원</span></p>
-        <p><b>더덕삼겹살 반상</b><span>22,000원</span></p>
         <p><b>어린이떡갈비 반상</b><span>14,000원</span></p>
-        <p><b>꼬마선비 반상</b><span>18,000원</span></p>
-        <p><b>꼬마아씨 반상</b><span>18,000원</span></p>
-
+        <p><b>전복효종갱반상</b><span>28,000원</span></p>
         <p><b>설리적한상</b><span>35,000원</span></p>
         <p><b>장어구이한상</b><span>35,000원</span></p>
         <p><b>보리굴비 한상</b><span>35,000원</span></p>
-        <p><b>쭈꾸미삼겹살한상</b><span>35,000원</span></p>
-        <p><b>한우떡갈비 한상</b><span>35,000원</span></p>
-        <p><b>쭈꾸미볶음 한상</b><span>35,000원</span></p>
-        <p><b>황태구이한상</b><span>35,000원</span></p>
         <p><b>전복삼계탕 한상</b><span>28,000원</span></p>
-
-        <p><b>일품 육회</b><span>35,000원</span></p>
-        <p><b>일품 육전</b><span>35,000원</span></p>
-        <p><b>일품 모둠전</b><span>35,000원</span></p>
-        <p><b>일품 표고버섯완자튀김</b><span>25,000원</span></p>
-        <p><b>일품 메밀전병</b><span>20,000원</span></p>
-        <p><b>일품 닭불고기</b><span>30,000원</span></p>
-        <p><b>일품 설리적 제육</b><span>35,000원</span></p>
-        <p><b>일품 소불고기</b><span>35,000원</span></p>
-        <p><b>일품 장어구이</b><span>65,000원</span></p>
-        <p><b>일품 쭈꾸미볶음</b><span>45,000원</span></p>
-        <p><b>일품 설리적 소왕갈비찜</b><span>60,000원</span></p>
       </div>
     </details>
   </div>
 </section>
 
-<section id="space">
+<section id="service">
   <div class="container">
-    <div class="section-head">
-      <span>SPACE</span>
-      <h2>매장 공간</h2>
-      <p>롯데월드몰 안에서 여유롭게 즐길 수 있는 전통 한식 공간입니다.</p>
+    <div class="section-head center">
+      <span class="section-kicker">Service</span>
+      <h2>편의시설 및 서비스</h2>
+      <p>
+        방문 고객이 미리 확인하면 좋은 이용 정보를 보기 쉽게 정리했습니다.
+      </p>
     </div>
 
-    <div class="gallery">
-      <img src="store1.jpg" alt="한국의집 매장 사진 1">
-      <img src="store2.jpg" alt="한국의집 매장 사진 2">
-      <img src="store3.jpg" alt="한국의집 매장 사진 3">
-      <img src="store4.jpg" alt="한국의집 매장 사진 4">
-      <img src="view.jpg" alt="한국의집 전망 사진">
+    <div class="facility-grid">
+      <div class="facility-item">
+        <div class="facility-icon">📅</div>
+        <strong>예약 가능</strong>
+        <span>방문 전 전화로 예약 가능 여부를 확인하실 수 있습니다.</span>
+      </div>
+
+      <div class="facility-item">
+        <div class="facility-icon">👨‍👩‍👧‍👦</div>
+        <strong>단체 이용</strong>
+        <span>가족 모임, 회식, 고객 접대 자리로 이용하기 좋습니다.</span>
+      </div>
+
+      <div class="facility-item">
+        <div class="facility-icon">🪑</div>
+        <strong>유아의자</strong>
+        <span>어린이 고객과 함께 방문하기 편한 환경을 제공합니다.</span>
+      </div>
+
+      <div class="facility-item">
+        <div class="facility-icon">🚗</div>
+        <strong>주차 가능</strong>
+        <span>롯데월드몰 주차장을 이용하실 수 있습니다.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="space">
+  <div class="container">
+    <div class="section-head center">
+      <span class="section-kicker">Space</span>
+      <h2>매장 전경</h2>
+      <p>
+        밝은 쇼핑몰 안에서도 한식의 온기와 여유가 느껴지도록 공간 이미지를 크게 배치했습니다.
+      </p>
+    </div>
+
+    <div class="space-grid">
+      <img src="store1.jpg" alt="한국의집 매장 전경" />
+      <div class="space-stack">
+        <img src="store3.jpg" alt="한국의집 실내 좌석" />
+        <img src="view.jpg" alt="롯데월드몰 전망" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="map-section" id="map">
+  <div class="container">
+    <div class="section-head center">
+      <span class="section-kicker">Location</span>
+      <h2>오시는 길</h2>
+      <p>
+        잠실 롯데월드몰 5층에 위치해 쇼핑, 문화생활과 함께 편하게 방문하실 수 있습니다.
+      </p>
+    </div>
+
+    <div class="map-layout">
+      <div class="way-card">
+        <h3>한국의집 롯데월드몰점</h3>
+        <p>
+          대중교통 이용 시 잠실역과 연결된 롯데월드몰을 통해 편리하게 방문하실 수 있습니다.
+          차량 방문 시 롯데월드몰 주차장을 이용해 주세요.
+        </p>
+
+        <ul class="way-list">
+          <li><b>주소</b>서울 송파구 올림픽로 300 롯데월드몰 5층</li>
+          <li><b>지하철</b>잠실역 2호선 · 8호선 연결</li>
+          <li><b>주차</b>롯데월드몰 주차장 이용</li>
+          <li><b>문의</b>02-3213-4560</li>
+        </ul>
+      </div>
+
+      <div class="map-box">
+        <iframe
+          src="https://maps.google.com/maps?q=서울%20송파구%20올림픽로%20300%20롯데월드몰&t=&z=16&ie=UTF8&iwloc=&output=embed"
+          loading="lazy"
+          title="한국의집 롯데월드몰점 지도">
+        </iframe>
+      </div>
     </div>
   </div>
 </section>
 
 <section class="info-section" id="info">
-  <div class="container">
-    <div class="section-head">
-      <span>STORE INFORMATION</span>
-      <h2>매장 안내</h2>
-      <p>방문 전 위치와 운영 정보를 확인해 주세요.</p>
-    </div>
-
-    <div class="info-grid">
-      <div class="info-box">
-        <h3>주소</h3>
-        <p>서울특별시 송파구 올림픽로 300<br>롯데월드몰 5층</p>
+  <div class="container info-layout">
+    <div>
+      <div class="section-head">
+        <span class="section-kicker">Store Information</span>
+        <h2>매장 정보</h2>
+        <p>
+          방문 전 위치, 연락처, 운영 시간을 확인해 주세요.
+        </p>
       </div>
 
-      <div class="info-box">
-        <h3>전화</h3>
-        <p>02-3213-4560</p>
+      <dl class="info-list">
+        <div class="info-row">
+          <dt>주소</dt>
+          <dd>서울 송파구 올림픽로 300<br />롯데월드몰 5층</dd>
+        </div>
+
+        <div class="info-row">
+          <dt>전화</dt>
+          <dd>02-3213-4560</dd>
+        </div>
+
+        <div class="info-row">
+          <dt>운영 시간</dt>
+          <dd>매일 10:30 - 22:00<br />라스트 오더 21:00</dd>
+        </div>
+
+        <div class="info-row">
+          <dt>이용 안내</dt>
+          <dd>예약 가능 · 단체 이용 가능 · 유아의자 · 주차 가능</dd>
+        </div>
+      </dl>
+    </div>
+
+    <aside class="visit-panel">
+      <strong>방문 전 확인</strong>
+      <p>
+        영업 시간과 예약 가능 여부는 매장 상황에 따라 달라질 수 있습니다.
+        단체 이용이나 특별한 요청이 있다면 방문 전 전화로 확인해 주세요.
+      </p>
+
+      <div class="info-actions">
+        <a class="button" href="tel:0232134560">전화 문의</a>
+        <a class="button secondary" href="#map">오시는 길</a>
+        <a class="button secondary" href="#menu">메뉴 보기</a>
       </div>
-
-      <div class="info-box">
-        <h3>영업시간</h3>
-        <p>매일 10:30 ~ 22:00<br>라스트오더 21:00</p>
-      </div>
-    </div>
-
-    <div class="notice">
-      예약 · 단체 이용 가능 / 식약처 지정 식품안심업소
-    </div>
-
-    <div class="hero-buttons" style="justify-content:center; margin-top:28px;">
-      <a class="btn" href="tel:0232134560">전화하기</a>
-      <a class="btn sub" href="brands.html">브랜드 목록</a>
-      <a class="btn sub" href="index.html">메인으로</a>
-    </div>
+    </aside>
   </div>
 </section>
 
 <footer>
-  © 2026 KOREA HOUSE LOTTE WORLD MALL · THE BIG KOREA
+  <div class="container">© 2026 KOREA HOUSE LOTTE WORLD MALL · THE BIG KOREA</div>
 </footer>
 
 </body>
