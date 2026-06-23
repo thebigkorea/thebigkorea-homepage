@@ -108,12 +108,17 @@
   padding:0;
 }
 
-.hero::before{
-  content:"";
-  display:block;
+.hero{
+  position:relative;
+  overflow:hidden;
+  background:#f7f3ed;
+  padding:0;
+}
+
+.hero img{
   width:100%;
-  aspect-ratio:1920 / 1080;
-  background:url("brand-hero.jpg") center top / contain no-repeat;
+  height:auto;
+  display:block;
 }
 
     .hero::after{
@@ -390,9 +395,8 @@
 </header>
 
 <section class="hero">
-  <div class="container">
-    <h1 class="sr-only">더큰코리아 브랜드 포트폴리오</h1>
-  </div>
+  <img src="brand-hero.jpg" alt="더큰코리아 브랜드">
+  <h1 class="sr-only">더큰코리아 브랜드 포트폴리오</h1>
 </section>
 
 <section id="brandList">
