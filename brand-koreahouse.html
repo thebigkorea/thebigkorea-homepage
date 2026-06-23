@@ -326,7 +326,7 @@
 
     .menu-card img{
       width:100%;
-      aspect-ratio:4/3;
+      height:210px;
       object-fit:cover;
       background:#d8c8b7;
     }
@@ -649,6 +649,52 @@
         grid-template-columns:1fr;
         gap:6px;
       }
+
+      .menu-photo-list{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:16px;
+  padding:0 0 24px;
+}
+
+.menu-photo-item{
+  display:grid;
+  grid-template-columns:90px 1fr;
+  gap:14px;
+  align-items:center;
+  padding:12px;
+  border-top:1px solid var(--line);
+}
+
+.menu-photo-item img{
+  width:90px;
+  height:90px;
+  object-fit:cover;
+  border-radius:14px;
+  background:#d8c8b7;
+}
+
+.menu-photo-item h4{
+  margin:0 0 4px;
+  font-size:16px;
+}
+
+.menu-photo-item p{
+  margin:0 0 6px;
+  color:var(--muted);
+  font-size:13px;
+}
+
+.menu-photo-item strong{
+  color:var(--clay-dark);
+}
+
+@media(max-width:640px){
+  .menu-photo-list{
+    grid-template-columns:1fr;
+  }
+}
+
     }
   </style>
 </head>
@@ -791,54 +837,47 @@
       </p>
     </div>
 
-    <div class="menu-grid">
-      <article class="menu-card">
-        <img src="menu-22.jpg" alt="골동반 반상" />
-        <div class="menu-card-content">
-          <h3>골동반 반상</h3>
-          <p>몸에 좋은 야채와 소고기를 올리고 특제 양념 고추장을 곁들여 즐기는 비빔밥 반상입니다.</p>
-          <span class="price">18,000원</span>
-        </div>
-      </article>
+    <article class="menu-card">
+  <img src="menu-22.jpg" alt="골동반 반상" />
+  <div class="menu-card-content">
+    <h3>골동반 반상</h3>
+    <p>야채와 소고기를 올리고 특제 양념 고추장을 곁들여 즐기는 비빔밥 반상입니다.</p>
+    <span class="price">18,000원</span>
+  </div>
+</article>
 
-      <article class="menu-card">
-        <img src="menu-33.jpg" alt="어린이 떡갈비 반상" />
-        <div class="menu-card-content">
-          <h3>어린이 떡갈비 반상</h3>
-          <p>아이들이 편하게 즐길 수 있도록 구성한 어린이 메뉴입니다.</p>
-          <span class="price">14,000원</span>
-        </div>
-      </article>
+<article class="menu-card">
+  <img src="menu-16.jpg" alt="전복효종갱반상" />
+  <div class="menu-card-content">
+    <h3>전복효종갱반상</h3>
+    <p>전복과 깊은 국물 맛을 함께 즐길 수 있는 한국의집 대표 반상입니다.</p>
+    <span class="price">28,000원</span>
+  </div>
+</article>
 
-      <article class="menu-card">
-        <img src="menu-02.jpg" alt="녹음정식" />
-        <div class="menu-card-content">
-          <h3>녹음정식</h3>
-          <p>전통 조리법과 계절 식재료를 담은 한국의집 정식 메뉴입니다.</p>
-          <span class="price">70,000원</span>
-        </div>
-      </article>
+<article class="menu-card">
+  <img src="menu-01.jpg" alt="청우정식" />
+  <div class="menu-card-content">
+    <h3>청우정식</h3>
+    <p>전통 조리법과 계절 식재료를 품격 있게 담은 한국의집 대표 정식입니다.</p>
+    <span class="price">100,000원</span>
+  </div>
+</article>
     </div>
 
     <details class="menu-list">
       <summary>주요 메뉴 더 보기</summary>
 
-      <div class="simple-menu">
-        <p><b>청우정식</b><span>100,000원</span></p>
-        <p><b>녹음정식</b><span>70,000원</span></p>
-        <p><b>우금정식</b><span>50,000원</span></p>
-        <p><b>골동반 반상</b><span>18,000원</span></p>
-        <p><b>강된장골동반 반상</b><span>18,000원</span></p>
-        <p><b>물골동면 반상</b><span>18,000원</span></p>
-        <p><b>육회골동반상</b><span>22,000원</span></p>
-        <p><b>쭈꾸미골동반상</b><span>22,000원</span></p>
-        <p><b>어린이떡갈비 반상</b><span>14,000원</span></p>
-        <p><b>전복효종갱반상</b><span>28,000원</span></p>
-        <p><b>설리적한상</b><span>35,000원</span></p>
-        <p><b>장어구이한상</b><span>35,000원</span></p>
-        <p><b>보리굴비 한상</b><span>35,000원</span></p>
-        <p><b>전복삼계탕 한상</b><span>28,000원</span></p>
-      </div>
+      <div class="menu-photo-list">
+  <div class="menu-photo-item"><img src="menu-02.jpg"><div><h4>녹음정식</h4><p>전통 정식 메뉴</p><strong>70,000원</strong></div></div>
+  <div class="menu-photo-item"><img src="menu-03.jpg"><div><h4>우금정식</h4><p>정갈한 한식 정식</p><strong>50,000원</strong></div></div>
+  <div class="menu-photo-item"><img src="menu-04.jpg"><div><h4>설리적한상</h4><p>소갈비찜 한상</p><strong>35,000원</strong></div></div>
+  <div class="menu-photo-item"><img src="menu-05.jpg"><div><h4>보리굴비한상</h4><p>보리굴비와 한식 반찬</p><strong>35,000원</strong></div></div>
+  <div class="menu-photo-item"><img src="menu-06.jpg"><div><h4>장어구이한상</h4><p>장어구이 한상</p><strong>35,000원</strong></div></div>
+  <div class="menu-photo-item"><img src="menu-07.jpg"><div><h4>황태구이한상</h4><p>황태구이 한상</p><strong>35,000원</strong></div></div>
+  <div class="menu-photo-item"><img src="menu-08.jpg"><div><h4>전복삼계탕한상</h4><p>전복 삼계탕 한상</p><strong>28,000원</strong></div></div>
+  <div class="menu-photo-item"><img src="menu-33.jpg"><div><h4>어린이떡갈비 반상</h4><p>어린이 메뉴</p><strong>14,000원</strong></div></div>
+</div>
     </details>
   </div>
 </section>
