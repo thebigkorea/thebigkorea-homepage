@@ -793,6 +793,64 @@
         grid-template-columns:1fr;
         gap:4px;
       }
+
+      .intro-story-section{
+  background:#f7f2ea;
+}
+
+.intro-story-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:60px;
+  align-items:start;
+}
+
+.story-feature-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+}
+
+.story-mini-card{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:22px;
+  padding:24px;
+}
+
+.story-mini-card strong{
+  display:block;
+  color:var(--brown);
+  margin-bottom:12px;
+  font-size:20px;
+}
+
+.story-mini-card h3{
+  margin:0 0 10px;
+}
+
+.story-mini-card p{
+  margin:0;
+  line-height:1.7;
+  color:var(--muted);
+}
+
+.story-panel.compact{
+  margin-bottom:20px;
+}
+
+@media(max-width:1000px){
+  .intro-story-grid{
+    grid-template-columns:1fr;
+  }
+}
+
+@media(max-width:700px){
+  .story-feature-grid{
+    grid-template-columns:1fr;
+  }
+}
+
     }
   </style>
 </head>
@@ -832,93 +890,81 @@
     </div>
   </section>
 
-  <section class="section" id="intro">
-    <div class="container intro-grid">
+<section class="section intro-story-section" id="intro">
+  <div class="container intro-story-grid">
+
+    <div class="intro-story-left">
       <div class="intro-photo">
-        <img src="images/gallery01.jpg" alt="한국의집 매장 내부">
+        <img src="gallery01.jpg" alt="한국의집 상차림">
       </div>
 
-      <div class="intro-copy">
-        <span class="eyebrow">INTRODUCTION</span>
-        <h2>정갈한 상차림,<br>편안한 한식 공간</h2>
+      <span class="eyebrow">INTRODUCTION</span>
+
+      <h2>
+        정갈한 상차림,<br>
+        편안한 한식 공간
+      </h2>
+
+      <p>
+        한국의집은 한국 음식의 아름다움과 예법을 현대적인 감각으로 풀어낸 한식 브랜드입니다.
+        밝은 쇼핑몰 안에서도 한식의 온기와 여유가 느껴지도록 공간과 상차림을 정돈했습니다.
+      </p>
+
+      <p class="lead">
+        담백한 맛, 정갈한 반상, 가족이 함께하기 좋은 서비스를 담았습니다.
+      </p>
+
+      <div class="chips">
+        <span class="chip">궁중 음식</span>
+        <span class="chip">정갈한 반상</span>
+        <span class="chip">가족 모임</span>
+        <span class="chip">도심 한식</span>
+        <span class="chip">롯데월드몰 5층</span>
+      </div>
+    </div>
+
+    <div class="intro-story-right">
+      <span class="eyebrow">BRAND STORY</span>
+
+      <h2>한국의집 이야기</h2>
+
+      <div class="story-panel compact">
+        <h3>궁중음식의 품격을 일상의 식사로</h3>
         <p>
-          한국의집은 한국 음식의 아름다움과 예법을 현대적인 감각으로 풀어낸 한식 브랜드입니다.
-          밝은 쇼핑몰 안에서도 한식의 온기와 여유가 느껴지도록 공간과 상차림을 정돈했습니다.
+          잔칫상계, 진연의궤, 궁중음식발기 등 옛 문헌을 토대로 한 조리 정신을 바탕으로
+          누구나 편안하게 즐길 수 있는 한식 메뉴로 풀어냈습니다.
         </p>
+      </div>
 
-        <p class="lead">
-          담백한 맛, 정갈한 반상, 가족이 함께하기 좋은 서비스를 담았습니다.
-        </p>
+      <div class="story-feature-grid">
+        <div class="story-mini-card">
+          <strong>01</strong>
+          <h3>전통 한식</h3>
+          <p>궁중 음식의 품격을 일상적인 식사 경험으로 편안하게 풀어냅니다.</p>
+        </div>
 
-        <p>
-          반상, 한상, 정식, 일품요리까지 다양한 메뉴를 갖추고 있어
-          가벼운 식사부터 가족 외식, 고객 접대, 단체 모임까지 폭넓게 이용하실 수 있습니다.
-        </p>
+        <div class="story-mini-card">
+          <strong>02</strong>
+          <h3>다양한 반상</h3>
+          <p>밥, 국, 찬, 주요리를 균형 있게 구성해 한 끼 만족도를 높입니다.</p>
+        </div>
 
-        <div class="chips">
-          <span class="chip">궁중 음식</span>
-          <span class="chip">정갈한 반상</span>
-          <span class="chip">가족 모임</span>
-          <span class="chip">도심 한식</span>
-          <span class="chip">롯데월드몰 5층</span>
+        <div class="story-mini-card">
+          <strong>03</strong>
+          <h3>가족 외식</h3>
+          <p>어린이 메뉴와 단체 이용이 가능해 가족 식사와 모임에 적합합니다.</p>
+        </div>
+
+        <div class="story-mini-card">
+          <strong>04</strong>
+          <h3>뛰어난 접근성</h3>
+          <p>잠실 롯데월드몰 5층에서 편리하게 만날 수 있는 한식 다이닝입니다.</p>
         </div>
       </div>
     </div>
-  </section>
 
-  <section class="section white" id="story">
-    <div class="container">
-      <div class="section-title">
-        <span class="eyebrow">BRAND STORY</span>
-        <h2>한국의집 이야기</h2>
-        <p>
-          한국의집은 전통의 형식만 보여주는 공간이 아니라,
-          오늘의 식사 경험 안에서 한국적인 정서와 맛을 자연스럽게 전하는 브랜드입니다.
-        </p>
-      </div>
-
-      <div class="story-grid">
-        <div class="story-panel">
-          <h3>궁중음식의 품격을 일상의 식사로</h3>
-          <p>
-            잔칫상계, 진연의궤, 궁중음식발기 등 옛 문헌을 토대로 한 조리 정신을 바탕으로
-            누구나 편안하게 즐길 수 있는 한식 메뉴로 풀어냈습니다.
-          </p>
-          <p>
-            정갈한 그릇, 따뜻한 국물, 균형 있는 반찬 구성으로
-            한국적인 상차림의 아름다움을 전합니다.
-          </p>
-        </div>
-
-        <div class="timeline">
-          <div class="time-item">
-            <strong>01</strong>
-            <div><b>전통 한식</b><span>궁중 음식의 품격을 일상적인 식사 경험으로 편안하게 풀어냅니다.</span></div>
-          </div>
-          <div class="time-item">
-            <strong>02</strong>
-            <div><b>다양한 반상</b><span>밥, 국, 찬, 주요리를 균형 있게 구성해 한 끼 만족도를 높입니다.</span></div>
-          </div>
-          <div class="time-item">
-            <strong>03</strong>
-            <div><b>가족 외식</b><span>어린이 메뉴와 단체 이용이 가능해 가족 식사와 모임에 적합합니다.</span></div>
-          </div>
-          <div class="time-item">
-            <strong>04</strong>
-            <div><b>뛰어난 접근성</b><span>잠실 롯데월드몰 5층에서 편리하게 만날 수 있는 한식 다이닝입니다.</span></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="recommend">
-        <h3>이런 분들께 추천합니다</h3>
-        <p>
-          부모님과 함께하는 식사, 아이와 함께하는 가족 외식, 쇼핑 중 편안하게 즐기는 한식,
-          외국인 고객에게 한국적인 식문화를 소개하는 자리까지 모두 잘 어울립니다.
-        </p>
-      </div>
-    </div>
-  </section>
+  </div>
+</section>
 
   <section class="section" id="menu">
     <div class="container">
